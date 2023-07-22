@@ -11,7 +11,7 @@ void tearDown(void) {
 
 void test_function_should_init_lcd(void) {
   //given
-  init_lcd_ExpectAndReturn(1, 2);
+  init_lcd_ExpectAndReturn(1, 1);
 
   //when
   int retval = init_lcd(1);

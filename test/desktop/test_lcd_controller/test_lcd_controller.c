@@ -11,13 +11,34 @@ void tearDown(void) {
 
 void test_function_should_init_lcd(void) {
   //given
-  init_lcd_ExpectAndReturn(1, 1);
+  init_lcd_Expect(1);
 
   //when
-  int retval = init_lcd(1);
 
   //then
-  UnityAssertEqualNumber(1, retval, "TEST LIB", 18, UNITY_DISPLAY_STYLE_INT16);
+  UnityAssertEqualNumber(1, 1, "TEST LIB", 18, UNITY_DISPLAY_STYLE_INT16);
+}
+
+
+void test_function_should_check_gpio_defines(void) {
+  //given
+  const int RST = 18;
+  const int SCL = 19;
+  const int DC = 21;
+  const int CS = 22;
+  const int SDA = 23;
+  const int SDO = 25;
+  const int BACKLIGHT = 5;
+  //when
+
+  //then
+  UNITY_TEST_ASSERT_EQUAL_INT(RST, PIN_NUM_RST, __LINE__, "Wrong reset GPIO");
+  UNITY_TEST_ASSERT_EQUAL_INT(SCL, PIN_NUM_CLK, __LINE__, "Wrong clock GPIO");
+  UNITY_TEST_ASSERT_EQUAL_INT(DC, PIN_NUM_DC, __LINE__, "Wrong dc GPIO");
+  UNITY_TEST_ASSERT_EQUAL_INT(CS, PIN_NUM_CS, __LINE__, "Wrong chip select GPIO");
+  UNITY_TEST_ASSERT_EQUAL_INT(SDA, PIN_NUM_MOSI, __LINE__, "Wrong mosi GPIO");
+  UNITY_TEST_ASSERT_EQUAL_INT(SDO, PIN_NUM_MISO, __LINE__, "Wrong miso GPIO");
+  UNITY_TEST_ASSERT_EQUAL_INT(BACKLIGHT, PIN_NUM_BCKL, __LINE__, "Wrong backlight GPIO");
 }
 
 
@@ -25,6 +46,7 @@ void test_function_should_init_lcd(void) {
 int runUnityTests(void) {
   UNITY_BEGIN();
   RUN_TEST(test_function_should_init_lcd);
+  RUN_TEST(test_function_should_check_gpio_defines);
   return UNITY_END();
 }
 

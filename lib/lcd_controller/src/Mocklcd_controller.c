@@ -5,39 +5,18 @@
 #include "cmock.h"
 #include "Mocklcd_controller.h"
 
-static const char* CMockString_cmd = "cmd";
 static const char* CMockString_cmock_arg1 = "cmock_arg1";
 static const char* CMockString_init_lcd = "init_lcd";
-static const char* CMockString_parseStuff = "parseStuff";
-static const char* CMockString_return1 = "return1";
-
-typedef struct _CMOCK_parseStuff_CALL_INSTANCE
-{
-  UNITY_LINE_TYPE LineNumber;
-  int ReturnVal;
-  char* Expected_cmd;
-
-} CMOCK_parseStuff_CALL_INSTANCE;
-
-typedef struct _CMOCK_return1_CALL_INSTANCE
-{
-  UNITY_LINE_TYPE LineNumber;
-  int ReturnVal;
-
-} CMOCK_return1_CALL_INSTANCE;
 
 typedef struct _CMOCK_init_lcd_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
-  int ReturnVal;
   int Expected_cmock_arg1;
 
 } CMOCK_init_lcd_CALL_INSTANCE;
 
 static struct Mocklcd_controllerInstance
 {
-  CMOCK_MEM_INDEX_TYPE parseStuff_CallInstance;
-  CMOCK_MEM_INDEX_TYPE return1_CallInstance;
   CMOCK_MEM_INDEX_TYPE init_lcd_CallInstance;
 } Mock;
 
@@ -47,18 +26,6 @@ void Mocklcd_controller_Verify(void)
 {
   UNITY_LINE_TYPE cmock_line = TEST_LINE_NUM;
   CMOCK_MEM_INDEX_TYPE call_instance;
-  call_instance = Mock.parseStuff_CallInstance;
-  if (CMOCK_GUTS_NONE != call_instance)
-  {
-    UNITY_SET_DETAIL(CMockString_parseStuff);
-    UNITY_TEST_FAIL(cmock_line, CMockStringCalledLess);
-  }
-  call_instance = Mock.return1_CallInstance;
-  if (CMOCK_GUTS_NONE != call_instance)
-  {
-    UNITY_SET_DETAIL(CMockString_return1);
-    UNITY_TEST_FAIL(cmock_line, CMockStringCalledLess);
-  }
   call_instance = Mock.init_lcd_CallInstance;
   if (CMOCK_GUTS_NONE != call_instance)
   {
@@ -78,66 +45,7 @@ void Mocklcd_controller_Destroy(void)
   memset(&Mock, 0, sizeof(Mock));
 }
 
-int parseStuff(char* cmd)
-{
-  UNITY_LINE_TYPE cmock_line = TEST_LINE_NUM;
-  CMOCK_parseStuff_CALL_INSTANCE* cmock_call_instance;
-  UNITY_SET_DETAIL(CMockString_parseStuff);
-  cmock_call_instance = (CMOCK_parseStuff_CALL_INSTANCE*)CMock_Guts_GetAddressFor(Mock.parseStuff_CallInstance);
-  Mock.parseStuff_CallInstance = CMock_Guts_MemNext(Mock.parseStuff_CallInstance);
-  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringCalledMore);
-  cmock_line = cmock_call_instance->LineNumber;
-  {
-    UNITY_SET_DETAILS(CMockString_parseStuff,CMockString_cmd);
-    UNITY_TEST_ASSERT_EQUAL_STRING(cmock_call_instance->Expected_cmd, cmd, cmock_line, CMockStringMismatch);
-  }
-  UNITY_CLR_DETAILS();
-  return cmock_call_instance->ReturnVal;
-}
-
-void CMockExpectParameters_parseStuff(CMOCK_parseStuff_CALL_INSTANCE* cmock_call_instance, char* cmd);
-void CMockExpectParameters_parseStuff(CMOCK_parseStuff_CALL_INSTANCE* cmock_call_instance, char* cmd)
-{
-  cmock_call_instance->Expected_cmd = cmd;
-}
-
-void parseStuff_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, char* cmd, int cmock_to_return)
-{
-  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_parseStuff_CALL_INSTANCE));
-  CMOCK_parseStuff_CALL_INSTANCE* cmock_call_instance = (CMOCK_parseStuff_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
-  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
-  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
-  Mock.parseStuff_CallInstance = CMock_Guts_MemChain(Mock.parseStuff_CallInstance, cmock_guts_index);
-  cmock_call_instance->LineNumber = cmock_line;
-  CMockExpectParameters_parseStuff(cmock_call_instance, cmd);
-  cmock_call_instance->ReturnVal = cmock_to_return;
-}
-
-int return1(void)
-{
-  UNITY_LINE_TYPE cmock_line = TEST_LINE_NUM;
-  CMOCK_return1_CALL_INSTANCE* cmock_call_instance;
-  UNITY_SET_DETAIL(CMockString_return1);
-  cmock_call_instance = (CMOCK_return1_CALL_INSTANCE*)CMock_Guts_GetAddressFor(Mock.return1_CallInstance);
-  Mock.return1_CallInstance = CMock_Guts_MemNext(Mock.return1_CallInstance);
-  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringCalledMore);
-  cmock_line = cmock_call_instance->LineNumber;
-  UNITY_CLR_DETAILS();
-  return cmock_call_instance->ReturnVal;
-}
-
-void return1_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_to_return)
-{
-  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_return1_CALL_INSTANCE));
-  CMOCK_return1_CALL_INSTANCE* cmock_call_instance = (CMOCK_return1_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
-  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
-  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
-  Mock.return1_CallInstance = CMock_Guts_MemChain(Mock.return1_CallInstance, cmock_guts_index);
-  cmock_call_instance->LineNumber = cmock_line;
-  cmock_call_instance->ReturnVal = cmock_to_return;
-}
-
-int init_lcd(int cmock_arg1)
+void init_lcd(int cmock_arg1)
 {
   UNITY_LINE_TYPE cmock_line = TEST_LINE_NUM;
   CMOCK_init_lcd_CALL_INSTANCE* cmock_call_instance;
@@ -151,7 +59,6 @@ int init_lcd(int cmock_arg1)
     UNITY_TEST_ASSERT_EQUAL_INT(cmock_call_instance->Expected_cmock_arg1, cmock_arg1, cmock_line, CMockStringMismatch);
   }
   UNITY_CLR_DETAILS();
-  return cmock_call_instance->ReturnVal;
 }
 
 void CMockExpectParameters_init_lcd(CMOCK_init_lcd_CALL_INSTANCE* cmock_call_instance, int cmock_arg1);
@@ -160,7 +67,7 @@ void CMockExpectParameters_init_lcd(CMOCK_init_lcd_CALL_INSTANCE* cmock_call_ins
   cmock_call_instance->Expected_cmock_arg1 = cmock_arg1;
 }
 
-void init_lcd_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_arg1, int cmock_to_return)
+void init_lcd_CMockExpect(UNITY_LINE_TYPE cmock_line, int cmock_arg1)
 {
   CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_init_lcd_CALL_INSTANCE));
   CMOCK_init_lcd_CALL_INSTANCE* cmock_call_instance = (CMOCK_init_lcd_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
@@ -169,6 +76,5 @@ void init_lcd_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_arg1, i
   Mock.init_lcd_CallInstance = CMock_Guts_MemChain(Mock.init_lcd_CallInstance, cmock_guts_index);
   cmock_call_instance->LineNumber = cmock_line;
   CMockExpectParameters_init_lcd(cmock_call_instance, cmock_arg1);
-  cmock_call_instance->ReturnVal = cmock_to_return;
 }
 

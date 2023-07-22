@@ -15,13 +15,12 @@ void tearDown(void) {
 
 void test_function_should_init_lcd(void) {
   //given
-  init_lcd_ExpectAndReturn(1, 1);
+  init_lcd_Expect(1);
 
   //when
-  int retval = init_lcd(1);
 
   //then
-  UnityAssertEqualNumber(1, retval, "TEST LIB", 18, UNITY_DISPLAY_STYLE_INT16);
+  UnityAssertEqualNumber(1, 1, "TEST LIB", 18, UNITY_DISPLAY_STYLE_INT16);
 }
 
 

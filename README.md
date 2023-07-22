@@ -23,7 +23,7 @@
 ### Folder specific README files:
 
  - [Tests README](test/README.md)
- - [Libraries README](lib/README)
+ - [Libraries README](lib/README.md)
 
 ## TODOs List
 

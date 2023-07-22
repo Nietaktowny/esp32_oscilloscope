@@ -28,6 +28,12 @@ Main distinction is made between **desktop** and **embedded** tests.
 
 Each approach is configured separately in it's own PlatformIO configuration environment. (`native` for desktop, and `esp-wrover-kit-test` for embedded).
 
+## Generating CMocks files
+CMocks files need currently to be generated manually by running `generate_cmock.py` file. It's python program that runs correct script file (bash for linux, bat for windows) which generates CMock files, and copies them to specified folders.
+
+It can be automated do that PlatformIO runs that script on each build with adding `extra_scripts = pre:generate_cmock.py` code to some environments. 
+That way is not selected, because this doesn't work well with GitHub Actions and configured workflows, but it can be enabled on local machine.
+
 ## Single test structure
 Tests are made according to the convention below: 
 
@@ -41,6 +47,7 @@ Tests are made according to the convention below:
       //then
       UnityAssertSomething(expected, retval, "NAME", LINE, UNITY_DISPLAY_STYLE);
     }
+    
 ## Test file structure
 Test files are structured as described in PlatformIO [documentation](https://docs.platformio.org/en/stable/advanced/unit-testing/frameworks/unity.html).
 
@@ -109,5 +116,4 @@ Native:
  - [x] Preparing use structure of Unity for unit tests
  - [x] Preparing use of CMock for main app and libraries
  - [x] Preparing basic README for test directory
- - [x] Implement soft reset after embedded tests
- - [ ] Using TDD
+ - [ ] Automate generating CMock files also on remote machines when using workflows.

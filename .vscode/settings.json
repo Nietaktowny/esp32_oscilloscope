@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "cmock.h": "c",
+        "setjmp.h": "c"
+    }
+}

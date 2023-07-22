@@ -1,0 +1,26 @@
+{
+    "name": "Esp Wifi Manager",
+    "version": "0.0.1",
+    "description": "A program to simplifying use of Wifi with ESP IDF.",
+    "keywords": "Wifi, esp, espressif, esp32, esp-wrover-kit, manager, esp wifi manager",
+    "repository":
+    {
+      "type": "git",
+      "url": ""
+    },
+    "authors":
+    [
+      {
+        "name": "Wojciech Mytych",
+        "email": "wojciech.lukasz.mytych@gmail.com",
+        "maintainer": true
+      }
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "dependencies": {
+
+    },
+    "frameworks": "*",
+    "platforms": "espressif32@^6.1.0, native@1.2.1"
+  }

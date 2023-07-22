@@ -7,7 +7,6 @@ set "lcd_controller_path=lib\lcd_controller"
 title Generate CMock files
 echo Starting generating...
 cd
-dir
 cd cmock\lib
 cd
 ruby cmock.rb ..\..\lib\lcd_controller\include\lcd_controller.h

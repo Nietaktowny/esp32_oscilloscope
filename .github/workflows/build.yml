@@ -31,5 +31,11 @@ jobs:
       - name: Install CMock
         run: |
           git clone --recursive https://github.com/throwtheswitch/cmock.git
+      - name: Change permissions on Linux
+        if: runner.os == 'Linux'
+        run: sudo chmod -R 777 scripts/cmock_auto_generate.bash
+      - name: Change permissions on macOS
+        if: runner.os == 'macOS'
+        run: sudo chmod -R 777 scripts/cmock_auto_generate.bash
       - name: Build PlatformIO Project
         run: pio run --environment default

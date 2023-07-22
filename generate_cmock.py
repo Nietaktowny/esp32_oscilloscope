@@ -10,7 +10,9 @@ elif platform.system() == "Windows":
     import subprocess
     subprocess.call([r'scripts\cmock_auto_generate.bat'])
 else:
-    print("Mac")
+    print("Checked platform: Mac")
+    import subprocess
+    subprocess.call([r'scripts/cmock_auto_generate.bash'])
 
 
 

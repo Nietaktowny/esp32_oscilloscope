@@ -30,6 +30,8 @@ void Mocklcd_controller_Verify(void);
 
 #define init_lcd_Expect(cmock_arg1) init_lcd_CMockExpect(__LINE__, cmock_arg1)
 void init_lcd_CMockExpect(UNITY_LINE_TYPE cmock_line, int cmock_arg1);
+#define lcd_reset_ExpectAndReturn(cmock_arg1, cmock_retval) lcd_reset_CMockExpectAndReturn(__LINE__, cmock_arg1, cmock_retval)
+void lcd_reset_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_arg1, int cmock_to_return);
 
 #ifdef __cplusplus
 }

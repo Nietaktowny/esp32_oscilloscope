@@ -30,5 +30,7 @@ jobs:
         run: pio lib install
       - name: Upgrade pip
         run: python -m pip install --upgrade pip
+      - name: Generate CMock files
+        run: python generate_cmock.py
       - name: Run desktop test
         run: pio test --environment native

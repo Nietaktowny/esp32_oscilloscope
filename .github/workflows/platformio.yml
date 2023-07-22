@@ -38,9 +38,13 @@ jobs:
         run: python generate_cmock.py
       - name: Generate CMock files on Linux
         if: runner.os == 'Linux'
-        run: sudo python generate_cmock.py
+        run: |
+          sudo chmod -R 777 scripts/cmock_auto_generate.bash
+          sudo python generate_cmock.py
       - name: Generate CMock files on macOS   
         if: runner.os == 'macOS'
-        run: sudo python generate_cmock.py
+        run: |
+          sudo chmod -R 777 scripts/cmock_auto_generate.bash
+          sudo python generate_cmock.py
       - name: Run desktop test
         run: pio test --environment native

@@ -35,4 +35,4 @@ jobs:
       - name: Run desktop test
         run: pio test --environment native
       - name: Build PlatformIO Project
-        run: pio run --environment default --without-uploading
+        run: pio run --environment default

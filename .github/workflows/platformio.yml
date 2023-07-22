@@ -28,8 +28,6 @@ jobs:
         run: pip install --upgrade platformio
       - name: Install platformIO libraries
         run: pio lib install
-      - name: Install 99-platformio-udev.rules
-        run: curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/system/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules
       - name: Restart “udev” management tool
         run: sudo service udev restart
       - name: Upgrade pip

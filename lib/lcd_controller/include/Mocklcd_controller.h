@@ -30,6 +30,8 @@ void Mocklcd_controller_Verify(void);
 
 #define parseStuff_ExpectAndReturn(cmd, cmock_retval) parseStuff_CMockExpectAndReturn(__LINE__, cmd, cmock_retval)
 void parseStuff_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, char* cmd, int cmock_to_return);
+#define return1_ExpectAndReturn(cmock_retval) return1_CMockExpectAndReturn(__LINE__, cmock_retval)
+void return1_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_to_return);
 #define init_lcd_ExpectAndReturn(cmock_arg1, cmock_retval) init_lcd_CMockExpectAndReturn(__LINE__, cmock_arg1, cmock_retval)
 void init_lcd_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_arg1, int cmock_to_return);
 

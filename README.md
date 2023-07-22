@@ -22,8 +22,8 @@
 
 ### Folder specific README files:
 
- - [Tests README](https://github.com/Nietaktowny/esp32_oscilloscope/blob/main/test/README)
- - [Libraries README](https://github.com/Nietaktowny/esp32_oscilloscope/blob/main/lib/README)
+ - [Tests README](test\README.md)
+ - [Libraries README](lib\README)
 
 ## TODOs List
 

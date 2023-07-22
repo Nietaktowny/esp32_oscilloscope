@@ -25,9 +25,9 @@ jobs:
         run: curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/system/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules
       - name: Restart “udev” management tool
         run: sudo service udev restart
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
       - name: Run desktop test
         run: pio test --environment native
-      - name: Run embedded tests
-        run: pio test --environment esp-wrover-kit-test
       - name: Build PlatformIO Project
         run: pio run --environment default

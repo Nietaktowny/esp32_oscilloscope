@@ -11,7 +11,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/3.16.4/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/3.16.4/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: C:/Users/User/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++.exe 
@@ -24,7 +24,7 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/3.16.4/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/3.16.4/CompilerIdCXX/a.out"
 
 Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
 xtensa-esp32-elf-gcc.exe (crosstool-NG esp-2022r1) 11.2.0
@@ -33,17 +33,17 @@ This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 Determining if the C compiler works passed with the following output:
-Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_de894 && [1/2] Building C object CMakeFiles/cmTC_de894.dir/testCCompiler.c.obj
-[2/2] Linking C executable cmTC_de894
+Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_83674 && [1/2] Building C object CMakeFiles/cmTC_83674.dir/testCCompiler.c.obj
+[2/2] Linking C executable cmTC_83674
 
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_cb594 && [1/2] Building C object CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj
+Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_227ea && [1/2] Building C object CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj
 Using built-in specs.
 COLLECT_GCC=C:\Users\User\.platformio\packages\toolchain-xtensa-esp32\bin\xtensa-esp32-elf-gcc.exe
 Target: xtensa-esp32-elf
@@ -51,8 +51,8 @@ Configured with: /builds/idf/crosstool-NG/.build/HOST-x86_64-w64-mingw32/xtensa-
 Thread model: posix
 Supported LTO compression algorithms: zlib
 gcc version 11.2.0 (crosstool-NG esp-2022r1) 
-COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_cb594.dir/'
- c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/cc1.exe -quiet -v -iprefix c:\users\user\.platformio\packages\toolchain-xtensa-esp32\bin\../lib/gcc/xtensa-esp32-elf/11.2.0/ C:/Users/User/.platformio/packages/tool-cmake/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_cb594.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mlongcalls -Wno-frame-address -version -o C:\Users\User\AppData\Local\Temp\cc3pxaad.s
+COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_227ea.dir/'
+ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/cc1.exe -quiet -v -iprefix c:\users\user\.platformio\packages\toolchain-xtensa-esp32\bin\../lib/gcc/xtensa-esp32-elf/11.2.0/ C:/Users/User/.platformio/packages/tool-cmake/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_227ea.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mlongcalls -Wno-frame-address -version -o C:\Users\User\AppData\Local\Temp\ccsrAmnU.s
 GNU C17 (crosstool-NG esp-2022r1) version 11.2.0 (xtensa-esp32-elf)
 	compiled by GNU C version 6.3.0 20170516, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
@@ -73,12 +73,12 @@ GNU C17 (crosstool-NG esp-2022r1) version 11.2.0 (xtensa-esp32-elf)
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 6940ee8c920defc5ee0fc3ab296ed286
-COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_cb594.dir/'
- c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/as.exe --traditional-format --longcalls -o CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj C:\Users\User\AppData\Local\Temp\cc3pxaad.s
+COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_227ea.dir/'
+ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/as.exe --traditional-format --longcalls -o CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj C:\Users\User\AppData\Local\Temp\ccsrAmnU.s
 COMPILER_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/
 LIBRARY_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/
-COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.'
-[2/2] Linking C executable cmTC_cb594
+COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.'
+[2/2] Linking C executable cmTC_227ea
 Using built-in specs.
 COLLECT_GCC=C:\Users\User\.platformio\packages\toolchain-xtensa-esp32\bin\xtensa-esp32-elf-gcc.exe
 COLLECT_LTO_WRAPPER=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe
@@ -89,9 +89,9 @@ Supported LTO compression algorithms: zlib
 gcc version 11.2.0 (crosstool-NG esp-2022r1) 
 COMPILER_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/
 LIBRARY_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/
-COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_cb594' '-dumpdir' 'cmTC_cb594.'
- c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/collect2.exe -plugin c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/liblto_plugin.dll -plugin-opt=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\cckYyoqq.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -o cmTC_cb594 c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/crt0.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crti.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtbegin.o -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0 -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtend.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtn.o
-COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_cb594' '-dumpdir' 'cmTC_cb594.'
+COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_227ea' '-dumpdir' 'cmTC_227ea.'
+ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/collect2.exe -plugin c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/liblto_plugin.dll -plugin-opt=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\ccCeHhW9.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -o cmTC_227ea c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/crt0.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crti.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtbegin.o -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0 -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtend.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtn.o
+COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_227ea' '-dumpdir' 'cmTC_227ea.'
 
 
 
@@ -112,9 +112,9 @@ Parsed C implicit include dir info from above output: rv=done
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(xtensa-esp32-elf-ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_cb594 && [1/2] Building C object CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_227ea && [1/2] Building C object CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\Users\User\.platformio\packages\toolchain-xtensa-esp32\bin\xtensa-esp32-elf-gcc.exe]
   ignore line: [Target: xtensa-esp32-elf]
@@ -122,8 +122,8 @@ Parsed C implicit link information from above output:
   ignore line: [Thread model: posix]
   ignore line: [Supported LTO compression algorithms: zlib]
   ignore line: [gcc version 11.2.0 (crosstool-NG esp-2022r1) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_cb594.dir/']
-  ignore line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/cc1.exe -quiet -v -iprefix c:\users\user\.platformio\packages\toolchain-xtensa-esp32\bin\../lib/gcc/xtensa-esp32-elf/11.2.0/ C:/Users/User/.platformio/packages/tool-cmake/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_cb594.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mlongcalls -Wno-frame-address -version -o C:\Users\User\AppData\Local\Temp\cc3pxaad.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_227ea.dir/']
+  ignore line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/cc1.exe -quiet -v -iprefix c:\users\user\.platformio\packages\toolchain-xtensa-esp32\bin\../lib/gcc/xtensa-esp32-elf/11.2.0/ C:/Users/User/.platformio/packages/tool-cmake/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_227ea.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mlongcalls -Wno-frame-address -version -o C:\Users\User\AppData\Local\Temp\ccsrAmnU.s]
   ignore line: [GNU C17 (crosstool-NG esp-2022r1) version 11.2.0 (xtensa-esp32-elf)]
   ignore line: [	compiled by GNU C version 6.3.0 20170516  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
   ignore line: []
@@ -144,16 +144,16 @@ Parsed C implicit link information from above output:
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: 6940ee8c920defc5ee0fc3ab296ed286]
-  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_cb594.dir/']
-  ignore line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/as.exe --traditional-format --longcalls -o CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj C:\Users\User\AppData\Local\Temp\cc3pxaad.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_227ea.dir/']
+  ignore line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/as.exe --traditional-format --longcalls -o CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj C:\Users\User\AppData\Local\Temp\ccsrAmnU.s]
   ignore line: [COMPILER_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/]
   ignore line: [LIBRARY_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.']
-  ignore line: [[2/2] Linking C executable cmTC_cb594]
+  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.']
+  ignore line: [[2/2] Linking C executable cmTC_227ea]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\Users\User\.platformio\packages\toolchain-xtensa-esp32\bin\xtensa-esp32-elf-gcc.exe]
   ignore line: [COLLECT_LTO_WRAPPER=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe]
@@ -168,27 +168,27 @@ Parsed C implicit link information from above output:
   ignore line: [LIBRARY_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_cb594' '-dumpdir' 'cmTC_cb594.']
-  link line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/collect2.exe -plugin c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/liblto_plugin.dll -plugin-opt=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\cckYyoqq.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -o cmTC_cb594 c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/crt0.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crti.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtbegin.o -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0 -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtend.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_227ea' '-dumpdir' 'cmTC_227ea.']
+  link line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/collect2.exe -plugin c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/liblto_plugin.dll -plugin-opt=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\ccCeHhW9.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -o cmTC_227ea c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/crt0.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crti.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtbegin.o -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0 -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtend.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtn.o]
     arg [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/collect2.exe] ==> ignore
     arg [-plugin] ==> ignore
     arg [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/liblto_plugin.dll] ==> ignore
     arg [-plugin-opt=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe] ==> ignore
-    arg [-plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\cckYyoqq.res] ==> ignore
+    arg [-plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\ccCeHhW9.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
     arg [-plugin-opt=-pass-through=-lnosys] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_cb594] ==> ignore
+    arg [cmTC_227ea] ==> ignore
     arg [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/crt0.o] ==> ignore
     arg [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crti.o] ==> ignore
     arg [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtbegin.o] ==> ignore
     arg [-Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0] ==> dir [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0]
     arg [-Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc] ==> dir [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc]
     arg [-Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib] ==> dir [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib]
-    arg [CMakeFiles/cmTC_cb594.dir/CMakeCCompilerABI.c.obj] ==> ignore
+    arg [CMakeFiles/cmTC_227ea.dir/CMakeCCompilerABI.c.obj] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [-lc] ==> lib [c]
     arg [-lnosys] ==> lib [nosys]
@@ -205,17 +205,17 @@ Parsed C implicit link information from above output:
 
 
 Determining if the CXX compiler works passed with the following output:
-Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_d2db8 && [1/2] Building CXX object CMakeFiles/cmTC_d2db8.dir/testCXXCompiler.cxx.obj
-[2/2] Linking CXX executable cmTC_d2db8
+Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_7a78a && [1/2] Building CXX object CMakeFiles/cmTC_7a78a.dir/testCXXCompiler.cxx.obj
+[2/2] Linking CXX executable cmTC_7a78a
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_1d47a && [1/2] Building CXX object CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj
+Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_1b2fd && [1/2] Building CXX object CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj
 Using built-in specs.
 COLLECT_GCC=C:\Users\User\.platformio\packages\toolchain-xtensa-esp32\bin\xtensa-esp32-elf-g++.exe
 Target: xtensa-esp32-elf
@@ -223,8 +223,8 @@ Configured with: /builds/idf/crosstool-NG/.build/HOST-x86_64-w64-mingw32/xtensa-
 Thread model: posix
 Supported LTO compression algorithms: zlib
 gcc version 11.2.0 (crosstool-NG esp-2022r1) 
-COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1d47a.dir/'
- c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/cc1plus.exe -quiet -v -iprefix c:\users\user\.platformio\packages\toolchain-xtensa-esp32\bin\../lib/gcc/xtensa-esp32-elf/11.2.0/ C:/Users/User/.platformio/packages/tool-cmake/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_1d47a.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mlongcalls -Wno-frame-address -version -o C:\Users\User\AppData\Local\Temp\ccqqnSBu.s
+COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1b2fd.dir/'
+ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/cc1plus.exe -quiet -v -iprefix c:\users\user\.platformio\packages\toolchain-xtensa-esp32\bin\../lib/gcc/xtensa-esp32-elf/11.2.0/ C:/Users/User/.platformio/packages/tool-cmake/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_1b2fd.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mlongcalls -Wno-frame-address -version -o C:\Users\User\AppData\Local\Temp\cc75zDc0.s
 GNU C++17 (crosstool-NG esp-2022r1) version 11.2.0 (xtensa-esp32-elf)
 	compiled by GNU C version 6.3.0 20170516, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
@@ -251,12 +251,12 @@ GNU C++17 (crosstool-NG esp-2022r1) version 11.2.0 (xtensa-esp32-elf)
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 88cd85ad0390d653645f18be897d6236
-COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1d47a.dir/'
- c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/as.exe --traditional-format --longcalls -o CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj C:\Users\User\AppData\Local\Temp\ccqqnSBu.s
+COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1b2fd.dir/'
+ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/as.exe --traditional-format --longcalls -o CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj C:\Users\User\AppData\Local\Temp\cc75zDc0.s
 COMPILER_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/
 LIBRARY_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/
-COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.'
-[2/2] Linking CXX executable cmTC_1d47a
+COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.'
+[2/2] Linking CXX executable cmTC_1b2fd
 Using built-in specs.
 COLLECT_GCC=C:\Users\User\.platformio\packages\toolchain-xtensa-esp32\bin\xtensa-esp32-elf-g++.exe
 COLLECT_LTO_WRAPPER=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe
@@ -267,9 +267,9 @@ Supported LTO compression algorithms: zlib
 gcc version 11.2.0 (crosstool-NG esp-2022r1) 
 COMPILER_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/
 LIBRARY_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/;c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/
-COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_1d47a' '-dumpdir' 'cmTC_1d47a.'
- c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/collect2.exe -plugin c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/liblto_plugin.dll -plugin-opt=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\ccyWFZLR.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -o cmTC_1d47a c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/crt0.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crti.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtbegin.o -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0 -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtend.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtn.o
-COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_1d47a' '-dumpdir' 'cmTC_1d47a.'
+COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_1b2fd' '-dumpdir' 'cmTC_1b2fd.'
+ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/collect2.exe -plugin c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/liblto_plugin.dll -plugin-opt=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\ccdRvNLj.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -o cmTC_1b2fd c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/crt0.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crti.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtbegin.o -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0 -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtend.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtn.o
+COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_1b2fd' '-dumpdir' 'cmTC_1b2fd.'
 
 
 
@@ -296,9 +296,9 @@ Parsed CXX implicit include dir info from above output: rv=done
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(xtensa-esp32-elf-ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_1d47a && [1/2] Building CXX object CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_1b2fd && [1/2] Building CXX object CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\Users\User\.platformio\packages\toolchain-xtensa-esp32\bin\xtensa-esp32-elf-g++.exe]
   ignore line: [Target: xtensa-esp32-elf]
@@ -306,8 +306,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [Thread model: posix]
   ignore line: [Supported LTO compression algorithms: zlib]
   ignore line: [gcc version 11.2.0 (crosstool-NG esp-2022r1) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1d47a.dir/']
-  ignore line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/cc1plus.exe -quiet -v -iprefix c:\users\user\.platformio\packages\toolchain-xtensa-esp32\bin\../lib/gcc/xtensa-esp32-elf/11.2.0/ C:/Users/User/.platformio/packages/tool-cmake/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_1d47a.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mlongcalls -Wno-frame-address -version -o C:\Users\User\AppData\Local\Temp\ccqqnSBu.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1b2fd.dir/']
+  ignore line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/cc1plus.exe -quiet -v -iprefix c:\users\user\.platformio\packages\toolchain-xtensa-esp32\bin\../lib/gcc/xtensa-esp32-elf/11.2.0/ C:/Users/User/.platformio/packages/tool-cmake/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_1b2fd.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mlongcalls -Wno-frame-address -version -o C:\Users\User\AppData\Local\Temp\cc75zDc0.s]
   ignore line: [GNU C++17 (crosstool-NG esp-2022r1) version 11.2.0 (xtensa-esp32-elf)]
   ignore line: [	compiled by GNU C version 6.3.0 20170516  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
   ignore line: []
@@ -334,16 +334,16 @@ Parsed CXX implicit link information from above output:
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: 88cd85ad0390d653645f18be897d6236]
-  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1d47a.dir/']
-  ignore line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/as.exe --traditional-format --longcalls -o CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj C:\Users\User\AppData\Local\Temp\ccqqnSBu.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1b2fd.dir/']
+  ignore line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/as.exe --traditional-format --longcalls -o CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj C:\Users\User\AppData\Local\Temp\cc75zDc0.s]
   ignore line: [COMPILER_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/]
   ignore line: [LIBRARY_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.']
-  ignore line: [[2/2] Linking CXX executable cmTC_1d47a]
+  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.']
+  ignore line: [[2/2] Linking CXX executable cmTC_1b2fd]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\Users\User\.platformio\packages\toolchain-xtensa-esp32\bin\xtensa-esp32-elf-g++.exe]
   ignore line: [COLLECT_LTO_WRAPPER=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe]
@@ -358,27 +358,27 @@ Parsed CXX implicit link information from above output:
   ignore line: [LIBRARY_PATH=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/]
   ignore line: [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_1d47a' '-dumpdir' 'cmTC_1d47a.']
-  link line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/collect2.exe -plugin c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/liblto_plugin.dll -plugin-opt=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\ccyWFZLR.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -o cmTC_1d47a c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/crt0.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crti.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtbegin.o -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0 -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtend.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-mlongcalls' '-Wno-frame-address' '-v' '-o' 'cmTC_1b2fd' '-dumpdir' 'cmTC_1b2fd.']
+  link line: [ c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/collect2.exe -plugin c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/liblto_plugin.dll -plugin-opt=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\ccdRvNLj.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -o cmTC_1b2fd c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/crt0.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crti.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtbegin.o -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0 -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc -Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtend.o c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtn.o]
     arg [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/collect2.exe] ==> ignore
     arg [-plugin] ==> ignore
     arg [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/liblto_plugin.dll] ==> ignore
     arg [-plugin-opt=c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../libexec/gcc/xtensa-esp32-elf/11.2.0/lto-wrapper.exe] ==> ignore
-    arg [-plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\ccyWFZLR.res] ==> ignore
+    arg [-plugin-opt=-fresolution=C:\Users\User\AppData\Local\Temp\ccdRvNLj.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
     arg [-plugin-opt=-pass-through=-lnosys] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_1d47a] ==> ignore
+    arg [cmTC_1b2fd] ==> ignore
     arg [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib/crt0.o] ==> ignore
     arg [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crti.o] ==> ignore
     arg [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/crtbegin.o] ==> ignore
     arg [-Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0] ==> dir [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0]
     arg [-Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc] ==> dir [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc]
     arg [-Lc:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib] ==> dir [c:/users/user/.platformio/packages/toolchain-xtensa-esp32/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/lib]
-    arg [CMakeFiles/cmTC_1d47a.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+    arg [CMakeFiles/cmTC_1b2fd.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc] ==> lib [gcc]
@@ -397,34 +397,34 @@ Parsed CXX implicit link information from above output:
 
 
 Determining if the include file sys/types.h exists passed with the following output:
-Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_4d90a && [1/2] Building C object CMakeFiles/cmTC_4d90a.dir/CheckIncludeFile.c.obj
-[2/2] Linking C executable cmTC_4d90a
+Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_659d2 && [1/2] Building C object CMakeFiles/cmTC_659d2.dir/CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_659d2
 
 
 
 Determining if the include file stdint.h exists passed with the following output:
-Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_a6f8c && [1/2] Building C object CMakeFiles/cmTC_a6f8c.dir/CheckIncludeFile.c.obj
-[2/2] Linking C executable cmTC_a6f8c
+Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_4ee98 && [1/2] Building C object CMakeFiles/cmTC_4ee98.dir/CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_4ee98
 
 
 
 Determining if the include file stddef.h exists passed with the following output:
-Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_523c9 && [1/2] Building C object CMakeFiles/cmTC_523c9.dir/CheckIncludeFile.c.obj
-[2/2] Linking C executable cmTC_523c9
+Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_07fc8 && [1/2] Building C object CMakeFiles/cmTC_07fc8.dir/CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_07fc8
 
 
 
 Determining size of time_t passed with the following output:
-Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_8d49e && [1/2] Building C object CMakeFiles/cmTC_8d49e.dir/TIME_T_SIZE.c.obj
-[2/2] Linking C executable cmTC_8d49e
+Run Build Command(s):C:/Users/User/.platformio/packages/tool-ninja/ninja.exe cmTC_dc1e1 && [1/2] Building C object CMakeFiles/cmTC_dc1e1.dir/TIME_T_SIZE.c.obj
+[2/2] Linking C executable cmTC_dc1e1
 
 
 

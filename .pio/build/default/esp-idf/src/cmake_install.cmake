@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/src
+# Install script for directory: C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

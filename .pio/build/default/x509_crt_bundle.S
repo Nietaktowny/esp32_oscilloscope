@@ -1,4 +1,4 @@
-/* * Data converted from c:\Users\User\Documents\PlatformIO\Projects\esp32_oscyloscope\.pio\build\default\x509_crt_bundle
+/* * Data converted from c:\Users\User\Documents\PlatformIO\Projects\esp32_oscilloscope\.pio\build\default\x509_crt_bundle
  */
 .data
 .section .rodata.embedded

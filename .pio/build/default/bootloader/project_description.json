@@ -1,8 +1,8 @@
 {
     "project_name":       "bootloader",
     "project_path":       "C:/Users/User/.platformio/packages/framework-espidf/components/bootloader/subproject",
-    "build_dir":          "C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/.pio/build/default/bootloader",
-    "config_file":        "C:/Users/User/Documents/PlatformIO/Projects/esp32_oscyloscope/sdkconfig.default",
+    "build_dir":          "C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/.pio/build/default/bootloader",
+    "config_file":        "C:/Users/User/Documents/PlatformIO/Projects/esp32_oscilloscope/sdkconfig.default",
     "config_defaults":    "",
     "bootloader_elf":     "",
     "app_elf":            "bootloader.elf",

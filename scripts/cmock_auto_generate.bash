@@ -8,7 +8,7 @@ echo Starting generating...
 pwd
 cd cmock/lib
 pwd
-ruby cmock.rb lib/lcd_controller/include/lcd_controller.h
+ruby cmock.rb ../../lib/lcd_controller/include/lcd_controller.h
 cd ../..
 pwd
 cp -v cmock/lib/mocks/Mocklcd_controller.h lib/lcd_controller/include

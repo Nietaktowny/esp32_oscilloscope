@@ -36,3 +36,6 @@ typedef enum {
 
 
 void init_lcd(int);
+
+
+int lcd_reset(int);

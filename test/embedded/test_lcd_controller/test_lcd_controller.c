@@ -1,4 +1,5 @@
 #include "unity.h"
+#include "Mocklcd_controller.h"
 #include "esp_system.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -12,13 +13,22 @@ void tearDown(void) {
   // clean stuff up here
 }
 
-void test_function_should_doBlahAndBlah(void) {
-  UnityAssertEqualNumber(1, 1, "TEST TEST", 12, UNITY_DISPLAY_STYLE_INT16);
+void test_function_should_init_lcd(void) {
+  //given
+  init_lcd_ExpectAndReturn(1, 1);
+
+  //when
+  int retval = init_lcd(1);
+
+  //then
+  UnityAssertEqualNumber(1, retval, "TEST LIB", 18, UNITY_DISPLAY_STYLE_INT16);
 }
 
+
+/*To add test use: RUN_TEST(test_name) macro.*/
 int runUnityTests(void) {
   UNITY_BEGIN();
-  RUN_TEST(test_function_should_doBlahAndBlah);
+  RUN_TEST(test_function_should_init_lcd);
   return UNITY_END();
 }
 

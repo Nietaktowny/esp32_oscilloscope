@@ -1,8 +1,8 @@
 {
-    "name": "Esp Wifi Manager",
+    "name": "LCD Controller",
     "version": "0.0.1",
-    "description": "A program to simplifying use of Wifi with ESP IDF.",
-    "keywords": "Wifi, esp, espressif, esp32, esp-wrover-kit, manager, esp wifi manager",
+    "description": "A program to simplifying use built-in LCD on ESP WROVER KIT.",
+    "keywords": "esp, espressif, esp32, esp-wrover-kit, lcd",
     "repository":
     {
       "type": "git",

@@ -4,7 +4,7 @@
 #include "freertos/task.h"
 #include "esp_chip_info.h"
 #include "esp_flash.h"
-#include "esp_wifi_manager.h"
+#include "lcd_controller.h"
 
 int check_wifi(int);
 
@@ -14,7 +14,7 @@ void app_main(void)
     while (1)
     {
         vTaskDelay(pdMS_TO_TICKS(1000));
-        check_wifi(wifi_manager_connect(3));
+        check_wifi(init_lcd(123));
     }
     
 }

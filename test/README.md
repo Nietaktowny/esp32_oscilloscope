@@ -1,11 +1,5 @@
 # Tests overview
 
-## Use of test folder
-This directory is intended for PlatformIO Test Runner and project tests.
-
-
-# Tests overview
-
 Tests are made using Unity and CMock frameworks.
 Refer to:
  - [CMock](https://www.throwtheswitch.org/cmock)
@@ -21,10 +15,10 @@ This directory is intended for PlatformIO Test Runner and project tests.
 Folder structure: 
 
     ├───desktop
-    │   ├───test_esp_wifi_manager
+    │   ├───test_lcd_controller
     │   └───test_main
     └───embedded
-        ├───test_esp_wifi_manager
+        ├───test_lcd_controller
         └───test_main
 
 ## Classification of tests
@@ -53,7 +47,6 @@ Test files are structured as described in PlatformIO [documentation](https://doc
 Example: 
 
     #include "unity.h"
-    #include "esp_wifi_manager.h"
     #include "Mockesp_wifi_manager.h"
     
     void setUp(void) {
@@ -116,4 +109,5 @@ Native:
  - [x] Preparing use structure of Unity for unit tests
  - [x] Preparing use of CMock for main app and libraries
  - [x] Preparing basic README for test directory
+ - [x] Implement soft reset after embedded tests
  - [ ] Using TDD

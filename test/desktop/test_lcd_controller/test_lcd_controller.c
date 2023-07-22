@@ -1,6 +1,5 @@
 #include "unity.h"
-#include "esp_wifi_manager.h"
-#include "Mockesp_wifi_manager.h"
+#include "Mocklcd_controller.h"
 
 void setUp(void) {
   // set stuff up here
@@ -10,22 +9,22 @@ void tearDown(void) {
   // clean stuff up here
 }
 
-void test_function_should_connect_to_wifi(void) {
+void test_function_should_init_lcd(void) {
   //given
-  wifi_manager_connect_ExpectAndReturn(1, 2);
+  init_lcd_ExpectAndReturn(1, 2);
 
   //when
-  int retval = wifi_manager_connect(1);
+  int retval = init_lcd(1);
 
   //then
-  UnityAssertEqualNumber(2, retval, "TEST LIB", 18, UNITY_DISPLAY_STYLE_INT16);
+  UnityAssertEqualNumber(1, retval, "TEST LIB", 18, UNITY_DISPLAY_STYLE_INT16);
 }
 
 
 /*To add test use: RUN_TEST(test_name) macro.*/
 int runUnityTests(void) {
   UNITY_BEGIN();
-  RUN_TEST(test_function_should_connect_to_wifi);
+  RUN_TEST(test_function_should_init_lcd);
   return UNITY_END();
 }
 

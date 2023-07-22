@@ -3,12 +3,12 @@
 #include <stdlib.h>
 #include <setjmp.h>
 #include "cmock.h"
-#include "Mockesp_wifi_manager.h"
+#include "Mocklcd_controller.h"
 
 static const char* CMockString_cmd = "cmd";
 static const char* CMockString_cmock_arg1 = "cmock_arg1";
+static const char* CMockString_init_lcd = "init_lcd";
 static const char* CMockString_parseStuff = "parseStuff";
-static const char* CMockString_wifi_manager_connect = "wifi_manager_connect";
 
 typedef struct _CMOCK_parseStuff_CALL_INSTANCE
 {
@@ -18,23 +18,23 @@ typedef struct _CMOCK_parseStuff_CALL_INSTANCE
 
 } CMOCK_parseStuff_CALL_INSTANCE;
 
-typedef struct _CMOCK_wifi_manager_connect_CALL_INSTANCE
+typedef struct _CMOCK_init_lcd_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
   int ReturnVal;
   int Expected_cmock_arg1;
 
-} CMOCK_wifi_manager_connect_CALL_INSTANCE;
+} CMOCK_init_lcd_CALL_INSTANCE;
 
-static struct Mockesp_wifi_managerInstance
+static struct Mocklcd_controllerInstance
 {
   CMOCK_MEM_INDEX_TYPE parseStuff_CallInstance;
-  CMOCK_MEM_INDEX_TYPE wifi_manager_connect_CallInstance;
+  CMOCK_MEM_INDEX_TYPE init_lcd_CallInstance;
 } Mock;
 
 extern jmp_buf AbortFrame;
 
-void Mockesp_wifi_manager_Verify(void)
+void Mocklcd_controller_Verify(void)
 {
   UNITY_LINE_TYPE cmock_line = TEST_LINE_NUM;
   CMOCK_MEM_INDEX_TYPE call_instance;
@@ -44,20 +44,20 @@ void Mockesp_wifi_manager_Verify(void)
     UNITY_SET_DETAIL(CMockString_parseStuff);
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledLess);
   }
-  call_instance = Mock.wifi_manager_connect_CallInstance;
+  call_instance = Mock.init_lcd_CallInstance;
   if (CMOCK_GUTS_NONE != call_instance)
   {
-    UNITY_SET_DETAIL(CMockString_wifi_manager_connect);
+    UNITY_SET_DETAIL(CMockString_init_lcd);
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledLess);
   }
 }
 
-void Mockesp_wifi_manager_Init(void)
+void Mocklcd_controller_Init(void)
 {
-  Mockesp_wifi_manager_Destroy();
+  Mocklcd_controller_Destroy();
 }
 
-void Mockesp_wifi_manager_Destroy(void)
+void Mocklcd_controller_Destroy(void)
 {
   CMock_Guts_MemFreeAll();
   memset(&Mock, 0, sizeof(Mock));
@@ -98,38 +98,38 @@ void parseStuff_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, char* cmd, int 
   cmock_call_instance->ReturnVal = cmock_to_return;
 }
 
-int wifi_manager_connect(int cmock_arg1)
+int init_lcd(int cmock_arg1)
 {
   UNITY_LINE_TYPE cmock_line = TEST_LINE_NUM;
-  CMOCK_wifi_manager_connect_CALL_INSTANCE* cmock_call_instance;
-  UNITY_SET_DETAIL(CMockString_wifi_manager_connect);
-  cmock_call_instance = (CMOCK_wifi_manager_connect_CALL_INSTANCE*)CMock_Guts_GetAddressFor(Mock.wifi_manager_connect_CallInstance);
-  Mock.wifi_manager_connect_CallInstance = CMock_Guts_MemNext(Mock.wifi_manager_connect_CallInstance);
+  CMOCK_init_lcd_CALL_INSTANCE* cmock_call_instance;
+  UNITY_SET_DETAIL(CMockString_init_lcd);
+  cmock_call_instance = (CMOCK_init_lcd_CALL_INSTANCE*)CMock_Guts_GetAddressFor(Mock.init_lcd_CallInstance);
+  Mock.init_lcd_CallInstance = CMock_Guts_MemNext(Mock.init_lcd_CallInstance);
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringCalledMore);
   cmock_line = cmock_call_instance->LineNumber;
   {
-    UNITY_SET_DETAILS(CMockString_wifi_manager_connect,CMockString_cmock_arg1);
+    UNITY_SET_DETAILS(CMockString_init_lcd,CMockString_cmock_arg1);
     UNITY_TEST_ASSERT_EQUAL_INT(cmock_call_instance->Expected_cmock_arg1, cmock_arg1, cmock_line, CMockStringMismatch);
   }
   UNITY_CLR_DETAILS();
   return cmock_call_instance->ReturnVal;
 }
 
-void CMockExpectParameters_wifi_manager_connect(CMOCK_wifi_manager_connect_CALL_INSTANCE* cmock_call_instance, int cmock_arg1);
-void CMockExpectParameters_wifi_manager_connect(CMOCK_wifi_manager_connect_CALL_INSTANCE* cmock_call_instance, int cmock_arg1)
+void CMockExpectParameters_init_lcd(CMOCK_init_lcd_CALL_INSTANCE* cmock_call_instance, int cmock_arg1);
+void CMockExpectParameters_init_lcd(CMOCK_init_lcd_CALL_INSTANCE* cmock_call_instance, int cmock_arg1)
 {
   cmock_call_instance->Expected_cmock_arg1 = cmock_arg1;
 }
 
-void wifi_manager_connect_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_arg1, int cmock_to_return)
+void init_lcd_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_arg1, int cmock_to_return)
 {
-  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_wifi_manager_connect_CALL_INSTANCE));
-  CMOCK_wifi_manager_connect_CALL_INSTANCE* cmock_call_instance = (CMOCK_wifi_manager_connect_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_init_lcd_CALL_INSTANCE));
+  CMOCK_init_lcd_CALL_INSTANCE* cmock_call_instance = (CMOCK_init_lcd_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
   memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
-  Mock.wifi_manager_connect_CallInstance = CMock_Guts_MemChain(Mock.wifi_manager_connect_CallInstance, cmock_guts_index);
+  Mock.init_lcd_CallInstance = CMock_Guts_MemChain(Mock.init_lcd_CallInstance, cmock_guts_index);
   cmock_call_instance->LineNumber = cmock_line;
-  CMockExpectParameters_wifi_manager_connect(cmock_call_instance, cmock_arg1);
+  CMockExpectParameters_init_lcd(cmock_call_instance, cmock_arg1);
   cmock_call_instance->ReturnVal = cmock_to_return;
 }
 

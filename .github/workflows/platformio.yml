@@ -47,4 +47,4 @@ jobs:
           sudo chmod -R 777 scripts/cmock_auto_generate.bash
           sudo python generate_cmock.py
       - name: Run desktop test
-        run: pio test --environment native
+        run: pio test --verbose --environment native

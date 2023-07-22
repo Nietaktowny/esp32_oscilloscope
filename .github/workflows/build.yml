@@ -1,4 +1,4 @@
-name: Unit Testing
+name: Build project
 
 on: [push, pull_request]
 

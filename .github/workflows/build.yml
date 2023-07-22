@@ -28,5 +28,11 @@ jobs:
         run: pio lib install
       - name: Upgrade pip
         run: python -m pip install --upgrade pip
+      - name: Install CMock
+        run: |
+          git clone --recursive https://github.com/throwtheswitch/cmock.git
+          cd cmock
+          bundle install
+          cd ..
       - name: Build PlatformIO Project
         run: pio run --environment default

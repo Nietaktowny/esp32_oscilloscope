@@ -14,17 +14,6 @@ void app_main(void)
     while (1)
     {
         vTaskDelay(pdMS_TO_TICKS(1000));
-        check_wifi(init_lcd(123));
     }
     
-}
-
-
-int check_wifi(int i) {
-    int retval = 0;
-    if (i > 2)
-    {
-        retval = 1;
-    }
-    return retval;
 }

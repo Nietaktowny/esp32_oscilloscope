@@ -2,5 +2,9 @@
 
 
 void init_lcd (int i ) {
-    return 123;
+    //TODO init of LCD screen
+}
+
+int lcd_reset(int i) {
+    return i;
 }

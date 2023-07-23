@@ -1,4 +1,4 @@
-# esp32_oscilloscope
+# Esp32 Oscilloscope
 
 ## About this project
  Oscilloscope built on ESP-IDF framework. The board it uses it's ESP-WROVER-KIT V4.1 because it's single dev board that has all needed features: 

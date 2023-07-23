@@ -76,7 +76,6 @@ cp  -v  cmock/lib/mocks/Mockexample_library.c  lib/example_library/src
 ```
 6. Build any environment and enjoy using CMock.
 
-
 ## Single test structure
 Tests are made according to the convention below: 
 

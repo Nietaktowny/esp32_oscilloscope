@@ -19,7 +19,7 @@ It doesn't have unit tests implemented by me.
 The unit tests are stored in *test\desktop\test_lcd_controller* folder for native platform, and *test\embedded\test_lcd_controller* folder for espressif platform (tests running on actual device).
 
 ## CMock
-Each component have it's own CMock files (headers in include folder, and source files in src folder) for mocking. These are generated from command line with `ruby cmock.rb` API and updated manually so it's not advised to make any changes to them.
+Each component have it's own CMock files (headers in include folder, and source files in src folder) for mocking. These are generated with script manually so it's not advised to make any changes to them. These are files with Mock- prefix.
 
 ## List of TODOs
 

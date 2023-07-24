@@ -1,5 +1,12 @@
 #include <inttypes.h>
 
+
+//Check for ESP-IDF platform specific header files, to avoid compliation errors when testing on native platform.
+#ifdef ESP_PLATFORM
+#include "driver/spi_master.h"
+#endif
+
+
 #pragma once
 
 

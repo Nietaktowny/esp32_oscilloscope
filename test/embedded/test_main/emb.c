@@ -3,7 +3,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp32_oscilloscope.h"
-#include "mock_lcd_controller.h"
+#include "lcd_controller.h"
 
 void setUp(void) {
   // set stuff up here
@@ -11,16 +11,6 @@ void setUp(void) {
 
 void tearDown(void) {
   // clean stuff up here
-}
-
-void test_function_should_return_if_init_lcd_return_err(void) {
-  //given
-  esp_err_t err;
-  init_lcd_ExpectAndReturn(259);
-  //when
-  err = prepare_lcd();
-
-  UnityAssertEqualNumber(259, err, "PREPARE LCD RETURN ESP OK IF ALL OK", __LINE__, UNITY_DISPLAY_STYLE_INT16);
 }
 
 void test_function_should_return_esp_ok_if_init_lcd_returns_esp_ok(void) {

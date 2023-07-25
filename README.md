@@ -1,4 +1,4 @@
-# Esp32 Oscilloscope  ![CI](https://github.com/ThrowTheSwitch/CException/workflows/Build/badge.svg)
+# Esp32 Oscilloscope  ![Build](https://github.com/Nietaktowny/esp32_oscilloscope/tree/lcd-controller-develop/.github/workflows/badge.svg)
 
 ## About this project
  Oscilloscope built on ESP-IDF framework. The board it uses it's ESP-WROVER-KIT V4.1 because it's single dev board that has all needed features: 

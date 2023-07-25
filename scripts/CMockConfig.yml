@@ -1,0 +1,12 @@
+---
+:cmock:
+  :plugins:
+    - :ignore
+    - :callback
+  :includes: []
+  :mock_path: ./mocks
+  :mock_prefix: mock_
+  :treat_inlines: :include
+  :framework: unity
+  :includes:
+    - stdio.h

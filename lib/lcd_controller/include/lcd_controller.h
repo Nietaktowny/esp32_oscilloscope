@@ -14,16 +14,6 @@
 #include "esp_log.h"
 #endif
 
-
-
-#define ERR_CHECK(x, y) do { \
-  int retval = (x); \
-  if (retval != ESP_OK) { \
-    fprintf(stderr, "Runtime error: %s returned %d at %s:%d", #x, retval, __FILE__, __LINE__); \
-    y; \
-  } \
-} while (0) \
-
 //ERROR telling us that SPI bus is already initialized.
 #define ERR_SPI_ALREADY_INIT 0x103
 

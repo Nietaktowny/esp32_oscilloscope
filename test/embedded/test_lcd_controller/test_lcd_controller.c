@@ -136,6 +136,25 @@ void test_function_should_check_if_start_lcd_controller_returns_ESP_OK(void) {
   UnityAssertEqualNumber(0, err, "start_lcd_controller returns ESP_OK", __LINE__, UNITY_DISPLAY_STYLE_INT32);
 }
 
+void test_function_should_check_if_cexception_is_included_and_perform_basic_test (void) {
+  volatile int i = 0;
+  volatile CEXCEPTION_T e = 0x5a;
+
+  Try
+  {
+    i += 1;
+  }
+  Catch(e)
+  {
+    TEST_FAIL_MESSAGE("Should Not Enter Catch If Not Thrown");
+  }
+
+  //verify that e was untouched
+  TEST_ASSERT_EQUAL(0x5a, e);
+
+  // verify that i was incremented once
+  TEST_ASSERT_EQUAL(1, i);
+}
 
 
 
@@ -150,6 +169,7 @@ int runUnityTests(void) {
   RUN_TEST(test_function_should_check_if_lcd_cmd_function_exists);
   RUN_TEST(test_function_should_check_if_start_lcd_controller_returns_ESP_OK);
   RUN_TEST(test_function_should_check_if_ERR_SPI_ALREADY_INIT_exists);
+  RUN_TEST(test_function_should_check_if_cexception_is_included_and_perform_basic_test);
   return UNITY_END();
 }
 

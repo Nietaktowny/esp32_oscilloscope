@@ -3,6 +3,7 @@
   :plugins:
     - :ignore
     - :callback
+    - :cexception
   :includes: []
   :mock_path: ./mocks
   :mock_prefix: mock_

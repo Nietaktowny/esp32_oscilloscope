@@ -18,6 +18,8 @@ It doesn't have unit tests implemented by me.
 - **lcd_controller** - It's main usage is all interactions LCD screen built-in on ESP Wrover Kit.
 The unit tests are stored in *test\desktop\test_lcd_controller* folder for native platform, and *test\embedded\test_lcd_controller* folder for espressif platform (tests running on actual device).
 
+- **CException** - It's exception handling framework build in ANSI C used for exception handling. The unit tests are stored in *test\desktop\test_cexception* folder
+
 ## CMock
 Each component have it's own CMock files (headers in include folder, and source files in src folder) for mocking. These are generated with script manually so it's not advised to make any changes to them. These are files with Mock- prefix.
 

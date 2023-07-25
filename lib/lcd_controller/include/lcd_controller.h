@@ -4,6 +4,7 @@
 #define LCD_CONTROLLER_H
 
 #include <inttypes.h>
+#include "CException.h"
 
 //Check for ESP-IDF platform specific header files, to avoid compliation errors when testing on native platform.
 #ifdef ESP_PLATFORM

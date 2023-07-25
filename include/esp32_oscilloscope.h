@@ -5,15 +5,10 @@
 #include "esp_chip_info.h"
 #include "esp_flash.h"
 #include "lcd_controller.h"
+#include "esp_log.h"
 
-int check_wifi(int);
+#pragma once
 
-void app_main(void)
-{
-    printf("Hello world!\n");
-    while (1)
-    {
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
-    
-}
+char* TAG = "MAIN";
+
+esp_err_t prepare_lcd (void);

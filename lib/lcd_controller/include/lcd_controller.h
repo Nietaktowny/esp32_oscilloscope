@@ -4,6 +4,8 @@
 //Check for ESP-IDF platform specific header files, to avoid compliation errors when testing on native platform.
 #ifdef ESP_PLATFORM
 #include "driver/spi_master.h"
+#include "esp_err.h"
+#include "driver/gpio.h"
 #endif
 
 
@@ -41,8 +43,9 @@ typedef enum {
     LCD_TYPE_MAX,
 } type_lcd_t;
 
+void lcd_spi_pre_transfer_callback(spi_transaction_t *t);
 
-void init_lcd(int);
+esp_err_t init_lcd (void);
 
 
 int lcd_reset(int);

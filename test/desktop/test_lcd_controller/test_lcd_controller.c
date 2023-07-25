@@ -1,5 +1,5 @@
 #include "unity.h"
-#include "Mocklcd_controller.h"
+#include "lcd_controller.h"
 
 void setUp(void) {
   // set stuff up here
@@ -16,16 +16,6 @@ void test_function_should_test_size_of_lcd_init_cmd_t (void) {
 
   //then
   UnityAssertEqualNumber(struct_size, size, "WRONG INIT STRUCT SIZE", __LINE__, UNITY_DISPLAY_STYLE_INT32);
-}
-
-void test_function_should_init_lcd(void) {
-  //given
-  init_lcd_Expect(1);
-
-  //when
-
-  //then
-  UnityAssertEqualNumber(1, 1, "TEST LIB", 18, UNITY_DISPLAY_STYLE_INT16);
 }
 
 
@@ -54,7 +44,6 @@ void test_function_should_check_gpio_defines(void) {
 /*To add test use: RUN_TEST(test_name) macro.*/
 int runUnityTests(void) {
   UNITY_BEGIN();
-  RUN_TEST(test_function_should_init_lcd);
   RUN_TEST(test_function_should_check_gpio_defines);
   RUN_TEST(test_function_should_test_size_of_lcd_init_cmd_t);
   return UNITY_END();

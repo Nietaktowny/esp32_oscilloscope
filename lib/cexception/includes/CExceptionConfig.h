@@ -1,0 +1,1 @@
+#define CEXCEPTION_T         int

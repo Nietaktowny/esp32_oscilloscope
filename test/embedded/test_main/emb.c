@@ -2,7 +2,8 @@
 #include "esp_system.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include <stdio.h>
+#include "esp32_oscilloscope.h"
+#include "lcd_controller.h"
 
 void setUp(void) {
   // set stuff up here
@@ -12,13 +13,15 @@ void tearDown(void) {
   // clean stuff up here
 }
 
-void test_function_should_doBlahAndBlah(void) {
-  UnityAssertEqualNumber(1, 1, "TEST TEST", 12, UNITY_DISPLAY_STYLE_INT16);
+void test_test_function (void) {
+  int i = 0;
+
+  TEST_ASSERT_EQUAL_INT(0, i);
 }
 
 int runUnityTests(void) {
   UNITY_BEGIN();
-  RUN_TEST(test_function_should_doBlahAndBlah);
+  RUN_TEST(test_test_function);
   return UNITY_END();
 }
 

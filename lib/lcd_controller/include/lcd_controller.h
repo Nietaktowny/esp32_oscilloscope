@@ -1,7 +1,30 @@
-#include <inttypes.h>
-
 #pragma once
 
+#ifndef LCD_CONTROLLER_H
+#define LCD_CONTROLLER_H
+
+#include <inttypes.h>
+#include "CException.h"
+
+//Check for ESP-IDF platform specific header files, to avoid compliation errors when testing on native platform.
+#ifdef ESP_PLATFORM
+#include "driver/spi_master.h"
+#include "esp_err.h"
+#include "driver/gpio.h"
+#include "esp_log.h"
+#endif
+
+//ERROR telling us that SPI bus is already initialized.
+#define ERR_SPI_ALREADY_INIT 0x103
+
+
+#define ERR_CHECK(x, y) do { \
+  int retval = (x); \
+  if (retval != 0) { \
+    fprintf(stderr, "Runtime error: %s returned %d at %s:%d", esp_err_to_name(x), retval, __FILE__, __LINE__); \
+    y; \
+  } \
+} while (0)
 
 //LCD GPIO definitions
 #define LCD_HOST    HSPI_HOST
@@ -34,8 +57,41 @@ typedef enum {
     LCD_TYPE_MAX,
 } type_lcd_t;
 
+void lcd_spi_pre_transfer_callback(spi_transaction_t *t);
 
-void init_lcd(int);
+
+/**
+ * @brief Sends starting commands to LCD to get it working.
+ *
+ * //TODO
+ *
+ * @note This should be called only once in application.
+ *
+ * 
+ * @return
+ *         - ESP_OK                on success
+ */
+esp_err_t init_lcd (spi_device_handle_t spi);
+
+
+/**
+ * @brief Starting point of lcd_controller library.
+ *
+ * This is library 'main' function, in which all needed resources are initialized and prepared with use of another functions.
+ *
+ * @note This should be called only once in application.
+ *
+ * 
+ * @return
+ *         - ESP_ERR_NO_MEM        if out of memory
+ *         - ESP_OK                on success
+ */
+esp_err_t start_lcd_controller(void);
 
 
 int lcd_reset(int);
+
+void lcd_command(spi_device_handle_t spi, const uint8_t cmd, bool keep_cs_active);
+
+
+#endif /*LCD_CONTROLLER_H*/

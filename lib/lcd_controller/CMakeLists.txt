@@ -1,1 +1,1 @@
-idf_component_register(SRCS "lcd_controller.c" "Mocklcd_controller.c")
+idf_component_register(SRCS "lcd_controller.c")

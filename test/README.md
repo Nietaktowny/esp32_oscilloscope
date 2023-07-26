@@ -43,9 +43,9 @@ CMocks files are generated using `generate_cmock.py` . It runs scripts in **scri
 3. First generate mock files using *example_library.h* header file changing calls to ruby in `cmock_auto_generate.bat` to:
 ```
 
-ruby cmock.rb ..\..\lib\lcd_controller\include\lcd_controller.h
+ruby cmock.rb -oCMockConfig.yml ..\..\lib\lcd_controller\include\lcd_controller.h
 
-ruby cmock.rb ..\..\lib\example_library\include\example_library.h
+ruby cmock.rb -oCMockConfig.yml ..\..\lib\example_library\include\example_library.h
 
 ```
 and in `cmock_auto_generate.bash`:
@@ -158,4 +158,5 @@ Native:
  - [x] Preparing use structure of Unity for unit tests
  - [x] Preparing use of CMock for main app and libraries
  - [x] Preparing basic README for test directory
- - [ ] Automate generating CMock files also on remote machines when using workflows.
+ - [x] Automate generating CMock files also on remote machines when using workflows.
+ - [ ] Do I need mocks of espressif libs? Do these mocks

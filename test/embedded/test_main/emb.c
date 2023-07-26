@@ -13,19 +13,15 @@ void tearDown(void) {
   // clean stuff up here
 }
 
-void test_function_should_return_esp_ok_if_init_lcd_returns_esp_ok(void) {
-  //given
-  esp_err_t err;
-  //when
-  err = prepare_lcd();
+void test_test_function (void) {
+  int i = 0;
 
-  UnityAssertEqualNumber(ESP_OK, err, "PREPARE LCD RETURN ESP OK IF ALL OK", __LINE__, UNITY_DISPLAY_STYLE_INT16);
+  TEST_ASSERT_EQUAL_INT(0, i);
 }
 
 int runUnityTests(void) {
   UNITY_BEGIN();
-  //RUN_TEST(test_function_should_return_esp_ok_if_init_lcd_returns_esp_ok);
-  //RUN_TEST(test_function_should_return_if_init_lcd_return_err);
+  RUN_TEST(test_test_function);
   return UNITY_END();
 }
 

@@ -158,4 +158,5 @@ Native:
  - [x] Preparing use structure of Unity for unit tests
  - [x] Preparing use of CMock for main app and libraries
  - [x] Preparing basic README for test directory
- - [ ] Automate generating CMock files also on remote machines when using workflows.
+ - [x] Automate generating CMock files also on remote machines when using workflows.
+ - [ ] Do I need mocks of espressif libs? Do these mocks

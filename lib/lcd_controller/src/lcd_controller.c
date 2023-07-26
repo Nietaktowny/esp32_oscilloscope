@@ -28,7 +28,7 @@ void lcd_command(spi_device_handle_t spi, const uint8_t cmd, bool keep_cs_active
  *         - ESP_OK                on success
  */
 static esp_err_t init_spi_bus (void) {
-    esp_err_t err = ESP_OK;
+    volatile esp_err_t err = ESP_OK;
     spi_device_handle_t spi;
     spi_bus_config_t buscfg={
         .miso_io_num=PIN_NUM_MISO,
@@ -39,10 +39,15 @@ static esp_err_t init_spi_bus (void) {
         .max_transfer_sz=PARALLEL_LINES*320*2+8
     };
 
-    err = spi_bus_initialize(LCD_HOST, &buscfg, SPI_DMA_CH_AUTO);
-    if (err != ESP_OK && err != ERR_SPI_ALREADY_INIT)
-    {
-        return err;
+    Try {
+        //TODO Mocks of spi_bus_initialize and tests with them
+        err = spi_bus_initialize(LCD_HOST, &buscfg, SPI_DMA_CH_AUTO); //different from 0
+        if (err != 0 && err != ERR_SPI_ALREADY_INIT) {
+            Throw(err);
+        }
+
+    } Catch(err) {
+        ERR_CHECK(err, return err);
     }
 
     spi_device_interface_config_t devcfg = {
@@ -58,10 +63,7 @@ static esp_err_t init_spi_bus (void) {
         &devcfg,
         &spi);
 
-    if (err != ESP_OK)
-    {
-        return err;
-    }
+    ERR_CHECK(err, return err);
 
     return err;
 }

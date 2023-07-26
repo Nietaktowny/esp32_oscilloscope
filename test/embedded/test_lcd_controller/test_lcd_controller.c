@@ -136,26 +136,103 @@ void test_function_should_check_if_start_lcd_controller_returns_ESP_OK(void) {
   UnityAssertEqualNumber(0, err, "start_lcd_controller returns ESP_OK", __LINE__, UNITY_DISPLAY_STYLE_INT32);
 }
 
-void test_function_should_check_if_cexception_is_included_and_perform_basic_test (void) {
-  volatile int i = 0;
-  volatile CEXCEPTION_T e = 0x5a;
+void test_macro_should_not_execute_expression_if_no_error (void) {
+  //given
+  esp_err_t err = 0;
+  int i = 0;
 
-  Try
-  {
-    i += 1;
-  }
-  Catch(e)
-  {
-    TEST_FAIL_MESSAGE("Should Not Enter Catch If Not Thrown");
-  }
+  //then
+  ERR_CHECK(err, i++);
 
-  //verify that e was untouched
-  TEST_ASSERT_EQUAL(0x5a, e);
-
-  // verify that i was incremented once
-  TEST_ASSERT_EQUAL(1, i);
+  //then
+  UnityAssertEqualNumber(0, i, "ERR_CHECK executed expression but no error", __LINE__, UNITY_DISPLAY_STYLE_INT32);
 }
 
+void test_macro_should_execute_expression_if_some_error_occurs (void) {
+  //given
+  esp_err_t err = -1;
+  int i = 0;
+
+  //then
+  ERR_CHECK(err, i++);
+
+  //then
+  UnityAssertEqualNumber(1, i, "ERR_CHECK not executed expression despite error", __LINE__, UNITY_DISPLAY_STYLE_INT32);
+}
+
+void test_should_execute_macro_spi_already_initialized(void) {
+  //given
+  spi_bus_config_t buscfg={
+      .miso_io_num=PIN_NUM_MISO,
+      .mosi_io_num=PIN_NUM_MOSI,
+      .sclk_io_num=PIN_NUM_CLK,
+      .quadwp_io_num=-1,
+      .quadhd_io_num=-1,
+      .max_transfer_sz=PARALLEL_LINES*320*2+8
+  };
+  int spi_already_init = 0;
+
+  //when
+  ERR_CHECK(spi_bus_initialize(LCD_HOST, &buscfg, SPI_DMA_CH_AUTO), spi_already_init++);
+
+  //then
+  UnityAssertEqualNumber(1, spi_already_init, "ERR_CHECK not found spi already init error", __LINE__, UNITY_DISPLAY_STYLE_INT32);
+}
+
+void test_should_throw_and_catch_err_because_spi_bus_is_already_initialized(void) {
+  //given
+  spi_bus_config_t buscfg={
+      .miso_io_num=PIN_NUM_MISO,
+      .mosi_io_num=PIN_NUM_MOSI,
+      .sclk_io_num=PIN_NUM_CLK,
+      .quadwp_io_num=-1,
+      .quadhd_io_num=-1,
+      .max_transfer_sz=PARALLEL_LINES*320*2+8
+  };
+  volatile int spi_already_init = 0;
+  esp_err_t err = ESP_OK;
+
+  //when
+  Try {
+    err = spi_bus_initialize(LCD_HOST, &buscfg, SPI_DMA_CH_AUTO); //different from 0
+    ERR_CHECK(err, Throw(err));                                   //should throw error
+  } Catch(err) {
+    spi_already_init++;
+  }
+
+  //then
+  UnityAssertEqualNumber(1, spi_already_init, "Error not catched or spi bus nie initialized", __LINE__, UNITY_DISPLAY_STYLE_INT32);
+}
+
+void test_should_throw_and_handle_in_catch_err_because_spi_bus_already_initialized(void) {
+  //given
+  spi_bus_config_t buscfg={
+      .miso_io_num=PIN_NUM_MISO,
+      .mosi_io_num=PIN_NUM_MOSI,
+      .sclk_io_num=PIN_NUM_CLK,
+      .quadwp_io_num=-1,
+      .quadhd_io_num=-1,
+      .max_transfer_sz=PARALLEL_LINES*320*2+8
+  };
+  volatile int spi_already_init = 0;
+  esp_err_t err = ESP_OK;
+
+  //when
+  Try {
+    err = spi_bus_initialize(LCD_HOST, &buscfg, SPI_DMA_CH_AUTO); //different from 0
+    ERR_CHECK(err, Throw(err));                                   //should throw error
+  } Catch(err) {
+    if (err == ERR_SPI_ALREADY_INIT) {
+      err = ESP_OK;              
+    } else {
+      spi_already_init++;
+    }
+  }
+
+  //then
+  UnityAssertEqualNumber(0, spi_already_init, "Error not properly handled in try/catch", __LINE__, UNITY_DISPLAY_STYLE_INT32);
+  UnityAssertEqualNumber(ESP_OK, err, "Error not properly handled in try/catch", __LINE__, UNITY_DISPLAY_STYLE_INT32);
+}
 
 
 /*To add test use: RUN_TEST(test_name) macro.*/
@@ -169,7 +246,12 @@ int runUnityTests(void) {
   RUN_TEST(test_function_should_check_if_lcd_cmd_function_exists);
   RUN_TEST(test_function_should_check_if_start_lcd_controller_returns_ESP_OK);
   RUN_TEST(test_function_should_check_if_ERR_SPI_ALREADY_INIT_exists);
-  RUN_TEST(test_function_should_check_if_cexception_is_included_and_perform_basic_test);
+  RUN_TEST(test_macro_should_not_execute_expression_if_no_error);
+  RUN_TEST(test_macro_should_execute_expression_if_some_error_occurs);
+  RUN_TEST(test_should_execute_macro_spi_already_initialized);
+  RUN_TEST(test_should_throw_and_catch_err_because_spi_bus_is_already_initialized);
+  RUN_TEST(test_should_throw_and_handle_in_catch_err_because_spi_bus_already_initialized);
+
   return UNITY_END();
 }
 

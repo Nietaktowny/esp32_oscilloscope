@@ -17,6 +17,15 @@
 //ERROR telling us that SPI bus is already initialized.
 #define ERR_SPI_ALREADY_INIT 0x103
 
+
+#define ERR_CHECK(x, y) do { \
+  int retval = (x); \
+  if (retval != 0) { \
+    fprintf(stderr, "Runtime error: %s returned %d at %s:%d", esp_err_to_name(x), retval, __FILE__, __LINE__); \
+    y; \
+  } \
+} while (0)
+
 //LCD GPIO definitions
 #define LCD_HOST    HSPI_HOST
 

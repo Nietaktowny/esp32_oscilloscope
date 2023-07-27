@@ -8,7 +8,9 @@
 
 //Check for ESP-IDF platform specific header files, to avoid compliation errors when testing on native platform.
 #ifdef ESP_PLATFORM
+#ifndef _MOCK_SPI_MASTER_H   //To avoid redefinitions when mocking in tests
 #include "driver/spi_master.h"
+#endif
 #include "esp_err.h"
 #include "driver/gpio.h"
 #include "esp_log.h"

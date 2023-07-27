@@ -19,39 +19,55 @@ static const char* CMockString_t = "t";
 typedef struct _CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
+  char ExpectAnyArgsBool;
   spi_transaction_t* Expected_t;
+  CEXCEPTION_T ExceptionToThrow;
+  char IgnoreArg_t;
 
 } CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE;
 
 typedef struct _CMOCK_init_lcd_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
+  char ExpectAnyArgsBool;
   esp_err_t ReturnVal;
   spi_device_handle_t Expected_spi;
+  CEXCEPTION_T ExceptionToThrow;
+  char IgnoreArg_spi;
 
 } CMOCK_init_lcd_CALL_INSTANCE;
 
 typedef struct _CMOCK_start_lcd_controller_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
+  char ExpectAnyArgsBool;
   esp_err_t ReturnVal;
+  CEXCEPTION_T ExceptionToThrow;
 
 } CMOCK_start_lcd_controller_CALL_INSTANCE;
 
 typedef struct _CMOCK_lcd_reset_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
+  char ExpectAnyArgsBool;
   int ReturnVal;
   int Expected_cmock_arg1;
+  CEXCEPTION_T ExceptionToThrow;
+  char IgnoreArg_cmock_arg1;
 
 } CMOCK_lcd_reset_CALL_INSTANCE;
 
 typedef struct _CMOCK_lcd_command_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
+  char ExpectAnyArgsBool;
   spi_device_handle_t Expected_spi;
   uint8_t Expected_cmd;
   bool Expected_keep_cs_active;
+  CEXCEPTION_T ExceptionToThrow;
+  char IgnoreArg_spi;
+  char IgnoreArg_cmd;
+  char IgnoreArg_keep_cs_active;
 
 } CMOCK_lcd_command_CALL_INSTANCE;
 
@@ -192,13 +208,22 @@ void lcd_spi_pre_transfer_callback(spi_transaction_t* t)
   }
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringCalledMore);
   cmock_line = cmock_call_instance->LineNumber;
+  if (!cmock_call_instance->ExpectAnyArgsBool)
+  {
+  if (!cmock_call_instance->IgnoreArg_t)
   {
     UNITY_SET_DETAILS(CMockString_lcd_spi_pre_transfer_callback,CMockString_t);
     UNITY_TEST_ASSERT_EQUAL_MEMORY((void*)(cmock_call_instance->Expected_t), (void*)(t), sizeof(spi_transaction_t), cmock_line, CMockStringMismatch);
   }
+  }
   if (Mock.lcd_spi_pre_transfer_callback_CallbackFunctionPointer != NULL)
   {
     Mock.lcd_spi_pre_transfer_callback_CallbackFunctionPointer(t, Mock.lcd_spi_pre_transfer_callback_CallbackCalls++);
+  }
+  if (cmock_call_instance->ExceptionToThrow != CEXCEPTION_NONE)
+  {
+    UNITY_CLR_DETAILS();
+    Throw(cmock_call_instance->ExceptionToThrow);
   }
   UNITY_CLR_DETAILS();
 }
@@ -207,6 +232,7 @@ void CMockExpectParameters_lcd_spi_pre_transfer_callback(CMOCK_lcd_spi_pre_trans
 void CMockExpectParameters_lcd_spi_pre_transfer_callback(CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE* cmock_call_instance, spi_transaction_t* t)
 {
   cmock_call_instance->Expected_t = t;
+  cmock_call_instance->IgnoreArg_t = 0;
 }
 
 void lcd_spi_pre_transfer_callback_CMockIgnore(void)
@@ -219,6 +245,20 @@ void lcd_spi_pre_transfer_callback_CMockStopIgnore(void)
   Mock.lcd_spi_pre_transfer_callback_IgnoreBool = (char)0;
 }
 
+void lcd_spi_pre_transfer_callback_CMockExpectAnyArgs(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE));
+  CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.lcd_spi_pre_transfer_callback_CallInstance = CMock_Guts_MemChain(Mock.lcd_spi_pre_transfer_callback_CallInstance, cmock_guts_index);
+  Mock.lcd_spi_pre_transfer_callback_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  cmock_call_instance->ExpectAnyArgsBool = (char)1;
+}
+
 void lcd_spi_pre_transfer_callback_CMockExpect(UNITY_LINE_TYPE cmock_line, spi_transaction_t* t)
 {
   CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE));
@@ -228,6 +268,8 @@ void lcd_spi_pre_transfer_callback_CMockExpect(UNITY_LINE_TYPE cmock_line, spi_t
   Mock.lcd_spi_pre_transfer_callback_CallInstance = CMock_Guts_MemChain(Mock.lcd_spi_pre_transfer_callback_CallInstance, cmock_guts_index);
   Mock.lcd_spi_pre_transfer_callback_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   CMockExpectParameters_lcd_spi_pre_transfer_callback(cmock_call_instance, t);
 }
 
@@ -243,6 +285,28 @@ void lcd_spi_pre_transfer_callback_Stub(CMOCK_lcd_spi_pre_transfer_callback_CALL
   Mock.lcd_spi_pre_transfer_callback_IgnoreBool = (char)0;
   Mock.lcd_spi_pre_transfer_callback_CallbackBool = (char)0;
   Mock.lcd_spi_pre_transfer_callback_CallbackFunctionPointer = Callback;
+}
+
+void lcd_spi_pre_transfer_callback_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, spi_transaction_t* t, CEXCEPTION_T cmock_to_throw)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE));
+  CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.lcd_spi_pre_transfer_callback_CallInstance = CMock_Guts_MemChain(Mock.lcd_spi_pre_transfer_callback_CallInstance, cmock_guts_index);
+  Mock.lcd_spi_pre_transfer_callback_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  CMockExpectParameters_lcd_spi_pre_transfer_callback(cmock_call_instance, t);
+  cmock_call_instance->ExceptionToThrow = cmock_to_throw;
+}
+
+void lcd_spi_pre_transfer_callback_CMockIgnoreArg_t(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.lcd_spi_pre_transfer_callback_CallInstance));
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
+  cmock_call_instance->IgnoreArg_t = 1;
 }
 
 esp_err_t init_lcd(spi_device_handle_t spi)
@@ -270,13 +334,22 @@ esp_err_t init_lcd(spi_device_handle_t spi)
   }
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringCalledMore);
   cmock_line = cmock_call_instance->LineNumber;
+  if (!cmock_call_instance->ExpectAnyArgsBool)
+  {
+  if (!cmock_call_instance->IgnoreArg_spi)
   {
     UNITY_SET_DETAILS(CMockString_init_lcd,CMockString_spi);
     UNITY_TEST_ASSERT_EQUAL_MEMORY((void*)(&cmock_call_instance->Expected_spi), (void*)(&spi), sizeof(spi_device_handle_t), cmock_line, CMockStringMismatch);
   }
+  }
   if (Mock.init_lcd_CallbackFunctionPointer != NULL)
   {
     cmock_call_instance->ReturnVal = Mock.init_lcd_CallbackFunctionPointer(spi, Mock.init_lcd_CallbackCalls++);
+  }
+  if (cmock_call_instance->ExceptionToThrow != CEXCEPTION_NONE)
+  {
+    UNITY_CLR_DETAILS();
+    Throw(cmock_call_instance->ExceptionToThrow);
   }
   UNITY_CLR_DETAILS();
   return cmock_call_instance->ReturnVal;
@@ -287,6 +360,7 @@ void CMockExpectParameters_init_lcd(CMOCK_init_lcd_CALL_INSTANCE* cmock_call_ins
 {
   memcpy((void*)(&cmock_call_instance->Expected_spi), (void*)(&spi),
          sizeof(spi_device_handle_t[sizeof(spi) == sizeof(spi_device_handle_t) ? 1 : -1])); /* add spi_device_handle_t to :treat_as_array if this causes an error */
+  cmock_call_instance->IgnoreArg_spi = 0;
 }
 
 void init_lcd_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, esp_err_t cmock_to_return)
@@ -298,6 +372,8 @@ void init_lcd_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, esp_err_t cmock_t
   Mock.init_lcd_CallInstance = CMock_Guts_MemChain(Mock.init_lcd_CallInstance, cmock_guts_index);
   Mock.init_lcd_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   cmock_call_instance->ReturnVal = cmock_to_return;
   Mock.init_lcd_IgnoreBool = (char)1;
 }
@@ -309,6 +385,21 @@ void init_lcd_CMockStopIgnore(void)
   Mock.init_lcd_IgnoreBool = (char)0;
 }
 
+void init_lcd_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, esp_err_t cmock_to_return)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_init_lcd_CALL_INSTANCE));
+  CMOCK_init_lcd_CALL_INSTANCE* cmock_call_instance = (CMOCK_init_lcd_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.init_lcd_CallInstance = CMock_Guts_MemChain(Mock.init_lcd_CallInstance, cmock_guts_index);
+  Mock.init_lcd_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  cmock_call_instance->ReturnVal = cmock_to_return;
+  cmock_call_instance->ExpectAnyArgsBool = (char)1;
+}
+
 void init_lcd_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, spi_device_handle_t spi, esp_err_t cmock_to_return)
 {
   CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_init_lcd_CALL_INSTANCE));
@@ -318,6 +409,8 @@ void init_lcd_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, spi_device_handle
   Mock.init_lcd_CallInstance = CMock_Guts_MemChain(Mock.init_lcd_CallInstance, cmock_guts_index);
   Mock.init_lcd_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   CMockExpectParameters_init_lcd(cmock_call_instance, spi);
   memcpy((void*)(&cmock_call_instance->ReturnVal), (void*)(&cmock_to_return),
          sizeof(esp_err_t[sizeof(cmock_to_return) == sizeof(esp_err_t) ? 1 : -1])); /* add esp_err_t to :treat_as_array if this causes an error */
@@ -335,6 +428,28 @@ void init_lcd_Stub(CMOCK_init_lcd_CALLBACK Callback)
   Mock.init_lcd_IgnoreBool = (char)0;
   Mock.init_lcd_CallbackBool = (char)0;
   Mock.init_lcd_CallbackFunctionPointer = Callback;
+}
+
+void init_lcd_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, spi_device_handle_t spi, CEXCEPTION_T cmock_to_throw)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_init_lcd_CALL_INSTANCE));
+  CMOCK_init_lcd_CALL_INSTANCE* cmock_call_instance = (CMOCK_init_lcd_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.init_lcd_CallInstance = CMock_Guts_MemChain(Mock.init_lcd_CallInstance, cmock_guts_index);
+  Mock.init_lcd_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  CMockExpectParameters_init_lcd(cmock_call_instance, spi);
+  cmock_call_instance->ExceptionToThrow = cmock_to_throw;
+}
+
+void init_lcd_CMockIgnoreArg_spi(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_init_lcd_CALL_INSTANCE* cmock_call_instance = (CMOCK_init_lcd_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.init_lcd_CallInstance));
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
+  cmock_call_instance->IgnoreArg_spi = 1;
 }
 
 esp_err_t start_lcd_controller(void)
@@ -366,6 +481,11 @@ esp_err_t start_lcd_controller(void)
   {
     cmock_call_instance->ReturnVal = Mock.start_lcd_controller_CallbackFunctionPointer(Mock.start_lcd_controller_CallbackCalls++);
   }
+  if (cmock_call_instance->ExceptionToThrow != CEXCEPTION_NONE)
+  {
+    UNITY_CLR_DETAILS();
+    Throw(cmock_call_instance->ExceptionToThrow);
+  }
   UNITY_CLR_DETAILS();
   return cmock_call_instance->ReturnVal;
 }
@@ -379,6 +499,8 @@ void start_lcd_controller_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, esp_e
   Mock.start_lcd_controller_CallInstance = CMock_Guts_MemChain(Mock.start_lcd_controller_CallInstance, cmock_guts_index);
   Mock.start_lcd_controller_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   cmock_call_instance->ReturnVal = cmock_to_return;
   Mock.start_lcd_controller_IgnoreBool = (char)1;
 }
@@ -399,6 +521,8 @@ void start_lcd_controller_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, esp_e
   Mock.start_lcd_controller_CallInstance = CMock_Guts_MemChain(Mock.start_lcd_controller_CallInstance, cmock_guts_index);
   Mock.start_lcd_controller_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   memcpy((void*)(&cmock_call_instance->ReturnVal), (void*)(&cmock_to_return),
          sizeof(esp_err_t[sizeof(cmock_to_return) == sizeof(esp_err_t) ? 1 : -1])); /* add esp_err_t to :treat_as_array if this causes an error */
 }
@@ -415,6 +539,20 @@ void start_lcd_controller_Stub(CMOCK_start_lcd_controller_CALLBACK Callback)
   Mock.start_lcd_controller_IgnoreBool = (char)0;
   Mock.start_lcd_controller_CallbackBool = (char)0;
   Mock.start_lcd_controller_CallbackFunctionPointer = Callback;
+}
+
+void start_lcd_controller_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, CEXCEPTION_T cmock_to_throw)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_start_lcd_controller_CALL_INSTANCE));
+  CMOCK_start_lcd_controller_CALL_INSTANCE* cmock_call_instance = (CMOCK_start_lcd_controller_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.start_lcd_controller_CallInstance = CMock_Guts_MemChain(Mock.start_lcd_controller_CallInstance, cmock_guts_index);
+  Mock.start_lcd_controller_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  cmock_call_instance->ExceptionToThrow = cmock_to_throw;
 }
 
 int lcd_reset(int cmock_arg1)
@@ -441,13 +579,22 @@ int lcd_reset(int cmock_arg1)
   }
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringCalledMore);
   cmock_line = cmock_call_instance->LineNumber;
+  if (!cmock_call_instance->ExpectAnyArgsBool)
+  {
+  if (!cmock_call_instance->IgnoreArg_cmock_arg1)
   {
     UNITY_SET_DETAILS(CMockString_lcd_reset,CMockString_cmock_arg1);
     UNITY_TEST_ASSERT_EQUAL_INT(cmock_call_instance->Expected_cmock_arg1, cmock_arg1, cmock_line, CMockStringMismatch);
   }
+  }
   if (Mock.lcd_reset_CallbackFunctionPointer != NULL)
   {
     cmock_call_instance->ReturnVal = Mock.lcd_reset_CallbackFunctionPointer(cmock_arg1, Mock.lcd_reset_CallbackCalls++);
+  }
+  if (cmock_call_instance->ExceptionToThrow != CEXCEPTION_NONE)
+  {
+    UNITY_CLR_DETAILS();
+    Throw(cmock_call_instance->ExceptionToThrow);
   }
   UNITY_CLR_DETAILS();
   return cmock_call_instance->ReturnVal;
@@ -457,6 +604,7 @@ void CMockExpectParameters_lcd_reset(CMOCK_lcd_reset_CALL_INSTANCE* cmock_call_i
 void CMockExpectParameters_lcd_reset(CMOCK_lcd_reset_CALL_INSTANCE* cmock_call_instance, int cmock_arg1)
 {
   cmock_call_instance->Expected_cmock_arg1 = cmock_arg1;
+  cmock_call_instance->IgnoreArg_cmock_arg1 = 0;
 }
 
 void lcd_reset_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_to_return)
@@ -468,6 +616,8 @@ void lcd_reset_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_to_ret
   Mock.lcd_reset_CallInstance = CMock_Guts_MemChain(Mock.lcd_reset_CallInstance, cmock_guts_index);
   Mock.lcd_reset_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   cmock_call_instance->ReturnVal = cmock_to_return;
   Mock.lcd_reset_IgnoreBool = (char)1;
 }
@@ -479,6 +629,21 @@ void lcd_reset_CMockStopIgnore(void)
   Mock.lcd_reset_IgnoreBool = (char)0;
 }
 
+void lcd_reset_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_to_return)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_lcd_reset_CALL_INSTANCE));
+  CMOCK_lcd_reset_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_reset_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.lcd_reset_CallInstance = CMock_Guts_MemChain(Mock.lcd_reset_CallInstance, cmock_guts_index);
+  Mock.lcd_reset_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  cmock_call_instance->ReturnVal = cmock_to_return;
+  cmock_call_instance->ExpectAnyArgsBool = (char)1;
+}
+
 void lcd_reset_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_arg1, int cmock_to_return)
 {
   CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_lcd_reset_CALL_INSTANCE));
@@ -488,6 +653,8 @@ void lcd_reset_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_arg1, 
   Mock.lcd_reset_CallInstance = CMock_Guts_MemChain(Mock.lcd_reset_CallInstance, cmock_guts_index);
   Mock.lcd_reset_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   CMockExpectParameters_lcd_reset(cmock_call_instance, cmock_arg1);
   cmock_call_instance->ReturnVal = cmock_to_return;
 }
@@ -504,6 +671,28 @@ void lcd_reset_Stub(CMOCK_lcd_reset_CALLBACK Callback)
   Mock.lcd_reset_IgnoreBool = (char)0;
   Mock.lcd_reset_CallbackBool = (char)0;
   Mock.lcd_reset_CallbackFunctionPointer = Callback;
+}
+
+void lcd_reset_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, int cmock_arg1, CEXCEPTION_T cmock_to_throw)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_lcd_reset_CALL_INSTANCE));
+  CMOCK_lcd_reset_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_reset_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.lcd_reset_CallInstance = CMock_Guts_MemChain(Mock.lcd_reset_CallInstance, cmock_guts_index);
+  Mock.lcd_reset_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  CMockExpectParameters_lcd_reset(cmock_call_instance, cmock_arg1);
+  cmock_call_instance->ExceptionToThrow = cmock_to_throw;
+}
+
+void lcd_reset_CMockIgnoreArg_cmock_arg1(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_lcd_reset_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_reset_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.lcd_reset_CallInstance));
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
+  cmock_call_instance->IgnoreArg_cmock_arg1 = 1;
 }
 
 void lcd_command(spi_device_handle_t spi, const uint8_t cmd, bool keep_cs_active)
@@ -527,21 +716,32 @@ void lcd_command(spi_device_handle_t spi, const uint8_t cmd, bool keep_cs_active
   }
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringCalledMore);
   cmock_line = cmock_call_instance->LineNumber;
+  if (!cmock_call_instance->ExpectAnyArgsBool)
+  {
+  if (!cmock_call_instance->IgnoreArg_spi)
   {
     UNITY_SET_DETAILS(CMockString_lcd_command,CMockString_spi);
     UNITY_TEST_ASSERT_EQUAL_MEMORY((void*)(&cmock_call_instance->Expected_spi), (void*)(&spi), sizeof(spi_device_handle_t), cmock_line, CMockStringMismatch);
   }
+  if (!cmock_call_instance->IgnoreArg_cmd)
   {
     UNITY_SET_DETAILS(CMockString_lcd_command,CMockString_cmd);
     UNITY_TEST_ASSERT_EQUAL_HEX8(cmock_call_instance->Expected_cmd, cmd, cmock_line, CMockStringMismatch);
   }
+  if (!cmock_call_instance->IgnoreArg_keep_cs_active)
   {
     UNITY_SET_DETAILS(CMockString_lcd_command,CMockString_keep_cs_active);
     UNITY_TEST_ASSERT_EQUAL_INT(cmock_call_instance->Expected_keep_cs_active, keep_cs_active, cmock_line, CMockStringMismatch);
   }
+  }
   if (Mock.lcd_command_CallbackFunctionPointer != NULL)
   {
     Mock.lcd_command_CallbackFunctionPointer(spi, cmd, keep_cs_active, Mock.lcd_command_CallbackCalls++);
+  }
+  if (cmock_call_instance->ExceptionToThrow != CEXCEPTION_NONE)
+  {
+    UNITY_CLR_DETAILS();
+    Throw(cmock_call_instance->ExceptionToThrow);
   }
   UNITY_CLR_DETAILS();
 }
@@ -551,8 +751,11 @@ void CMockExpectParameters_lcd_command(CMOCK_lcd_command_CALL_INSTANCE* cmock_ca
 {
   memcpy((void*)(&cmock_call_instance->Expected_spi), (void*)(&spi),
          sizeof(spi_device_handle_t[sizeof(spi) == sizeof(spi_device_handle_t) ? 1 : -1])); /* add spi_device_handle_t to :treat_as_array if this causes an error */
+  cmock_call_instance->IgnoreArg_spi = 0;
   cmock_call_instance->Expected_cmd = cmd;
+  cmock_call_instance->IgnoreArg_cmd = 0;
   cmock_call_instance->Expected_keep_cs_active = keep_cs_active;
+  cmock_call_instance->IgnoreArg_keep_cs_active = 0;
 }
 
 void lcd_command_CMockIgnore(void)
@@ -565,6 +768,20 @@ void lcd_command_CMockStopIgnore(void)
   Mock.lcd_command_IgnoreBool = (char)0;
 }
 
+void lcd_command_CMockExpectAnyArgs(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_lcd_command_CALL_INSTANCE));
+  CMOCK_lcd_command_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_command_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.lcd_command_CallInstance = CMock_Guts_MemChain(Mock.lcd_command_CallInstance, cmock_guts_index);
+  Mock.lcd_command_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  cmock_call_instance->ExpectAnyArgsBool = (char)1;
+}
+
 void lcd_command_CMockExpect(UNITY_LINE_TYPE cmock_line, spi_device_handle_t spi, const uint8_t cmd, bool keep_cs_active)
 {
   CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_lcd_command_CALL_INSTANCE));
@@ -574,6 +791,8 @@ void lcd_command_CMockExpect(UNITY_LINE_TYPE cmock_line, spi_device_handle_t spi
   Mock.lcd_command_CallInstance = CMock_Guts_MemChain(Mock.lcd_command_CallInstance, cmock_guts_index);
   Mock.lcd_command_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   CMockExpectParameters_lcd_command(cmock_call_instance, spi, cmd, keep_cs_active);
 }
 
@@ -589,5 +808,41 @@ void lcd_command_Stub(CMOCK_lcd_command_CALLBACK Callback)
   Mock.lcd_command_IgnoreBool = (char)0;
   Mock.lcd_command_CallbackBool = (char)0;
   Mock.lcd_command_CallbackFunctionPointer = Callback;
+}
+
+void lcd_command_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, spi_device_handle_t spi, const uint8_t cmd, bool keep_cs_active, CEXCEPTION_T cmock_to_throw)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_lcd_command_CALL_INSTANCE));
+  CMOCK_lcd_command_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_command_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.lcd_command_CallInstance = CMock_Guts_MemChain(Mock.lcd_command_CallInstance, cmock_guts_index);
+  Mock.lcd_command_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExceptionToThrow = CEXCEPTION_NONE;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  CMockExpectParameters_lcd_command(cmock_call_instance, spi, cmd, keep_cs_active);
+  cmock_call_instance->ExceptionToThrow = cmock_to_throw;
+}
+
+void lcd_command_CMockIgnoreArg_spi(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_lcd_command_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_command_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.lcd_command_CallInstance));
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
+  cmock_call_instance->IgnoreArg_spi = 1;
+}
+
+void lcd_command_CMockIgnoreArg_cmd(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_lcd_command_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_command_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.lcd_command_CallInstance));
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
+  cmock_call_instance->IgnoreArg_cmd = 1;
+}
+
+void lcd_command_CMockIgnoreArg_keep_cs_active(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_lcd_command_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_command_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.lcd_command_CallInstance));
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
+  cmock_call_instance->IgnoreArg_keep_cs_active = 1;
 }
 

@@ -1,10 +1,16 @@
+/*Including all things needed for tests structure, including unity and things needed to do soft reset after tests*/
 #include "unity.h"
 #include "unity_internals.h"
 #include "esp_system.h"
-#include "lcd_controller.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include <stdio.h>
+#include <stdio.h> 
+
+/*Including mock files -- make sure to include them BEFORE library to test.*/
+#include "mocks/mock_spi_master.h"
+
+/*And last but not least the header file that we want to test.*/
+#include "lcd_controller.h"
 
 void setUp(void) {
   // set stuff up here
@@ -14,6 +20,51 @@ void tearDown(void) {
   // clean stuff up here
 }
 
+/*Private functions are copy pasted here so they also can be tested.*/
+static esp_err_t init_spi_bus (void) {
+    volatile esp_err_t err = ESP_OK;
+    spi_device_handle_t spi;
+    spi_bus_config_t buscfg={
+        .miso_io_num=PIN_NUM_MISO,
+        .mosi_io_num=PIN_NUM_MOSI,
+        .sclk_io_num=PIN_NUM_CLK,
+        .quadwp_io_num=-1,
+        .quadhd_io_num=-1,
+        .max_transfer_sz=PARALLEL_LINES*320*2+8
+    };
+
+    Try {
+        //TODO Mocks of spi_bus_initialize and tests with them
+        err = spi_bus_initialize(LCD_HOST, &buscfg, SPI_DMA_CH_AUTO); //different from 0
+        if (err != 0 && err != ERR_SPI_ALREADY_INIT) {
+            Throw(err);
+        }
+
+    } Catch(err) {
+        ERR_CHECK(err, return err);
+    }
+
+    spi_device_interface_config_t devcfg = {
+        .clock_speed_hz=10*1000*1000,
+        .mode = 0,
+        .spics_io_num = PIN_NUM_CS,
+        .queue_size = 12,
+        .pre_cb = lcd_spi_pre_transfer_callback,
+    };
+
+    err = spi_bus_add_device(
+        SPI2_HOST,
+        &devcfg,
+        &spi);
+
+    ERR_CHECK(err, return err);
+
+    return err;
+}
+/*End of lcd_controller private functions*/
+
+
+/*******************************************************************TESTS***************************************************************/
 void test_function_should_test_size_of_lcd_init_cmd_t (void) {
   //given
   int size = sizeof(lcd_init_cmd_t);
@@ -87,6 +138,8 @@ void test_function_should_check_if_lcd_cmd_function_exists(void) {
       .pre_cb=lcd_spi_pre_transfer_callback,  //Specify pre-transfer callback to handle D/C line
   };
 
+  spi_bus_add_device_IgnoreAndReturn(ESP_OK);
+
   //when
   spi_bus_add_device(LCD_HOST, &devcfg, &spi);
 
@@ -95,24 +148,23 @@ void test_function_should_check_if_lcd_cmd_function_exists(void) {
   TEST_ASSERT(1);
 }
 
-void test_function_should_add_spi_device (void) {
-  spi_device_handle_t spi;
-  esp_err_t err;
+void test_function_should_check_if_init_spi_bus_returns_err_on_add_spi_device_function_err (void) {
+  //given
+  volatile int check = 0;
+  volatile esp_err_t err = ESP_OK;
 
-  spi_device_interface_config_t devcfg = {
-      .clock_speed_hz=10*1000*1000,
-      .mode = 0,
-      .spics_io_num = PIN_NUM_CS,
-      .queue_size = 12,
-      .pre_cb = lcd_spi_pre_transfer_callback,
-  };
+  spi_bus_add_device_CMockIgnoreAndReturn(__LINE__, ESP_ERR_NOT_FOUND);
 
-  err = spi_bus_add_device(
-      SPI2_HOST,
-      &devcfg,
-      &spi);
+  //when
+  Try {
+    err = init_spi_bus();
+    TEST_ASSERT_EQUAL_INT(ESP_ERR_NOT_FOUND, err);
+  } Catch(err) {
+    check++;
+  }
 
-  UnityAssertEqualNumber(ESP_OK, err, "ADD SPI DEVICE", __LINE__, UNITY_DISPLAY_STYLE_INT32);
+  //then
+  UnityAssertEqualNumber(ESP_ERR_NOT_FOUND, err, "init_spi_bus didn't rethrow error", __LINE__, UNITY_DISPLAY_STYLE_INT32);
 }
 
 void test_function_should_check_if_init_lcd_returns_ESP_OK(void) {
@@ -235,12 +287,16 @@ void test_should_throw_and_handle_in_catch_err_because_spi_bus_already_initializ
 }
 
 
+/****************************************************************END TESTS***************************************************************/
+
+
+
 /*To add test use: RUN_TEST(test_name) macro.*/
 int runUnityTests(void) {
   UNITY_BEGIN();
   RUN_TEST(test_function_should_check_if_init_lcd_returns_ESP_OK);
   RUN_TEST(test_function_should_check_that_spi_bus_init_returns_esp_ok_even_when_initialized_already);
-  RUN_TEST(test_function_should_add_spi_device);
+  RUN_TEST(test_function_should_check_if_init_spi_bus_returns_err_on_add_spi_device_function_err);
   RUN_TEST(test_function_should_test_size_of_lcd_init_cmd_t);
   RUN_TEST(test_function_should_check_gpio_defines);
   RUN_TEST(test_function_should_check_if_lcd_cmd_function_exists);

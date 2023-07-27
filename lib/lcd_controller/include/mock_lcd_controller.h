@@ -5,6 +5,7 @@
 #include "unity.h"
 #include "stdio.h"
 #include "lcd_controller.h"
+#include "CException.h"
 
 /* Ignore the following warnings, since we are copying code */
 #if defined(__GNUC__) && !defined(__ICC) && !defined(__TMS470__)
@@ -33,22 +34,34 @@ void mock_lcd_controller_Verify(void);
 void lcd_spi_pre_transfer_callback_CMockIgnore(void);
 #define lcd_spi_pre_transfer_callback_StopIgnore() lcd_spi_pre_transfer_callback_CMockStopIgnore()
 void lcd_spi_pre_transfer_callback_CMockStopIgnore(void);
+#define lcd_spi_pre_transfer_callback_ExpectAnyArgs() lcd_spi_pre_transfer_callback_CMockExpectAnyArgs(__LINE__)
+void lcd_spi_pre_transfer_callback_CMockExpectAnyArgs(UNITY_LINE_TYPE cmock_line);
 #define lcd_spi_pre_transfer_callback_Expect(t) lcd_spi_pre_transfer_callback_CMockExpect(__LINE__, t)
 void lcd_spi_pre_transfer_callback_CMockExpect(UNITY_LINE_TYPE cmock_line, spi_transaction_t* t);
 typedef void (* CMOCK_lcd_spi_pre_transfer_callback_CALLBACK)(spi_transaction_t* t, int cmock_num_calls);
 void lcd_spi_pre_transfer_callback_AddCallback(CMOCK_lcd_spi_pre_transfer_callback_CALLBACK Callback);
 void lcd_spi_pre_transfer_callback_Stub(CMOCK_lcd_spi_pre_transfer_callback_CALLBACK Callback);
 #define lcd_spi_pre_transfer_callback_StubWithCallback lcd_spi_pre_transfer_callback_Stub
+#define lcd_spi_pre_transfer_callback_ExpectAndThrow(t, cmock_to_throw) lcd_spi_pre_transfer_callback_CMockExpectAndThrow(__LINE__, t, cmock_to_throw)
+void lcd_spi_pre_transfer_callback_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, spi_transaction_t* t, CEXCEPTION_T cmock_to_throw);
+#define lcd_spi_pre_transfer_callback_IgnoreArg_t() lcd_spi_pre_transfer_callback_CMockIgnoreArg_t(__LINE__)
+void lcd_spi_pre_transfer_callback_CMockIgnoreArg_t(UNITY_LINE_TYPE cmock_line);
 #define init_lcd_IgnoreAndReturn(cmock_retval) init_lcd_CMockIgnoreAndReturn(__LINE__, cmock_retval)
 void init_lcd_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, esp_err_t cmock_to_return);
 #define init_lcd_StopIgnore() init_lcd_CMockStopIgnore()
 void init_lcd_CMockStopIgnore(void);
+#define init_lcd_ExpectAnyArgsAndReturn(cmock_retval) init_lcd_CMockExpectAnyArgsAndReturn(__LINE__, cmock_retval)
+void init_lcd_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, esp_err_t cmock_to_return);
 #define init_lcd_ExpectAndReturn(spi, cmock_retval) init_lcd_CMockExpectAndReturn(__LINE__, spi, cmock_retval)
 void init_lcd_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, spi_device_handle_t spi, esp_err_t cmock_to_return);
 typedef esp_err_t (* CMOCK_init_lcd_CALLBACK)(spi_device_handle_t spi, int cmock_num_calls);
 void init_lcd_AddCallback(CMOCK_init_lcd_CALLBACK Callback);
 void init_lcd_Stub(CMOCK_init_lcd_CALLBACK Callback);
 #define init_lcd_StubWithCallback init_lcd_Stub
+#define init_lcd_ExpectAndThrow(spi, cmock_to_throw) init_lcd_CMockExpectAndThrow(__LINE__, spi, cmock_to_throw)
+void init_lcd_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, spi_device_handle_t spi, CEXCEPTION_T cmock_to_throw);
+#define init_lcd_IgnoreArg_spi() init_lcd_CMockIgnoreArg_spi(__LINE__)
+void init_lcd_CMockIgnoreArg_spi(UNITY_LINE_TYPE cmock_line);
 #define start_lcd_controller_IgnoreAndReturn(cmock_retval) start_lcd_controller_CMockIgnoreAndReturn(__LINE__, cmock_retval)
 void start_lcd_controller_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, esp_err_t cmock_to_return);
 #define start_lcd_controller_StopIgnore() start_lcd_controller_CMockStopIgnore()
@@ -59,26 +72,44 @@ typedef esp_err_t (* CMOCK_start_lcd_controller_CALLBACK)(int cmock_num_calls);
 void start_lcd_controller_AddCallback(CMOCK_start_lcd_controller_CALLBACK Callback);
 void start_lcd_controller_Stub(CMOCK_start_lcd_controller_CALLBACK Callback);
 #define start_lcd_controller_StubWithCallback start_lcd_controller_Stub
+#define start_lcd_controller_ExpectAndThrow(cmock_to_throw) start_lcd_controller_CMockExpectAndThrow(__LINE__, cmock_to_throw)
+void start_lcd_controller_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, CEXCEPTION_T cmock_to_throw);
 #define lcd_reset_IgnoreAndReturn(cmock_retval) lcd_reset_CMockIgnoreAndReturn(__LINE__, cmock_retval)
 void lcd_reset_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_to_return);
 #define lcd_reset_StopIgnore() lcd_reset_CMockStopIgnore()
 void lcd_reset_CMockStopIgnore(void);
+#define lcd_reset_ExpectAnyArgsAndReturn(cmock_retval) lcd_reset_CMockExpectAnyArgsAndReturn(__LINE__, cmock_retval)
+void lcd_reset_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_to_return);
 #define lcd_reset_ExpectAndReturn(cmock_arg1, cmock_retval) lcd_reset_CMockExpectAndReturn(__LINE__, cmock_arg1, cmock_retval)
 void lcd_reset_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_arg1, int cmock_to_return);
 typedef int (* CMOCK_lcd_reset_CALLBACK)(int cmock_arg1, int cmock_num_calls);
 void lcd_reset_AddCallback(CMOCK_lcd_reset_CALLBACK Callback);
 void lcd_reset_Stub(CMOCK_lcd_reset_CALLBACK Callback);
 #define lcd_reset_StubWithCallback lcd_reset_Stub
+#define lcd_reset_ExpectAndThrow(cmock_arg1, cmock_to_throw) lcd_reset_CMockExpectAndThrow(__LINE__, cmock_arg1, cmock_to_throw)
+void lcd_reset_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, int cmock_arg1, CEXCEPTION_T cmock_to_throw);
+#define lcd_reset_IgnoreArg_cmock_arg1() lcd_reset_CMockIgnoreArg_cmock_arg1(__LINE__)
+void lcd_reset_CMockIgnoreArg_cmock_arg1(UNITY_LINE_TYPE cmock_line);
 #define lcd_command_Ignore() lcd_command_CMockIgnore()
 void lcd_command_CMockIgnore(void);
 #define lcd_command_StopIgnore() lcd_command_CMockStopIgnore()
 void lcd_command_CMockStopIgnore(void);
+#define lcd_command_ExpectAnyArgs() lcd_command_CMockExpectAnyArgs(__LINE__)
+void lcd_command_CMockExpectAnyArgs(UNITY_LINE_TYPE cmock_line);
 #define lcd_command_Expect(spi, cmd, keep_cs_active) lcd_command_CMockExpect(__LINE__, spi, cmd, keep_cs_active)
 void lcd_command_CMockExpect(UNITY_LINE_TYPE cmock_line, spi_device_handle_t spi, const uint8_t cmd, bool keep_cs_active);
 typedef void (* CMOCK_lcd_command_CALLBACK)(spi_device_handle_t spi, const uint8_t cmd, bool keep_cs_active, int cmock_num_calls);
 void lcd_command_AddCallback(CMOCK_lcd_command_CALLBACK Callback);
 void lcd_command_Stub(CMOCK_lcd_command_CALLBACK Callback);
 #define lcd_command_StubWithCallback lcd_command_Stub
+#define lcd_command_ExpectAndThrow(spi, cmd, keep_cs_active, cmock_to_throw) lcd_command_CMockExpectAndThrow(__LINE__, spi, cmd, keep_cs_active, cmock_to_throw)
+void lcd_command_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, spi_device_handle_t spi, const uint8_t cmd, bool keep_cs_active, CEXCEPTION_T cmock_to_throw);
+#define lcd_command_IgnoreArg_spi() lcd_command_CMockIgnoreArg_spi(__LINE__)
+void lcd_command_CMockIgnoreArg_spi(UNITY_LINE_TYPE cmock_line);
+#define lcd_command_IgnoreArg_cmd() lcd_command_CMockIgnoreArg_cmd(__LINE__)
+void lcd_command_CMockIgnoreArg_cmd(UNITY_LINE_TYPE cmock_line);
+#define lcd_command_IgnoreArg_keep_cs_active() lcd_command_CMockIgnoreArg_keep_cs_active(__LINE__)
+void lcd_command_CMockIgnoreArg_keep_cs_active(UNITY_LINE_TYPE cmock_line);
 
 #ifdef __cplusplus
 }

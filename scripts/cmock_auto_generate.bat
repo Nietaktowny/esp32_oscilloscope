@@ -9,7 +9,7 @@ echo Starting generating...
 cd
 cd cmock\lib
 cd
-ruby cmock.rb -oCMockConfig.yml ..\..\lib\lcd_controller\include\lcd_controller.h
+ruby cmock.rb -o../../scripts/CMockConfig.yml ..\..\lib\lcd_controller\include\lcd_controller.h
 cd ..\..
 cd
 xcopy /s/z/v/y cmock\lib\mocks\mock_lcd_controller.h lib\lcd_controller\include

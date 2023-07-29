@@ -6,8 +6,9 @@
     - :cexception
     - :ignore_arg
     - :expect_any_args
+    - :return_thru_ptr
   :includes: []
-  :mock_path: ./mocks
+  :mock_path: ..\..\test\mocks
   :mock_prefix: mock_
   :treat_inlines: :include
   :framework: unity

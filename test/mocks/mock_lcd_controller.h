@@ -44,6 +44,10 @@ void lcd_spi_pre_transfer_callback_Stub(CMOCK_lcd_spi_pre_transfer_callback_CALL
 #define lcd_spi_pre_transfer_callback_StubWithCallback lcd_spi_pre_transfer_callback_Stub
 #define lcd_spi_pre_transfer_callback_ExpectAndThrow(t, cmock_to_throw) lcd_spi_pre_transfer_callback_CMockExpectAndThrow(__LINE__, t, cmock_to_throw)
 void lcd_spi_pre_transfer_callback_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, spi_transaction_t* t, CEXCEPTION_T cmock_to_throw);
+#define lcd_spi_pre_transfer_callback_ReturnThruPtr_t(t) lcd_spi_pre_transfer_callback_CMockReturnMemThruPtr_t(__LINE__, t, sizeof(spi_transaction_t))
+#define lcd_spi_pre_transfer_callback_ReturnArrayThruPtr_t(t, cmock_len) lcd_spi_pre_transfer_callback_CMockReturnMemThruPtr_t(__LINE__, t, cmock_len * sizeof(*t))
+#define lcd_spi_pre_transfer_callback_ReturnMemThruPtr_t(t, cmock_size) lcd_spi_pre_transfer_callback_CMockReturnMemThruPtr_t(__LINE__, t, cmock_size)
+void lcd_spi_pre_transfer_callback_CMockReturnMemThruPtr_t(UNITY_LINE_TYPE cmock_line, spi_transaction_t* t, size_t cmock_size);
 #define lcd_spi_pre_transfer_callback_IgnoreArg_t() lcd_spi_pre_transfer_callback_CMockIgnoreArg_t(__LINE__)
 void lcd_spi_pre_transfer_callback_CMockIgnoreArg_t(UNITY_LINE_TYPE cmock_line);
 #define init_lcd_IgnoreAndReturn(cmock_retval) init_lcd_CMockIgnoreAndReturn(__LINE__, cmock_retval)

@@ -22,6 +22,9 @@ typedef struct _CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE
   char ExpectAnyArgsBool;
   spi_transaction_t* Expected_t;
   CEXCEPTION_T ExceptionToThrow;
+  char ReturnThruPtr_t_Used;
+  spi_transaction_t* ReturnThruPtr_t_Val;
+  size_t ReturnThruPtr_t_Size;
   char IgnoreArg_t;
 
 } CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE;
@@ -225,6 +228,12 @@ void lcd_spi_pre_transfer_callback(spi_transaction_t* t)
     UNITY_CLR_DETAILS();
     Throw(cmock_call_instance->ExceptionToThrow);
   }
+  if (cmock_call_instance->ReturnThruPtr_t_Used)
+  {
+    UNITY_TEST_ASSERT_NOT_NULL(t, cmock_line, CMockStringPtrIsNULL);
+    memcpy((void*)t, (void*)cmock_call_instance->ReturnThruPtr_t_Val,
+      cmock_call_instance->ReturnThruPtr_t_Size);
+  }
   UNITY_CLR_DETAILS();
 }
 
@@ -233,6 +242,7 @@ void CMockExpectParameters_lcd_spi_pre_transfer_callback(CMOCK_lcd_spi_pre_trans
 {
   cmock_call_instance->Expected_t = t;
   cmock_call_instance->IgnoreArg_t = 0;
+  cmock_call_instance->ReturnThruPtr_t_Used = 0;
 }
 
 void lcd_spi_pre_transfer_callback_CMockIgnore(void)
@@ -300,6 +310,15 @@ void lcd_spi_pre_transfer_callback_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_lin
   cmock_call_instance->ExpectAnyArgsBool = (char)0;
   CMockExpectParameters_lcd_spi_pre_transfer_callback(cmock_call_instance, t);
   cmock_call_instance->ExceptionToThrow = cmock_to_throw;
+}
+
+void lcd_spi_pre_transfer_callback_CMockReturnMemThruPtr_t(UNITY_LINE_TYPE cmock_line, spi_transaction_t* t, size_t cmock_size)
+{
+  CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE* cmock_call_instance = (CMOCK_lcd_spi_pre_transfer_callback_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.lcd_spi_pre_transfer_callback_CallInstance));
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringPtrPreExp);
+  cmock_call_instance->ReturnThruPtr_t_Used = 1;
+  cmock_call_instance->ReturnThruPtr_t_Val = t;
+  cmock_call_instance->ReturnThruPtr_t_Size = cmock_size;
 }
 
 void lcd_spi_pre_transfer_callback_CMockIgnoreArg_t(UNITY_LINE_TYPE cmock_line)

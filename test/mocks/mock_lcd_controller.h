@@ -50,6 +50,18 @@ void lcd_spi_pre_transfer_callback_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_lin
 void lcd_spi_pre_transfer_callback_CMockReturnMemThruPtr_t(UNITY_LINE_TYPE cmock_line, spi_transaction_t* t, size_t cmock_size);
 #define lcd_spi_pre_transfer_callback_IgnoreArg_t() lcd_spi_pre_transfer_callback_CMockIgnoreArg_t(__LINE__)
 void lcd_spi_pre_transfer_callback_CMockIgnoreArg_t(UNITY_LINE_TYPE cmock_line);
+#define init_spi_bus_IgnoreAndReturn(cmock_retval) init_spi_bus_CMockIgnoreAndReturn(__LINE__, cmock_retval)
+void init_spi_bus_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, esp_err_t cmock_to_return);
+#define init_spi_bus_StopIgnore() init_spi_bus_CMockStopIgnore()
+void init_spi_bus_CMockStopIgnore(void);
+#define init_spi_bus_ExpectAndReturn(cmock_retval) init_spi_bus_CMockExpectAndReturn(__LINE__, cmock_retval)
+void init_spi_bus_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, esp_err_t cmock_to_return);
+typedef esp_err_t (* CMOCK_init_spi_bus_CALLBACK)(int cmock_num_calls);
+void init_spi_bus_AddCallback(CMOCK_init_spi_bus_CALLBACK Callback);
+void init_spi_bus_Stub(CMOCK_init_spi_bus_CALLBACK Callback);
+#define init_spi_bus_StubWithCallback init_spi_bus_Stub
+#define init_spi_bus_ExpectAndThrow(cmock_to_throw) init_spi_bus_CMockExpectAndThrow(__LINE__, cmock_to_throw)
+void init_spi_bus_CMockExpectAndThrow(UNITY_LINE_TYPE cmock_line, CEXCEPTION_T cmock_to_throw);
 #define init_lcd_IgnoreAndReturn(cmock_retval) init_lcd_CMockIgnoreAndReturn(__LINE__, cmock_retval)
 void init_lcd_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, esp_err_t cmock_to_return);
 #define init_lcd_StopIgnore() init_lcd_CMockStopIgnore()

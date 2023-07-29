@@ -5,6 +5,7 @@
 
 #include <inttypes.h>
 #include "CException.h"
+#include <string.h>
 
 //Check for ESP-IDF platform specific header files, to avoid compliation errors when testing on native platform.
 #ifdef ESP_PLATFORM
@@ -14,6 +15,12 @@
 #include "esp_err.h"
 #include "driver/gpio.h"
 #include "esp_log.h"
+#include "esp_lcd_panel_io.h"
+#include "esp_lcd_panel_vendor.h"
+#include "esp_lcd_panel_ops.h"
+#include "esp_heap_caps.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #endif
 
 //ERROR telling us that SPI bus is already initialized.

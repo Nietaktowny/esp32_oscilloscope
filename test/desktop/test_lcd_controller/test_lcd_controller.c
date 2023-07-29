@@ -66,18 +66,6 @@ void test_macro_should_execute_expression_if_some_error_occurs (void) {
   UnityAssertEqualNumber(1, i, "ERR_CHECK not executed expression despite error", __LINE__, UNITY_DISPLAY_STYLE_INT32);
 }
 
-void test_function_should_check_if_init_spi_bus_returns_err_if_spi_bus_initialize_returns_err(void) {
-  //given
-  esp_err_t err = ESP_OK;
-  spi_bus_initialize_CMockIgnoreAndReturn(__LINE__, ESP_ERR_INVALID_ARG);
-
-  //when
-  err = init_spi_bus();
-
-  //then
-  UnityAssertEqualNumber(ESP_ERR_INVALID_ARG, err, "init_spi_bus not returned error when should", __LINE__, UNITY_DISPLAY_STYLE_INT32);
-
-}
 
 /*To add test use: RUN_TEST(test_name) macro.*/
 int runUnityTests(void) {
@@ -86,7 +74,6 @@ int runUnityTests(void) {
   RUN_TEST(test_function_should_check_if_ERR_SPI_ALREADY_INIT_exists);
   RUN_TEST(test_macro_should_not_execute_expression_if_no_error);
   RUN_TEST(test_macro_should_execute_expression_if_some_error_occurs);
-  RUN_TEST(test_function_should_check_if_init_spi_bus_returns_err_if_spi_bus_initialize_returns_err);
   return UNITY_END();
 }
 

@@ -1,0 +1,5 @@
+dependencies:
+  idf: '>=5.0'
+description: Graphical user interface made usind LVGL library.
+url: 
+version: 1.0.0

@@ -2,8 +2,6 @@
 #include "esp_system.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "esp32_oscilloscope.h"
-#include "lcd_controller.h"
 
 void setUp(void) {
   // set stuff up here

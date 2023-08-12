@@ -3,39 +3,68 @@ name: Build
 on: [push, pull_request]
 
 jobs:
-  build:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [3.9]
-    runs-on: ${{ matrix.os }}
+  Linux:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cache/pip
-            ~/.platformio/.cache
-          key: ${{ runner.os }}-pio
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install PlatformIO Core
-        run: pip install --upgrade platformio
-      - name: Install platformIO libraries
-        run: pio lib install
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
-      - name: Install CMock
+      - name: Install Linux dependencies
         run: |
-          git clone --recursive https://github.com/throwtheswitch/cmock.git
-      - name: Change permissions on Linux
-        if: runner.os == 'Linux'
-        run: sudo chmod -R 777 scripts/cmock_auto_generate.bash
-      - name: Change permissions on macOS
-        if: runner.os == 'macOS'
-        run: sudo chmod -R 777 scripts/cmock_auto_generate.bash
-      - name: Build PlatformIO Project
-        run: pio run --environment default
+          sudo apt-get update
+          sudo apt-get install libsdl2-dev
+
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+
+      - name: Install PlatformIO
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U platformio
+          platformio update
+
+      - name: Build esp32_release
+        run: platformio run -e esp32_release
+
+
+  macOS:
+    runs-on: macos-latest
+    steps:
+      - name: Install macOS dependencies
+        run: |
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install sdl2
+
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+
+      - name: Install PlatformIO
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U platformio
+          platformio update
+
+      - name: Build esp32_release
+        run: platformio run -e esp32_release
+
+
+  Windows:
+    runs-on: windows-2019
+    steps:
+      - name: Activate msys2 & mingw64
+        run: |
+          echo "C:\msys64\usr\bin" >> $env:GITHUB_PATH
+          echo "C:\msys64\mingw64\bin" >> $env:GITHUB_PATH
+
+      - name: Install deps
+        run: |
+          pacman --noconfirm -S --needed mingw-w64-x86_64-SDL2
+          gcc --version
+
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+
+      - name: Install PlatformIO
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U platformio
+          platformio update
+
+      - name: Build esp32_release
+        run: platformio run -e esp32_release

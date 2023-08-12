@@ -1,0 +1,12 @@
+{
+    "name": "lvgl_esp32_drivers",
+    "version": "1.0.2",
+    "keywords": "esp_lcd, LCD, driver, display, ILI9341",
+    "description": "Implementation of the ILI9341 LCD controller with esp_lcd component.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/espressif/esp-bsp/tree/master/components/lcd/esp_lcd_ili9341"
+    },
+    "frameworks": ["espidf"],
+    "platforms": ["espressif32"]
+}

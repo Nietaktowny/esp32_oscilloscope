@@ -1,0 +1,12 @@
+{
+    "name": "lvgl_gui",
+    "version": "1.0.0",
+    "keywords": "LCD, driver, display, ",
+    "description": "Graphical user interface made usind LVGL library.",
+    "dependencies":
+    {
+        "lvgl/lvgl": "^8.3.9"
+    },
+    "frameworks": ["*"],
+    "platforms": ["*"]
+}

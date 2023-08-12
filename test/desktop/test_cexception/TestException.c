@@ -3,6 +3,7 @@
 
 volatile int TestingTheFallback;
 volatile int TestingTheFallbackId;
+typedef int esp_err_t;
 
 void setUp(void)
 {
@@ -355,6 +356,70 @@ void test_AbilityToExitTryWillOnlyExitOneLevel(void)
     TEST_ASSERT_EQUAL(1, i);
 }
 
+void test_function_should_check_if_cexceptions_work_with_esp_err_type (void) {
+  //given
+  esp_err_t esp_err = -1;
+  int i = 0;
+
+  //when
+  Try 
+  {
+    i += 1;
+    Throw(esp_err);
+  }
+  Catch (esp_err) {
+    i += 1;
+  }
+
+  //then
+
+  TEST_ASSERT_EQUAL_INT(2, i);
+  TEST_ASSERT_EQUAL_INT(-1, esp_err);
+}
+
+void test_function_should_check_if_cexceptions_work_with_esp_err_type_and_dont_catch (void) {
+  //given
+  esp_err_t esp_err = 123;
+  int i = 0;
+
+  //when
+  Try 
+  {
+    i += 1;
+  }
+  Catch (esp_err) {
+    i += 1;
+    TEST_FAIL_MESSAGE("Should Not Enter Catch If Not Thrown");
+  }
+
+  //then
+
+  TEST_ASSERT_EQUAL_INT(1, i);
+  TEST_ASSERT_EQUAL_INT(123, esp_err);
+} 
+
+void test_function_should_check_if_cexceptions_catch_in_try_block(void) {
+  //given
+  esp_err_t esp_err = 0;
+  volatile int i = 0;
+
+  //when
+  Try 
+  {
+    i += 1;
+    esp_err = 123;
+  }
+  Catch (esp_err) {
+    i += 1;
+    TEST_FAIL_MESSAGE("Should Not Enter Catch If Not Thrown");
+  }
+
+  //then
+
+  TEST_ASSERT_EQUAL_INT(1, i);
+  TEST_ASSERT_EQUAL_INT(123, esp_err);
+}
+
 /*To add test use: RUN_TEST(test_name) macro.*/
 int runUnityTests(void) {
   UNITY_BEGIN();
@@ -370,6 +435,10 @@ int runUnityTests(void) {
   RUN_TEST(test_BasicThrowAndCatch_WithMiniSyntax);
   RUN_TEST(test_BasicThrowAndCatch);
   RUN_TEST(test_BasicTryDoesNothingIfNoThrow);
+  RUN_TEST(test_function_should_check_if_cexceptions_work_with_esp_err_type);
+  RUN_TEST(test_function_should_check_if_cexceptions_work_with_esp_err_type_and_dont_catch);
+  RUN_TEST(test_function_should_check_if_cexceptions_catch_in_try_block);
+
   return UNITY_END();
 }
 

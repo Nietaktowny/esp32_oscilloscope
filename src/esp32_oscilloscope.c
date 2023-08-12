@@ -1,17 +1,63 @@
-#include "esp32_oscilloscope.h"
+/**
+  ******************************************************************************
+  * @file    main.c
+  * @author  Ac6
+  * @version V1.0
+  * @date    01-December-2013
+  * @brief   Default main function.
+  ******************************************************************************
+*/
+
+
+#include "lvgl.h"
+#include "app_hal.h"
+#include <stdio.h>
+#include <stdint.h>
+#include "lvgl_gui.h"
+
+
+
+#ifdef ESP_PLATFORM
+#include <stdio.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "esp_timer.h"
+#include "esp_err.h"
+#include "esp_log.h"
+
+static const char *GUI = "gui task";
+
+
+void gui_task (void* args) {
+    lv_init();
+
+	hal_setup();
+
+    gui_init();
+
+	hal_loop();
+}
+
 
 void app_main(void)
 {
-    prepare_lcd();
+    ESP_LOGI(GUI, "Starting gui task...");
+    xTaskCreatePinnedToCore(gui_task, "gui_task", 4096, NULL, 1, NULL, 1);
 }
 
 
-esp_err_t prepare_lcd (void) {
-    esp_err_t err = ESP_OK;
-    if (err != ESP_OK)
-    {
-        ESP_LOGE(TAG, "Error in main: %s", esp_err_to_name(err));
-        return err;
-    }
-    return ESP_OK;
+#elif (WIN32 || __linux__) & (USE_SDL)
+int main(void)
+{
+	lv_init();
+
+	hal_setup();
+
+    gui_init();
+
+	hal_loop();
 }
+#endif
+
+
+

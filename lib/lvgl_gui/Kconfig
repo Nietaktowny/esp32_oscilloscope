@@ -1,0 +1,9 @@
+# Kconfig file for LVGL GUI Library v1.0.0
+
+menu "LVGL Gui Configuration"
+
+    config LV_CONF_SKIP
+        bool "Uncheck this to use custom lv_conf.h"
+        default y
+
+endmenu

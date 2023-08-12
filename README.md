@@ -22,6 +22,9 @@
  - [ESP-IDF documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/index.html)
  - [ESP-WROVER-KIT hardware description](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-wrover-kit.html)
 
+### LCD documentation:
+ - [LCD ILI9341 documentation](https://cdn-shop.adafruit.com/datasheets/ILI9341.pdf)
+
 ### Folder specific README files:
 
  - [Tests README](test/README.md)

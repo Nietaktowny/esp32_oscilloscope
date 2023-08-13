@@ -177,6 +177,8 @@ void hal_setup(void)
     disp_drv.ver_res = LCD_V_RES;
     disp_drv.flush_cb = lvgl_flush_cb;
     disp_drv.drv_update_cb = lvgl_port_update_callback;
+    disp_drv.sw_rotate = 1;
+    disp_drv.rotated = LV_DISP_ROT_90;
     disp_drv.draw_buf = &disp_buf;
     disp_drv.user_data = panel_handle;
     lv_disp_t *disp = lv_disp_drv_register(&disp_drv);

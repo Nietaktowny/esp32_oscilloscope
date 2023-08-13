@@ -25,7 +25,7 @@ static void draw_example_chart (void) {
     /*Create a chart*/
     
     chart = lv_chart_create(lv_scr_act());
-    lv_obj_set_size(chart, 200, 150);
+    lv_obj_set_size(chart, 320, 240);
     lv_obj_center(chart);
     lv_chart_set_type(chart, LV_CHART_TYPE_LINE);   /*Show lines and points too*/
 

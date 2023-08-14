@@ -2,13 +2,20 @@
 #include "lvgl_gui.h"
 
 static lv_obj_t * chart;
+static lv_obj_t * active_screen;
+static lv_style_t chart_style;
 
 static void draw_example_chart (void) {
+
     /*Create a chart*/
-    
-    chart = lv_chart_create(lv_scr_act());
+
+    active_screen = lv_scr_act();
+    chart = lv_chart_create(active_screen);
     lv_obj_set_size(chart, 320, 240);
     lv_obj_center(chart);
+    lv_obj_add_style(chart, &chart_style, LV_PART_MAIN);
+  // lv_obj_set_style_bg_color(chart, lv_color_hex(0x42819B), 0);
+    lv_style_set_bg_color(&chart_style, lv_color_hex(0x1d1f1d));
     lv_chart_set_type(chart, LV_CHART_TYPE_LINE);   /*Show lines and points too*/
 
     /*Add two data series*/

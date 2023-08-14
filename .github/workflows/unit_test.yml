@@ -50,7 +50,5 @@ jobs:
       - name: Install CMock
         run: |
           git clone --recursive https://github.com/throwtheswitch/cmock.git
-      - name: Build native emulator
-        run: pio run --environment native_sdl 
       - name: Run desktop test
-        run: pio test --verbose --environment native_sdl
+        run: pio test --verbose --environment native_test

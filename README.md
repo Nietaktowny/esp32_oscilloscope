@@ -1,5 +1,5 @@
 
-# Esp32 Oscilloscope ![Build](https://github.com/Nietaktowny/esp32_oscilloscope/actions/workflows/build.yml/badge.svg)  ![Unit Testing](https://github.com/Nietaktowny/esp32_oscilloscope/actions/workflows/platformio.yml/badge.svg)
+# Esp32 Oscilloscope ![Build](https://github.com/Nietaktowny/esp32_oscilloscope/actions/workflows/build.yml/badge.svg)  ![Unit Testing](https://github.com/Nietaktowny/esp32_oscilloscope/actions/workflows/unit_test.yml/badge.svg)
 =======
 
 ## About this project

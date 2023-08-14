@@ -38,8 +38,9 @@ void hal_setup(void)
      * Use the 'monitor' driver which creates window on PC's monitor to simulate a display*/
 
     static lv_disp_draw_buf_t disp_buf;
-    static lv_color_t buf[SDL_HOR_RES * 10];                          /*Declare a buffer for 10 lines*/
-    lv_disp_draw_buf_init(&disp_buf, buf, NULL, SDL_HOR_RES * 10);    /*Initialize the display buffer*/
+    static lv_color_t buf1[SDL_HOR_RES * 10];                          /*Declare a buffer for 10 lines*/
+    static lv_color_t buf2[SDL_HOR_RES * 10];
+    lv_disp_draw_buf_init(&disp_buf, buf1, buf2, SDL_HOR_RES * 10);    /*Initialize the display buffer*/
 
     static lv_disp_drv_t disp_drv;
     lv_disp_drv_init(&disp_drv);              /*Basic initialization*/

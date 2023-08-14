@@ -18,6 +18,25 @@ jobs:
             ~/.cache/pip
             ~/.platformio/.cache
           key: ${{ runner.os }}-pio
+        if: runner.os == 'Windows'
+      - name: Activate msys2 & mingw64
+        run: |
+          echo "C:\msys64\usr\bin" >> $env:GITHUB_PATH
+          echo "C:\msys64\mingw64\bin" >> $env:GITHUB_PATH
+      - name: Install deps on Windows
+        if: runner.os == 'Windows'
+        run: |
+          pacman --noconfirm -S --needed mingw-w64-x86_64-SDL2
+          gcc --version
+      - name: Install deps on Linux
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install libsdl2-dev
+      - name: Install deps on macOS
+        if: runner.os == 'macOS'
+        run: |
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install sdl2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
@@ -32,4 +51,4 @@ jobs:
         run: |
           git clone --recursive https://github.com/throwtheswitch/cmock.git
       - name: Run desktop test
-        run: pio test --verbose --environment native_test
+        run: pio test --verbose --environment native_sdl

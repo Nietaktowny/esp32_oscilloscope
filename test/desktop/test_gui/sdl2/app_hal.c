@@ -45,7 +45,7 @@ void hal_setup(void)
     static lv_disp_drv_t disp_drv;
     lv_disp_drv_init(&disp_drv);              /*Basic initialization*/
     disp_drv.flush_cb = sdl_display_flush;    /*Used when `LV_VDB_SIZE != 0` in lv_conf.h (buffered drawing)*/
-    disp_drv.draw_buf = &disp_buf; 
+    disp_drv.draw_buf = &disp_buf;
     disp_drv.hor_res = SDL_HOR_RES;
     disp_drv.ver_res = SDL_VER_RES;
     //disp_drv.disp_fill = monitor_fill;      /*Used when `LV_VDB_SIZE == 0` in lv_conf.h (unbuffered drawing)*/

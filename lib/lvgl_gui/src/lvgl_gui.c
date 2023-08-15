@@ -1,32 +1,21 @@
 #include "lvgl.h"
 #include "lvgl_gui.h"
 
-
-static lv_obj_t * ui_Screen1;
-static lv_obj_t * ui_Label1;
 static lv_obj_t * chart;
-
-static void display_hello_world(void) {
-    ui_Screen1 = lv_obj_create(NULL);
-    lv_obj_clear_flag(ui_Screen1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-
-    ui_Label1 = lv_label_create(ui_Screen1);
-    lv_obj_set_width(ui_Label1, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label1, 1);
-    lv_obj_set_y(ui_Label1, -7);
-    lv_obj_set_align(ui_Label1, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label1, "Hello world!");
-
-    lv_scr_load(ui_Screen1);
-}
+static lv_obj_t * active_screen;
+static lv_style_t chart_style;
 
 static void draw_example_chart (void) {
+
     /*Create a chart*/
-    
-    chart = lv_chart_create(lv_scr_act());
-    lv_obj_set_size(chart, 200, 150);
+
+    active_screen = lv_scr_act();
+    chart = lv_chart_create(active_screen);
+    lv_obj_set_size(chart, 320, 240);
     lv_obj_center(chart);
+    lv_obj_add_style(chart, &chart_style, LV_PART_MAIN);
+  // lv_obj_set_style_bg_color(chart, lv_color_hex(0x42819B), 0);
+    lv_style_set_bg_color(&chart_style, lv_color_hex(0x1d1f1d));
     lv_chart_set_type(chart, LV_CHART_TYPE_LINE);   /*Show lines and points too*/
 
     /*Add two data series*/

@@ -1,26 +1,20 @@
 #ifdef USE_SDL
 #include "unity.h"
 #include "lvgl.h"
-#include "app_hal.h"
+#include "tests.h"
 
 static lv_obj_t * active_screen = NULL;
 static lv_obj_t * chart = NULL;
 
 static lv_color_t red_color;
 
-void setUp(void) {
-  	lv_init();
-	hal_setup();
-
+void test_chart_setup(void) {
     active_screen = lv_scr_act();
     chart = lv_chart_create(active_screen);
 
     red_color = lv_palette_main(LV_PALETTE_RED);
 }
 
-void tearDown(void) {
-  // clean stuff up here
-}
 
 
 void test_chart_add_series(void)
@@ -106,7 +100,7 @@ void test_chart_one_point_when_setting_point_count_to_zero(void)
 
 
 /*To add test use: RUN_TEST(test_name) macro.*/
-int runUnityTests(void) {
+int run_chart_tests(void) {
   UNITY_BEGIN();
   RUN_TEST(test_chart_add_series);
   RUN_TEST(test_chart_set_point_count_increments);
@@ -116,14 +110,6 @@ int runUnityTests(void) {
   RUN_TEST(test_chart_point_is_added_at_the_end_of_a_serie);
   RUN_TEST(test_chart_one_point_when_setting_point_count_to_zero);
   return UNITY_END();
-}
-
-
-/**
-  * main function for native dev-platform
-  */
-int main(void) {
-  runUnityTests();
 }
 
 #endif

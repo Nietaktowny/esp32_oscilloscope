@@ -52,3 +52,8 @@ jobs:
           git clone --recursive https://github.com/throwtheswitch/cmock.git
       - name: Run desktop test
         run: pio test --verbose --environment native_test
+        if: runner.os == 'Windows'
+      - name: Run sdl emulator tests
+        run: |
+          platformio run -e native_sdl
+          python -m pip install --upgrade pip

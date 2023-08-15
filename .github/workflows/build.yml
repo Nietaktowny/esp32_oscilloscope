@@ -22,8 +22,6 @@ jobs:
 
       - name: Build esp32_release
         run: platformio run -e esp32_release
-      - name: Build native_sdl
-        run: platformio run -e native_sdl
 
 
   macOS:
@@ -44,8 +42,6 @@ jobs:
 
       - name: Build esp32_release
         run: platformio run -e esp32_release
-      - name: Build native_sdl
-        run: platformio run -e native_sdl
 
 
   Windows:

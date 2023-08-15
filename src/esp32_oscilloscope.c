@@ -46,7 +46,7 @@ void app_main(void)
 }
 
 
-#elif (WIN32 || __linux__) & (USE_SDL)
+#elif (USE_SDL)
 int main(void)
 {
 	lv_init();

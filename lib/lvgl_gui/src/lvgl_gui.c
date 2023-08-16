@@ -80,7 +80,9 @@ static void draw_example_chart (void) {
       {
         lv_chart_set_next_value(chart, ser1, (samples[i]*100));
         
+          #ifdef ESP_PLATFORM
         vTaskDelay(pdMS_TO_TICKS(10));
+        #endif
       }
     }
     #endif

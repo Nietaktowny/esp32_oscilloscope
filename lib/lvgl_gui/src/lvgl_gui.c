@@ -13,13 +13,13 @@ static lv_obj_t * chart;
 static lv_obj_t * active_screen;
 static lv_style_t chart_style;
 
-#define POINTS_NUMBER 10
+#define POINTS_NUMBER 3001
 #define Y_MIN_VALUE -100
 #define Y_MAX_VALUE 100
 
-#define TABLE_SIZE 10
+#define TABLE_SIZE 500
 float samples [TABLE_SIZE];
-#define CYCLES 1
+#define CYCLES 6
 
 
 #define TWO_PI (3.141592653589793238 * 2)
@@ -48,9 +48,7 @@ static void draw_example_chart (void) {
     chart = lv_chart_create(active_screen);
     lv_obj_set_size(chart, 320, 240);
     lv_obj_center(chart);
-    lv_obj_add_style(chart, &chart_style, LV_PART_MAIN);
-  // lv_obj_set_style_bg_color(chart, lv_color_hex(0x42819B), 0);
-    lv_style_set_bg_color(&chart_style, lv_color_hex(0x1d1f1d));
+    lv_obj_set_style_bg_color(chart, lv_color_hex(0x1d1f1d), 0);
     lv_chart_set_type(chart, LV_CHART_TYPE_LINE);   /*Show lines and points too*/
     lv_chart_set_point_count(chart, POINTS_NUMBER);
     lv_chart_set_update_mode(chart, LV_CHART_UPDATE_MODE_CIRCULAR);
@@ -61,31 +59,14 @@ static void draw_example_chart (void) {
     /*Add two data series*/
     lv_chart_series_t * ser1 = lv_chart_add_series(chart, lv_palette_main(LV_PALETTE_RED), LV_CHART_AXIS_PRIMARY_Y);
     //lv_chart_series_t * ser2 = lv_chart_add_series(chart, lv_palette_main(LV_PALETTE_GREEN), LV_CHART_AXIS_SECONDARY_Y);
-    #ifdef ESP_PLATFORM
-    lv_chart_set_next_value(chart, ser1, 10);
-    lv_chart_set_next_value(chart, ser1, 10);
-    lv_chart_set_next_value(chart, ser1, 10);
-    lv_chart_set_next_value(chart, ser1, 10);
-    lv_chart_set_next_value(chart, ser1, 10);
-    lv_chart_set_next_value(chart, ser1, 10);
-    lv_chart_set_next_value(chart, ser1, 10);
-    lv_chart_set_next_value(chart, ser1, 30);
-    lv_chart_set_next_value(chart, ser1, 70);
-    lv_chart_set_next_value(chart, ser1, 90);
-    /*Set the next points on 'ser1'*/
-    #else
+
     for (int i = 0; i < CYCLES; i++)
     {
       for (int i = 0; i < TABLE_SIZE; i++)
       {
         lv_chart_set_next_value(chart, ser1, (samples[i]*100));
-        
-          #ifdef ESP_PLATFORM
-        vTaskDelay(pdMS_TO_TICKS(10));
-        #endif
       }
     }
-    #endif
     
 }
 

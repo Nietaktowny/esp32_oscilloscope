@@ -33,6 +33,8 @@ void gui_task (void* args) {
 
 	hal_setup();
 
+    generate_example_values();
+
     gui_init();
 
 	hal_loop();
@@ -41,10 +43,8 @@ void gui_task (void* args) {
 
 void app_main(void)
 {
-    //generate_example_values();
-    
     ESP_LOGI(GUI, "Starting gui task...");
-    xTaskCreatePinnedToCore(gui_task, "gui_task", 4096, NULL, 0, NULL, 1);
+    xTaskCreatePinnedToCore(gui_task, "gui_task", 4096, NULL, 1, NULL, 1);
 }
 
 

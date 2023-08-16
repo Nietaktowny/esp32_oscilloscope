@@ -1,3 +1,7 @@
 cmake_minimum_required(VERSION 3.16.0)
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+find_library(MATH_LIBRARY m)
+if(MATH_LIBRARY)
+    target_link_libraries(esp32_oscillosope PUBLIC ${MATH_LIBRARY})
+endif()
 project(esp32_oscillosope)

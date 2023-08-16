@@ -11,7 +11,6 @@
 
 static lv_obj_t * chart;
 static lv_obj_t * active_screen;
-static lv_style_t chart_style;
 
 #define POINTS_NUMBER 3001
 #define Y_MIN_VALUE -100
@@ -20,8 +19,6 @@ static lv_style_t chart_style;
 #define TABLE_SIZE 500
 float samples [TABLE_SIZE];
 #define CYCLES 6
-
-
 #define TWO_PI (3.141592653589793238 * 2)
 
 void generate_example_values(void) {
@@ -49,16 +46,16 @@ static void draw_example_chart (void) {
     lv_obj_set_size(chart, 320, 240);
     lv_obj_center(chart);
     lv_obj_set_style_bg_color(chart, lv_color_hex(0x1d1f1d), 0);
-    lv_chart_set_type(chart, LV_CHART_TYPE_LINE);   /*Show lines and points too*/
-    lv_chart_set_point_count(chart, POINTS_NUMBER);
-    lv_chart_set_update_mode(chart, LV_CHART_UPDATE_MODE_CIRCULAR);
+    lv_chart_set_type(chart, LV_CHART_TYPE_LINE);                       /*Show lines and points too*/
+    lv_chart_set_point_count(chart, POINTS_NUMBER);                     /*Change number of points on x axis*/
+    lv_chart_set_update_mode(chart, LV_CHART_UPDATE_MODE_CIRCULAR);     /*Circularly add the new data*/
+    lv_chart_set_div_line_count(chart, 8, 8);                           /*Change number of division lines*/
     lv_coord_t y_max = Y_MAX_VALUE;
     lv_coord_t y_min = Y_MIN_VALUE;
-    lv_chart_set_range(chart, LV_CHART_AXIS_PRIMARY_Y, y_min, y_max);
+    lv_chart_set_range(chart, LV_CHART_AXIS_PRIMARY_Y, y_min, y_max);   /*Change number of points on y axis*/
 
-    /*Add two data series*/
+    /*Add one data serie*/
     lv_chart_series_t * ser1 = lv_chart_add_series(chart, lv_palette_main(LV_PALETTE_RED), LV_CHART_AXIS_PRIMARY_Y);
-    //lv_chart_series_t * ser2 = lv_chart_add_series(chart, lv_palette_main(LV_PALETTE_GREEN), LV_CHART_AXIS_SECONDARY_Y);
 
     for (int i = 0; i < CYCLES; i++)
     {

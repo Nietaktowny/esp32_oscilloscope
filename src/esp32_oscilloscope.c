@@ -24,7 +24,7 @@
 #include "esp_timer.h"
 #include "esp_err.h"
 #include "esp_log.h"
-
+#include "esp_task_wdt.h"
 static const char *GUI = "gui task";
 
 
@@ -41,8 +41,10 @@ void gui_task (void* args) {
 
 void app_main(void)
 {
+    //generate_example_values();
+    
     ESP_LOGI(GUI, "Starting gui task...");
-    xTaskCreatePinnedToCore(gui_task, "gui_task", 4096, NULL, 1, NULL, 1);
+    xTaskCreatePinnedToCore(gui_task, "gui_task", 4096, NULL, 0, NULL, 1);
 }
 
 
@@ -52,6 +54,8 @@ int main(void)
 	lv_init();
 
 	hal_setup();
+
+    generate_example_values();
 
     gui_init();
 

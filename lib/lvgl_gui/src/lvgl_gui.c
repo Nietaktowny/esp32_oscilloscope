@@ -15,6 +15,8 @@ static lv_obj_t * active_screen;
 #define POINTS_NUMBER 3001
 #define Y_MIN_VALUE -100
 #define Y_MAX_VALUE 100
+#define V_DIVISION_LINES 8
+#define H_DIVISION_LINES 8
 
 #define TABLE_SIZE 500
 float samples [TABLE_SIZE];
@@ -49,7 +51,7 @@ static void draw_example_chart (void) {
     lv_chart_set_type(chart, LV_CHART_TYPE_LINE);                       /*Show lines and points too*/
     lv_chart_set_point_count(chart, POINTS_NUMBER);                     /*Change number of points on x axis*/
     lv_chart_set_update_mode(chart, LV_CHART_UPDATE_MODE_CIRCULAR);     /*Circularly add the new data*/
-    lv_chart_set_div_line_count(chart, 8, 8);                           /*Change number of division lines*/
+    lv_chart_set_div_line_count(chart, H_DIVISION_LINES, V_DIVISION_LINES);                           /*Change number of division lines*/
     lv_coord_t y_max = Y_MAX_VALUE;
     lv_coord_t y_min = Y_MIN_VALUE;
     lv_chart_set_range(chart, LV_CHART_AXIS_PRIMARY_Y, y_min, y_max);   /*Change number of points on y axis*/
@@ -61,7 +63,7 @@ static void draw_example_chart (void) {
     {
       for (int i = 0; i < TABLE_SIZE; i++)
       {
-        lv_chart_set_next_value(chart, ser1, (samples[i]*100));
+        lv_chart_set_next_value(chart, ser1, (samples[i]*Y_MAX_VALUE));
       }
     }
     

@@ -39,6 +39,10 @@ void generate_example_values(void) {
   }
 }
 
+void change_number_of_division_lines (uint8_t h_div, uint8_t v_div) {
+  lv_chart_set_div_line_count(chart, h_div, v_div); 
+}
+
 static void draw_example_chart (void) {
 
     /*Create a chart*/
@@ -48,10 +52,10 @@ static void draw_example_chart (void) {
     lv_obj_set_size(chart, 320, 240);
     lv_obj_center(chart);
     lv_obj_set_style_bg_color(chart, lv_color_hex(0x1d1f1d), 0);
-    lv_chart_set_type(chart, LV_CHART_TYPE_LINE);                       /*Show lines and points too*/
-    lv_chart_set_point_count(chart, POINTS_NUMBER);                     /*Change number of points on x axis*/
-    lv_chart_set_update_mode(chart, LV_CHART_UPDATE_MODE_CIRCULAR);     /*Circularly add the new data*/
-    lv_chart_set_div_line_count(chart, H_DIVISION_LINES, V_DIVISION_LINES);                           /*Change number of division lines*/
+    lv_chart_set_type(chart, LV_CHART_TYPE_LINE);                         /*Show lines and points too*/
+    lv_chart_set_point_count(chart, POINTS_NUMBER);                       /*Change number of points on x axis*/
+    lv_chart_set_update_mode(chart, LV_CHART_UPDATE_MODE_CIRCULAR);       /*Circularly add the new data*/
+    change_number_of_division_lines(H_DIVISION_LINES, V_DIVISION_LINES);  /*Change number of division lines*/
     lv_coord_t y_max = Y_MAX_VALUE;
     lv_coord_t y_min = Y_MIN_VALUE;
     lv_chart_set_range(chart, LV_CHART_AXIS_PRIMARY_Y, y_min, y_max);   /*Change number of points on y axis*/

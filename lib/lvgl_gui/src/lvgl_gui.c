@@ -4,14 +4,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#ifdef ESP_PLATFORM
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#endif
-
-static lv_obj_t * chart;
-static lv_obj_t * active_screen;
-
 #define POINTS_NUMBER 3001
 #define Y_MIN_VALUE -100
 #define Y_MAX_VALUE 100
@@ -23,6 +15,12 @@ float samples [TABLE_SIZE];
 #define CYCLES 6
 #define TWO_PI (3.141592653589793238 * 2)
 
+static lv_obj_t * chart;
+static lv_chart_series_t * ser1;
+static lv_obj_t * active_screen;
+static lv_coord_t y_max = Y_MAX_VALUE;
+static lv_coord_t y_min = Y_MIN_VALUE;
+
 void generate_example_values(void) {
   
   float phaseIncrement = TWO_PI/TABLE_SIZE;
@@ -30,10 +28,6 @@ void generate_example_values(void) {
   int i;
 
   for (i = 0; i < TABLE_SIZE; i ++) {
-    #ifdef ESP_PLATFORM
-    vTaskDelay(pdMS_TO_TICKS(10));
-    #endif
-
     samples[i] = sin(currentPhase);
     currentPhase += phaseIncrement;
   }
@@ -41,6 +35,14 @@ void generate_example_values(void) {
 
 void change_number_of_division_lines (uint8_t h_div, uint8_t v_div) {
   lv_chart_set_div_line_count(chart, h_div, v_div); 
+}
+
+lv_obj_t* gui_get_chart (void) {
+  return chart;
+}
+
+lv_chart_series_t* gui_get_ser1 (void) {
+  return ser1;
 }
 
 static void draw_example_chart (void) {
@@ -56,12 +58,10 @@ static void draw_example_chart (void) {
     lv_chart_set_point_count(chart, POINTS_NUMBER);                       /*Change number of points on x axis*/
     lv_chart_set_update_mode(chart, LV_CHART_UPDATE_MODE_CIRCULAR);       /*Circularly add the new data*/
     change_number_of_division_lines(H_DIVISION_LINES, V_DIVISION_LINES);  /*Change number of division lines*/
-    lv_coord_t y_max = Y_MAX_VALUE;
-    lv_coord_t y_min = Y_MIN_VALUE;
     lv_chart_set_range(chart, LV_CHART_AXIS_PRIMARY_Y, y_min, y_max);   /*Change number of points on y axis*/
 
     /*Add one data serie*/
-    lv_chart_series_t * ser1 = lv_chart_add_series(chart, lv_palette_main(LV_PALETTE_RED), LV_CHART_AXIS_PRIMARY_Y);
+    ser1 = lv_chart_add_series(chart, lv_palette_main(LV_PALETTE_RED), LV_CHART_AXIS_PRIMARY_Y);
 
     for (int i = 0; i < CYCLES; i++)
     {

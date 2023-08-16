@@ -1,6 +1,6 @@
 find_library(MATH_LIBRARY m)
 if(MATH_LIBRARY)
-    target_link_libraries(MyTarget PUBLIC ${MATH_LIBRARY})
+    target_link_libraries(esp32_oscillosope PUBLIC ${MATH_LIBRARY})
 endif()
 
 

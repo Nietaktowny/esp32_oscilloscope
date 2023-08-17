@@ -26,7 +26,10 @@ Main distinction is made between **desktop** and **embedded** tests.
 **Desktop** tests are running in native platform. 
 **Embedded** tests are running on hardware, in Espressif platform.
 
-Each approach is configured separately in it's own PlatformIO configuration environment. (`native_test` for desktop, and `esp32_test` for embedded).
+Each approach is configured separately in it's own PlatformIO configuration environment. (`native_test` for desktop, and `esp32_test` for embedded). There is also `native_sdl` environment for running gui tests on emulator. 
+
+### Gui test
+Gui tests are tests that need to be running on emulator with SDL and LVGL. These tests are placed in `test\desktop\test_gui\tests` folder and single function running all tests should be first included in `tests.h`, then added to `test_runner.c` main function.
 
 
 ## Single test structure
@@ -44,7 +47,7 @@ Tests are made according to the convention below:
     }
     
 ## Test file structure
-Test files are structured as described in PlatformIO [documentation](https://docs.platformio.org/en/stable/advanced/unit-testing/frameworks/unity.html).
+Test files are structured as described in PlatformIO [documentation](https://docs.platformio.org/en/stable/advanced/unit-testing/frameworks/unity.html). Note that the structure below is prepared for standalone test. To see example for tests using test runner see gui test folder.
 
 Example: 
 

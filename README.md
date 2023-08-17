@@ -1,15 +1,14 @@
-
-# Esp32 Oscilloscope ![Build](https://github.com/Nietaktowny/esp32_oscilloscope/actions/workflows/build.yml/badge.svg)  ![Unit Testing](https://github.com/Nietaktowny/esp32_oscilloscope/actions/workflows/unit_test.yml/badge.svg)
-=======
+# esp32_oscilloscope
 
 ## About this project
- Oscilloscope built on ESP-IDF framework. The board it uses it's ESP-WROVER-KIT V4.1 because it's single dev board that has all needed features: 
- 
+Simple oscilloscope built on ESP-IDF framework. The board it uses it's ESP-WROVER-KIT V4.1 because it's single dev board that has all needed features: 
 
  - LCD screen
  - microSD card slot for storing values
  - FT2232HL chip that can be used for debugging
  - 5V Power Input
+#### Example:
+![example screen from native](scripts/example_chart.jpg)
 
 ## Documentation
 ### PlatformIO:
@@ -22,19 +21,47 @@
  - [ESP-IDF documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/index.html)
  - [ESP-WROVER-KIT hardware description](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-wrover-kit.html)
 
-### LCD documentation:
- - [LCD ILI9341 documentation](https://cdn-shop.adafruit.com/datasheets/ILI9341.pdf)
-
 ### Folder specific README files:
 
- - [Tests README](test/README.md)
- - [Libraries README](lib/README.md)
+ - [Tests README](https://github.com/Nietaktowny/esp32_oscilloscope/blob/main/test/README)
+ - [Libraries README](https://github.com/Nietaktowny/esp32_oscilloscope/blob/main/lib/README)
+ 
+### Getting started
+ 1. Install PlatformIO:
+	 
 
-## TODOs List
+          python -m pip install --upgrade pip
+          pip install -U platformio
+          platformio update
 
- - [ ] Create simple docs
- - [ ] Add LCD control library
- - [ ] Add ADC measure library
+2. Install needed dependencies like SDL2:
+	- Linux:
+	
 
+          sudo apt-get update
+          sudo apt-get install libsdl2-dev
+	- macOS:
+	
+
+    ``HOMEBREW_NO_AUTO_UPDATE=1 brew install sdl2``
+
+	- Windows:
+	Activate msys2 and mingw64:
+	``echo "C:\msys64\usr\bin" >> $env:GITHUB_PATH
+	echo "C:\msys64\mingw64\bin" >> $env:GITHUB_PATH``
+	Install deps:
+	``pacman --noconfirm -S --needed mingw-w64-x86_64-SDL2
+	gcc --version``
+3. Build this project with PlatformIO:
+	- for embedded:
+``platformio run -e esp32_release``
+	- for native emulator:
+	``platformio run -e native_sdl``
+4. Run this project:
+	- flash it on ESP-WROVER-KIT:
+	``pio run -t upload -t monitor -e esp32_release``
+	- run it on native platform with emulator:
+	``pio run -t execute -e native_sdl``
+	`
 ## Problems
 

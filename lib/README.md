@@ -13,20 +13,16 @@ I will try to describe each component in it's own docs folder. There i will only
 Currently this is overview of used components:
 
 - **CMock** - Althrough CMock is part of Espressif platform this was added here, so CMock was also available in native platform. It's only library that doesn't keep the conventions of PlatformIO libs folders usage.
-It doesn't have unit tests implemented by me.
+For more information refer to: [CMock README](https://github.com/ThrowTheSwitch/CMock/blob/master/docs/CMock_Summary.md)
 
-- **lcd_controller** - It's main usage is all interactions LCD screen built-in on ESP Wrover Kit.
-The unit tests are stored in *test\desktop\test_lcd_controller* folder for native platform, and *test\embedded\test_lcd_controller* folder for espressif platform (tests running on actual device).
+- **lvgl_gui** - It's main usage is all interactions LCD screen built-in on ESP Wrover Kit using LVGL library.
+The unit tests are stored in `test\desktop\test_gui` folder for native platform.
 
-- **CException** - It's exception handling framework build in ANSI C used for exception handling. The unit tests are stored in *test\desktop\test_cexception* folder
-
-## CMock
-Each component have it's own CMock files (headers in include folder, and source files in src folder) for mocking. These are generated with script manually so it's not advised to make any changes to them. These are files with Mock- prefix.
-
-## List of TODOs
-
- - [x] Prepare example structure of lib dep (example lib was lcd_controller)
- - [x] Prepare unit tests and mocking for components on one example component
- - [x] Prepare basic README as a place to use for notes about libraries
- - [ ] Implement lcd_controller component
- - [ ] Libraries platform currently needs to be specified as '*' in lib deps, to allow testing on native platform - is there better way?
+- **CException** - It's exception handling framework build in ANSI C used for exception handling. The unit tests are stored in `test\desktop\test_cexception` folder.
+For more information refer to: [CException README](https://github.com/ThrowTheSwitch/CException/blob/master/README.md)
+- **esp_lcd_ili9341** - It's Espressif component from Espressif component registry used to implement interactions with ILI9341 LCD controller. Used in `hal\esp32` to initialize LCD.
+For more information refer to: [IDF Component registry page](https://components.espressif.com/components/espressif/esp_lcd_ili9341)
+- **lvgl** -  Light and Versatile Graphics Library used to made GUI for LVD.
+For more information refer to: [LVGL Github repo](https://github.com/lvgl/lvgl)
+- **lv_drivers** - Display controller and touchpad driver to can be directly used with LVGL. Used in `hal\sdl` to initialize emulator.
+For more information refer to: [lv_drivers Github repo](https://github.com/lvgl/lv_drivers)

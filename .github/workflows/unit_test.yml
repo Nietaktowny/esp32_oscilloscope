@@ -51,6 +51,6 @@ jobs:
         run: |
           git clone --recursive https://github.com/throwtheswitch/cmock.git
       - name: Run desktop test
-        run: pio test --verbose --environment native_test
+        run: pio test -v -e native_test
       - name: Run sdl emulator tests
-        run: pio run -e native_sdl
+        run: pio test -v -e native_sdl

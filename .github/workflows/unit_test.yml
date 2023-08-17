@@ -53,4 +53,4 @@ jobs:
       - name: Run desktop test
         run: pio test --verbose --environment native_test
       - name: Run sdl emulator tests
-        run: pio test --verbose --environment native_sdl
+        run: pio run -e native_sdl

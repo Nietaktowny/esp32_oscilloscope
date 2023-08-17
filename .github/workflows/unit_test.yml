@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-2019, macos-latest]
         python-version: [3.9]
     runs-on: ${{ matrix.os }}
     steps:
@@ -51,8 +51,6 @@ jobs:
         run: |
           git clone --recursive https://github.com/throwtheswitch/cmock.git
       - name: Run desktop test
-        run: pio test --verbose --environment native_test
+        run: pio test -v -e native_test
       - name: Run sdl emulator tests
-        run: |
-          platformio run -e native_sdl
-          python -m pip install --upgrade pip
+        run: pio test -v -e native_sdl

@@ -66,3 +66,6 @@ cmock
 
 #Build folder
 build
+
+#logs
+logs

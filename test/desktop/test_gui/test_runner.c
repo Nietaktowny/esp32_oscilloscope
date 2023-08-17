@@ -4,8 +4,9 @@
 
 void setUp(void) {
   	lv_init();
-	hal_setup();
+	  hal_setup();
     test_chart_setup();
+    test_lvgl_gui_setup();
 }
 
 void tearDown(void) {
@@ -17,4 +18,5 @@ void tearDown(void) {
   */
 int main(void) {
   run_chart_tests();
+  run_lvgl_gui_tests();
 }

@@ -1,10 +1,6 @@
 #include "tests/tests.h"
 #include "lvgl.h"
 #include "app_hal.h"
-#include "esp_system.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include <stdio.h>
 
 void setUp(void) {
   	lv_init();
@@ -18,12 +14,9 @@ void tearDown(void) {
 }
 
 /**
-  * For ESP-IDF framework
+  * main function for native dev-platform
   */
-void app_main(void) {
+int main(void) {
   run_chart_tests();
   run_lvgl_gui_tests();
-  vTaskDelay(200);
-  fflush(stdout);
-  esp_restart();
 }

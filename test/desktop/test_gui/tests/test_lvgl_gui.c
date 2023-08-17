@@ -17,7 +17,6 @@ static float samples [TABLE_SIZE];
 
 static lv_obj_t * chart;
 static lv_chart_series_t * ser1;
-static int r;
 static time_t t;
 
 /*END OF DEFINES*/

@@ -5,5 +5,9 @@ menu "LVGL Gui Configuration"
     config LV_CONF_SKIP
         bool "Uncheck this to use custom lv_conf.h"
         default y
+    
+    config GUI_MENU_TEST
+        bool "Test if menuconfig works."
+        default y
 
 endmenu

@@ -1,5 +1,5 @@
 dependencies:
   idf: '>=5.0'
-description: Graphical user interface made usind LVGL library.
+description: Graphical user interface made using LVGL library.
 url: 
 version: 1.0.0

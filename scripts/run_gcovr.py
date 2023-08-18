@@ -2,8 +2,6 @@ Import("env")
 import subprocess
 import os
 
-subprocess.run("pip -q install gcovr")
-
 
 def gcovr_callback(*arg, **kwargs):
     print("Executing gcovr")

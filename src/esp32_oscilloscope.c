@@ -1,13 +1,13 @@
 /**
-  ******************************************************************************
-  * @file    main.c
-  * @author  Ac6
-  * @version V1.0
-  * @date    01-December-2013
-  * @brief   Default main function.
-  ******************************************************************************
-*/
-
+ * @file esp32_oscilloscope.c
+ * @author Wojciech Mytych
+ * @brief main function of project.
+ * @version 0.1
+ * @date 2023-08-18
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 
 #include "lvgl.h"
 #include "app_hal.h"
@@ -25,9 +25,15 @@
 #include "esp_err.h"
 #include "esp_log.h"
 #include "esp_task_wdt.h"
+
+/// This is logging tag.
 static const char *GUI = "gui task";
 
-
+/**
+ * @brief Task running GUI.
+ * 
+ * @param args Additional arguments passed to task.
+ */
 void gui_task (void* args) {
     lv_init();
 
@@ -40,7 +46,10 @@ void gui_task (void* args) {
 	hal_loop();
 }
 
-
+/**
+ * @brief Esp-idf main function.
+ * 
+ */
 void app_main(void)
 {
     ESP_LOGI(GUI, "Starting gui task...");

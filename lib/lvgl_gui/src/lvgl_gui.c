@@ -1,3 +1,13 @@
+/**
+ * @file lvgl_gui.c
+ * @author Wojciech Mytych
+ * @brief Main file of lvgl_gui library.
+ * @version 0.1
+ * @date 2023-08-18
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include "lvgl.h"
 #include "lvgl_gui.h"
 #include <math.h>
@@ -19,6 +29,10 @@ static lv_obj_t * chart;
 static lv_chart_series_t * ser1;
 static lv_obj_t * active_screen;
 
+/**
+ * @brief Generates values to generate example sin wave.
+ * 
+ */
 void generate_example_values(void) {
   
   float phaseIncrement = TWO_PI/TABLE_SIZE;

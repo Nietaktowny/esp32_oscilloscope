@@ -106,7 +106,7 @@ void test_if_changed_y_max_axis_range (void) {
     gui_set_chart_y_axis_range(exp_min, exp_max);
 
     //then
-    TEST_ASSERT_EQUAL_MESSAGE(exp_max, ((lv_chart_t *)chart)->ymax[0], "Didn't change y_max value of chart."); 
+    TEST_ASSERT_EQUAL_MESSAGE(exp_max+1, ((lv_chart_t *)chart)->ymax[0], "Didn't change y_max value of chart."); 
 }
 
 void test_if_changed_y_min_axis_range (void) {

@@ -70,7 +70,7 @@ static void gui_create_chart (void) {
 
     for (int i = 0; i < CYCLES; i++)
     {
-      for (int i = 0; i < TABLE_SIZE; i++)
+      for (int j = 0; j < TABLE_SIZE; j++)
       {
         lv_chart_set_next_value(chart, ser1, (samples[i]*Y_MAX_VALUE));
       }

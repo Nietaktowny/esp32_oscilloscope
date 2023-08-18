@@ -1,5 +1,8 @@
 #pragma once
 
+#include <stdint.h>
+#include "lvgl.h"
+
 #define POINTS_NUMBER 3001
 #define Y_MIN_VALUE -100
 #define Y_MAX_VALUE 100

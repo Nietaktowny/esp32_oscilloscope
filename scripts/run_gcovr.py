@@ -2,6 +2,9 @@ Import("env")
 import subprocess
 import os
 
+# Path to where desktop tests jsons are placed.
+path = ".pio/tests/desktop"
+os.mkdir(path)
 
 def gcovr_callback(*arg, **kwargs):
     print("Executing gcovr")

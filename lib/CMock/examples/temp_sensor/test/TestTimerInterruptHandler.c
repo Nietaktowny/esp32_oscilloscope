@@ -1,15 +1,20 @@
-#include "AT91SAM7X256.h"
-#include "TimerInterruptHandler.h"
-#include "Types.h"
 #include "unity.h"
+#include "Types.h"
+#include "TimerInterruptHandler.h"
+#include "AT91SAM7X256.h"
 
-AT91S_TC TimerCounter0Peripheral;
+AT91S_TC  TimerCounter0Peripheral;
 
-void setUp(void) {}
+void setUp(void)
+{
+}
 
-void tearDown(void) {}
+void tearDown(void)
+{
+}
 
-void testSetAndGetSystemTime(void) {
+void testSetAndGetSystemTime(void)
+{
   Timer_SetSystemTime(0);
   TEST_ASSERT_EQUAL(0, Timer_GetSystemTime());
 
@@ -20,8 +25,8 @@ void testSetAndGetSystemTime(void) {
   TEST_ASSERT_EQUAL(UINT32_MAX, Timer_GetSystemTime());
 }
 
-void testInterruptHandlerShouldIncrementSystemTimeOnlyIfStatusHasCompareRegisterCOverflowBitSet(
-    void) {
+void testInterruptHandlerShouldIncrementSystemTimeOnlyIfStatusHasCompareRegisterCOverflowBitSet(void)
+{
   Timer_SetSystemTime(0);
   AT91C_BASE_TC0->TC_SR = 0;
   Timer_InterruptHandler();
@@ -43,7 +48,8 @@ void testInterruptHandlerShouldIncrementSystemTimeOnlyIfStatusHasCompareRegister
   TEST_ASSERT(Timer_GetSystemTime() > 0);
 }
 
-void testInterruptHandlerShouldIncrementSystemTimerBy_10(void) {
+void testInterruptHandlerShouldIncrementSystemTimerBy_10(void)
+{
   Timer_SetSystemTime(0);
   AT91C_BASE_TC0->TC_SR = AT91C_TC_CPCS;
   Timer_InterruptHandler();

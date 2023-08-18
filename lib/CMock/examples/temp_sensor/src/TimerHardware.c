@@ -1,8 +1,9 @@
+#include "Types.h"
 #include "TimerHardware.h"
 #include "TimerConfigurator.h"
-#include "Types.h"
 
-void TimerHardware_Init(void) {
+void TimerHardware_Init(void)
+{
   Timer_EnablePeripheralClocks();
   Timer_Reset();
   Timer_ConfigureMode();

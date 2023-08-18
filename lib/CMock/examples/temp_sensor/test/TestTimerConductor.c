@@ -1,21 +1,27 @@
-#include "MockTimerHardware.h"
-#include "MockTimerInterruptHandler.h"
-#include "MockTimerModel.h"
-#include "TimerConductor.h"
-#include "Types.h"
 #include "unity.h"
+#include "Types.h"
+#include "TimerConductor.h"
+#include "MockTimerHardware.h"
+#include "MockTimerModel.h"
+#include "MockTimerInterruptHandler.h"
 
-void setUp(void) {}
+void setUp(void)
+{
+}
 
-void tearDown(void) {}
+void tearDown(void)
+{
+}
 
-void testInitShouldCallHardwareInit(void) {
+void testInitShouldCallHardwareInit(void)
+{
   TimerHardware_Init_Expect();
 
   TimerConductor_Init();
 }
 
-void testRunShouldGetSystemTimeAndPassOnToModelForEventScheduling(void) {
+void testRunShouldGetSystemTimeAndPassOnToModelForEventScheduling(void)
+{
   Timer_GetSystemTime_ExpectAndReturn(1230);
   TimerModel_UpdateTime_Expect(1230);
   TimerConductor_Run();

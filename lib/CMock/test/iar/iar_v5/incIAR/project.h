@@ -21,10 +21,10 @@
 
 /// Include your AT91 Library files and specific compiler definitions
 
+#include <intrinsics.h>
 #include "AT91SAM7X-EK.h"
 #include "AT91SAM7X256.h"
-#include <intrinsics.h>
 #define __inline inline
 #include "lib_AT91SAM7X256.h"
 
-#endif // _PROJECT_H
+#endif  // _PROJECT_H

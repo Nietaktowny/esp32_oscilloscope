@@ -1,12 +1,18 @@
-#include "TaskScheduler.h"
-#include "Types.h"
 #include "unity.h"
+#include "Types.h"
+#include "TaskScheduler.h"
 
-void setUp(void) { TaskScheduler_Init(); }
+void setUp(void)
+{
+  TaskScheduler_Init();
+}
 
-void tearDown(void) {}
+void tearDown(void)
+{
+}
 
-void testShouldScheduleUsartTaskAfter1000ms(void) {
+void testShouldScheduleUsartTaskAfter1000ms(void)
+{
   TEST_ASSERT_EQUAL(FALSE, TaskScheduler_DoUsart());
 
   TaskScheduler_Update(999);
@@ -16,14 +22,16 @@ void testShouldScheduleUsartTaskAfter1000ms(void) {
   TEST_ASSERT_EQUAL(TRUE, TaskScheduler_DoUsart());
 }
 
-void testShouldClearUsartDoFlagAfterReported(void) {
+void testShouldClearUsartDoFlagAfterReported(void)
+{
   TEST_ASSERT_EQUAL(FALSE, TaskScheduler_DoUsart());
   TaskScheduler_Update(1000);
   TEST_ASSERT_EQUAL(TRUE, TaskScheduler_DoUsart());
   TEST_ASSERT_EQUAL(FALSE, TaskScheduler_DoUsart());
 }
 
-void testShouldScheduleUsartTaskEvery1000ms(void) {
+void testShouldScheduleUsartTaskEvery1000ms(void)
+{
   TEST_ASSERT_EQUAL(FALSE, TaskScheduler_DoUsart());
 
   TaskScheduler_Update(1300);
@@ -36,7 +44,8 @@ void testShouldScheduleUsartTaskEvery1000ms(void) {
   TEST_ASSERT_EQUAL(TRUE, TaskScheduler_DoUsart());
 }
 
-void testShouldScheduleUsartTaskOnlyOncePerPeriod(void) {
+void testShouldScheduleUsartTaskOnlyOncePerPeriod(void)
+{
   TEST_ASSERT_EQUAL(FALSE, TaskScheduler_DoUsart());
   TaskScheduler_Update(1000);
   TEST_ASSERT_EQUAL(TRUE, TaskScheduler_DoUsart());
@@ -48,7 +57,8 @@ void testShouldScheduleUsartTaskOnlyOncePerPeriod(void) {
   TEST_ASSERT_EQUAL(TRUE, TaskScheduler_DoUsart());
 }
 
-void testShouldScheduleAdcTaskAfter100ms(void) {
+void testShouldScheduleAdcTaskAfter100ms(void)
+{
   TEST_ASSERT_EQUAL(FALSE, TaskScheduler_DoAdc());
 
   TaskScheduler_Update(99);
@@ -58,14 +68,16 @@ void testShouldScheduleAdcTaskAfter100ms(void) {
   TEST_ASSERT_EQUAL(TRUE, TaskScheduler_DoAdc());
 }
 
-void testShouldClearAdcDoFlagAfterReported(void) {
+void testShouldClearAdcDoFlagAfterReported(void)
+{
   TEST_ASSERT_EQUAL(FALSE, TaskScheduler_DoAdc());
   TaskScheduler_Update(100);
   TEST_ASSERT_EQUAL(TRUE, TaskScheduler_DoAdc());
   TEST_ASSERT_EQUAL(FALSE, TaskScheduler_DoAdc());
 }
 
-void testShouldScheduleAdcTaskEvery100ms(void) {
+void testShouldScheduleAdcTaskEvery100ms(void)
+{
   TEST_ASSERT_EQUAL(FALSE, TaskScheduler_DoAdc());
 
   TaskScheduler_Update(121);
@@ -78,7 +90,8 @@ void testShouldScheduleAdcTaskEvery100ms(void) {
   TEST_ASSERT_EQUAL(TRUE, TaskScheduler_DoAdc());
 }
 
-void testShouldScheduleAdcTaskOnlyOncePerPeriod(void) {
+void testShouldScheduleAdcTaskOnlyOncePerPeriod(void)
+{
   TEST_ASSERT_EQUAL(FALSE, TaskScheduler_DoAdc());
   TaskScheduler_Update(100);
   TEST_ASSERT_EQUAL(TRUE, TaskScheduler_DoAdc());

@@ -7,7 +7,7 @@ subprocess.run("pip -q install gcovr")
 
 def gcovr_callback(*arg, **kwargs):
     print("Executing gcovr")
-    env.Execute("gcovr --add-tracefile .pio/tests/*.json --html-details .reports/coverage.html")
+    env.Execute("gcovr --add-tracefile .pio/tests/desktop/*.json --html-details .reports/coverage.html")
 
 env.AddCustomTarget(
     "gcovr",

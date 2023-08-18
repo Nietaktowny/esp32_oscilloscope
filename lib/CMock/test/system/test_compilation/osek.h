@@ -15,26 +15,40 @@ typedef unsigned long OSEK_U32;
 void OSEKOSDisableAll(void);
 void OSEKOSEnableAll(void);
 
-typedef unsigned long *OSEKOSSaveType;
+typedef unsigned long * OSEKOSSaveType;
 typedef void OSEK_TASK;
 typedef OSEK_U8 OSEKOSPrioType;
 
 enum {
-  Task_DbgCAN,
-  Task_ALS,
-  CalibrateMagTask,
-  Task_IAQ,
-  SmartBeam,
-  Task_QbertTestImage,
-  Task_TestQbertMem,
-  Task_Cyclic1000,
-  ProcessMagForCompass,
-  ReadMag,
-  Task_Cyclic10,
-  Task_Wdm,
-  BackgroundTask,
-  Task_Cyclic20,
-  Task_Cyclic2
+Task_DbgCAN
+,
+Task_ALS
+,
+CalibrateMagTask
+,
+Task_IAQ
+,
+SmartBeam
+,
+Task_QbertTestImage
+,
+Task_TestQbertMem
+,
+Task_Cyclic1000
+,
+ProcessMagForCompass
+,
+ReadMag
+,
+Task_Cyclic10
+,
+Task_Wdm
+,
+BackgroundTask
+,
+Task_Cyclic20
+,
+Task_Cyclic2
 };
 
 OSEK_TASK OSEKOS_T_Task_DbgCAN(void);
@@ -100,46 +114,50 @@ void OSEKOS_ISR_CanRxInterrupt_1(void);
 void OSEKOS_ISR_LINError_SCI1(void);
 void OSEKOS_ISR_SysCounter(void);
 
-// defined multiple times (slightly different forms)  These should be ignored
-// because they are externed
-extern void OSEKOS_ISR_CanTxInterrupt(void);
-extern void OSEKOS_ISR_CanRxInterrupt(void);
 
-unsigned long OSEKOSrtcGetSeconds(void);
-void OSEKOSrtcIncrement(unsigned long nsec);
+// defined multiple times (slightly different forms)  These should be ignored because they are externed
+extern void OSEKOS_ISR_CanTxInterrupt( void );
+extern void OSEKOS_ISR_CanRxInterrupt( void );
 
-enum {
-  E_OS_ACCESS = 1,
-  E_OS_CALLEVEL = 2,
-  E_OS_ID = 3,
-  E_OS_LIMIT = 4,
-  E_OS_NOFUNC = 5,
-  E_OS_RESOURCE = 6,
-  E_OS_STATE = 7,
-  E_OS_VALUE = 8,
-  E_OS_SYS_StackOverflow = 20,
-  E_OS_SYS_StackUnderflow = 21,
-  E_OS_SYS_INIT = 22,
-  E_OS_SYS_CONFIG = 23,
-  E_OS_SYS_CODE = 24,
-  E_OS_SYS_TOOL = 25,
-  E_OS_SYS_TimerRange = 26
+
+unsigned long OSEKOSrtcGetSeconds ( void );
+void OSEKOSrtcIncrement ( unsigned long nsec );
+
+enum
+{
+   E_OS_ACCESS = 1,
+   E_OS_CALLEVEL = 2,
+   E_OS_ID = 3,
+   E_OS_LIMIT = 4,
+   E_OS_NOFUNC = 5,
+   E_OS_RESOURCE = 6,
+   E_OS_STATE = 7,
+   E_OS_VALUE = 8,
+   E_OS_SYS_StackOverflow = 20,
+   E_OS_SYS_StackUnderflow = 21,
+   E_OS_SYS_INIT = 22,
+   E_OS_SYS_CONFIG = 23,
+   E_OS_SYS_CODE = 24,
+   E_OS_SYS_TOOL = 25,
+   E_OS_SYS_TimerRange = 26
 };
 
-enum {
-  SUSPENDED = 0x00,
-  READY = 0x01,
-  RUNNING = 0x02,
-  WAITING = 0x03,
-  INTSTART = 0x08,
-  SETSTART = 0x10,
-  NPRTASK = 0x20,
-  USEFP = 0x40
+enum
+{
+   SUSPENDED = 0x00,
+   READY = 0x01,
+   RUNNING = 0x02,
+   WAITING = 0x03,
+   INTSTART = 0x08,
+   SETSTART = 0x10,
+   NPRTASK = 0x20,
+   USEFP = 0x40
 };
 
-typedef struct {
-  TickType maxallowedvalue;
-  TickType ticksperbase;
+typedef struct
+{
+   TickType maxallowedvalue;
+   TickType ticksperbase;
 } AlarmBaseType;
 
 typedef TaskType *TaskRefType;
@@ -153,68 +171,68 @@ typedef OSEK_U8 OSEKOSTaskActCntType;
 TaskType OSEKOStidact;
 OSEKOSPrioType OSEKOSrunprio;
 
-StatusType OSEKOSError(register StatusType);
-void ErrorHook(StatusType);
-void StartupHook(void);
-void ShutdownHook(StatusType);
+StatusType OSEKOSError ( register StatusType );
+void ErrorHook ( StatusType );
+void StartupHook ( void );
+void ShutdownHook ( StatusType );
 
-int getUsedTaskStack(TaskType);
-int getUnusedTaskStack(TaskType);
-int getUsedIsrStack(void);
-int getUnusedIsrStack(void);
-void OSEKOStaskStackCheckInit(void);
-signed char OSEKOStaskStackCheck(OSEK_U8 *);
-signed char OSEKOSisrStackCheck(OSEK_U8 *);
-void OSEKOStaskStackCheckFatal(OSEK_U8 *);
-void OSEKOSisrStackCheckFatal(OSEK_U8 *);
-OSEK_U8 *OSEKOSgetStackPointer(void);
-void OSEKOSTaskSwitch(void);
-StatusType OSEKOSReturn(StatusType);
-StatusType OSEKOSActivateTask(register TaskType);
-void OSEKOSTerminateTask(TaskType, TaskType);
+int getUsedTaskStack ( TaskType );
+int getUnusedTaskStack ( TaskType );
+int getUsedIsrStack ( void );
+int getUnusedIsrStack ( void );
+void OSEKOStaskStackCheckInit ( void );
+signed char OSEKOStaskStackCheck ( OSEK_U8 * );
+signed char OSEKOSisrStackCheck ( OSEK_U8 * );
+void OSEKOStaskStackCheckFatal ( OSEK_U8 * );
+void OSEKOSisrStackCheckFatal ( OSEK_U8 * );
+OSEK_U8 * OSEKOSgetStackPointer ( void );
+void OSEKOSTaskSwitch ( void );
+StatusType OSEKOSReturn ( StatusType );
+StatusType OSEKOSActivateTask ( register TaskType );
+void OSEKOSTerminateTask ( TaskType, TaskType );
 
-extern void OSEKOSGetResource(ResourceType);
-extern void OSEKOSReleaseResource(ResourceType);
+   extern void OSEKOSGetResource ( ResourceType );
+   extern void OSEKOSReleaseResource ( ResourceType );
 
-int OSEKOSSetEvent(TaskType, EventMaskType);
-int OSEKOSWaitEvent(EventMaskType);
+int OSEKOSSetEvent ( TaskType, EventMaskType );
+int OSEKOSWaitEvent ( EventMaskType );
 TickType OSEKOSGetAlarm(register AlarmType);
-void OSEKOSSetAlarm(AlarmType, TickType, TickType);
-StatusType OSEKOSSetAbsAlarm(AlarmType a, TickType b, TickType c);
+void OSEKOSSetAlarm ( AlarmType, TickType, TickType );
+StatusType OSEKOSSetAbsAlarm ( AlarmType a, TickType b, TickType c );
 
-StatusType OSEKOSCancelAlarm(register AlarmType);
-void OSEKOSAdvCntr(void);
-AppModeType GetActiveApplicationMode(void);
+StatusType OSEKOSCancelAlarm ( register AlarmType );
+void OSEKOSAdvCntr ( void );
+AppModeType GetActiveApplicationMode ( void );
 
-void StartOS(AppModeType);
+void StartOS ( AppModeType );
 
-void OSEKOSShutdownOS(StatusType);
+void OSEKOSShutdownOS ( StatusType );
 
-StatusType ActivateTask(TaskType A);
-StatusType TerminateTask(void);
-StatusType ChainTask(TaskType A);
-StatusType GetTaskState(TaskType A, TaskStateRefType B);
-StatusType GetTaskID(TaskRefType A);
-StatusType Schedule(void);
-StatusType GetResource(ResourceType A);
-StatusType ReleaseResource(ResourceType A);
-StatusType SetEvent(TaskType A, EventMaskType B);
-StatusType ClearEvent(EventMaskType A);
-StatusType WaitEvent(EventMaskType A);
-StatusType GetEvent(TaskType A, EventMaskRefType B);
-StatusType GetAlarm(AlarmType A, TickRefType B);
-StatusType GetAlarmBase(AlarmType A, AlarmBaseRefType B);
-StatusType SetRelAlarm(AlarmType A, TickType B, TickType C);
-StatusType SetAbsAlarm(AlarmType A, TickType B, TickType C);
-StatusType CancelAlarm(AlarmType A);
-StatusType AdvCntr(CounterType A);
-StatusType IAdvCntr(CounterType A);
-void SuspendOSInterrupts(void);
-void ResumeOSInterrupts(void);
-void SuspendAllInterrupts(void);
-void ResumeAllInterrupts(void);
-void DisableAllInterrupts(void);
-void EnableAllInterrupts(void);
+StatusType ActivateTask ( TaskType A );
+StatusType TerminateTask ( void );
+StatusType ChainTask ( TaskType A );
+StatusType GetTaskState ( TaskType A, TaskStateRefType B );
+StatusType GetTaskID ( TaskRefType A );
+StatusType Schedule ( void );
+StatusType GetResource ( ResourceType A );
+StatusType ReleaseResource ( ResourceType A );
+StatusType SetEvent ( TaskType A, EventMaskType B );
+StatusType ClearEvent ( EventMaskType A );
+StatusType WaitEvent ( EventMaskType A );
+StatusType GetEvent ( TaskType A, EventMaskRefType B );
+StatusType GetAlarm ( AlarmType A, TickRefType B );
+StatusType GetAlarmBase ( AlarmType A, AlarmBaseRefType B );
+StatusType SetRelAlarm ( AlarmType A, TickType B, TickType C );
+StatusType SetAbsAlarm ( AlarmType A, TickType B, TickType C );
+StatusType CancelAlarm ( AlarmType A );
+StatusType AdvCntr ( CounterType A );
+StatusType IAdvCntr ( CounterType A );
+void SuspendOSInterrupts ( void );
+void ResumeOSInterrupts ( void );
+void SuspendAllInterrupts ( void );
+void ResumeAllInterrupts ( void );
+void DisableAllInterrupts ( void );
+void EnableAllInterrupts ( void );
 
 void OSEKOSDisable(void);
 void OSEKOSEnable(void);
@@ -231,17 +249,26 @@ void OSEKOSV850ASyncContextLoad(OSEKOSSaveType);
 void OSEKOSV850ASyncContextLoadFromIRQ(OSEKOSSaveType);
 
 // arrays of function pointers - they look like function prototypes
-void((*const OSEKOStaskStartAddress[10])(void));
-StatusType (*OSEKOStaskStatuses[10][5])(void);
+void ( ( * const OSEKOStaskStartAddress [10] ) ( void ) );
+StatusType (* OSEKOStaskStatuses [10][5]) ( void );
 
-void OSEKOSV850StartContext(OSEK_TASK((*const)(void)), OSEK_U8 *const);
-void OSEKOSV850StartContextFromIRQ(OSEK_TASK((*const)(void)), OSEK_U8 *const);
+void OSEKOSV850StartContext
+(
+    OSEK_TASK (( * const ) ( void )),
+    OSEK_U8 * const
+);
+void OSEKOSV850StartContextFromIRQ
+(
+    OSEK_TASK (( * const ) ( void )),
+    OSEK_U8 * const
+);
 
 void OSEKOSSuspendOSInterrupts(void);
 void OSEKOSResumeOSInterrupts(void);
 void OSEKOSSuspendAllInterrupts(void);
 void OSEKOSResumeAllInterrupts(void);
 void OSEKOScheckSuspendResumeNesting(void);
+
 
 void OSEKOSgetSR(void);
 void OSEKOSEnableInterrupt_intern(int nr);

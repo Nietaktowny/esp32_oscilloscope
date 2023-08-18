@@ -1,33 +1,27 @@
-#include "unity.h"
-#include "Types.h"
 #include "Executor.h"
-#include "MockModel.h"
-#include "MockUsartConductor.h"
 #include "MockAdcConductor.h"
-#include "MockTimerConductor.h"
 #include "MockIntrinsicsWrapper.h"
+#include "MockModel.h"
+#include "MockTimerConductor.h"
+#include "MockUsartConductor.h"
+#include "Types.h"
+#include "unity.h"
 
-void setUp(void)
-{
-}
+void setUp(void) {}
 
-void tearDown(void)
-{
-}
+void tearDown(void) {}
 
-void testInitShouldCallInitOfAllConductorsAndTheModel(void)
-{
+void testInitShouldCallInitOfAllConductorsAndTheModel(void) {
   Model_Init_Expect();
   UsartConductor_Init_Expect();
   AdcConductor_Init_Expect();
   TimerConductor_Init_Expect();
   Interrupt_Enable_Expect();
-  
+
   Executor_Init();
 }
 
-void testRunShouldCallRunForEachConductorAndReturnTrueAlways(void)
-{
+void testRunShouldCallRunForEachConductorAndReturnTrueAlways(void) {
   UsartConductor_Run_Expect();
   TimerConductor_Run_Expect();
   AdcConductor_Run_Expect();

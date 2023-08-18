@@ -10,11 +10,11 @@
 
 // Peripheral Helper Definitions
 #define USART0_CLOCK_ENABLE (AT91C_ID_US0)
-#define USART0_TX_PIN       (AT91C_PA1_TXD0)
+#define USART0_TX_PIN (AT91C_PA1_TXD0)
 #define TIMER0_CLOCK_ENABLE (((uint32)0x1) << AT91C_ID_TC0)
-#define PIOA_CLOCK_ENABLE   (((uint32)0x1) << AT91C_ID_PIOA)
-#define PIOB_CLOCK_ENABLE   (((uint32)0x1) << AT91C_ID_PIOB)
-#define TIOA0_PIN_MASK      (((uint32)0x1) << 23) // Timer/Counter Output Pin
+#define PIOA_CLOCK_ENABLE (((uint32)0x1) << AT91C_ID_PIOA)
+#define PIOB_CLOCK_ENABLE (((uint32)0x1) << AT91C_ID_PIOB)
+#define TIOA0_PIN_MASK (((uint32)0x1) << 23) // Timer/Counter Output Pin
 
 // Application Type Definitions
 typedef unsigned int uint32;
@@ -27,13 +27,13 @@ typedef char bool;
 
 // Application Special Value Definitions
 #ifndef TRUE
-#define TRUE      (1)
+#define TRUE (1)
 #endif
 #ifndef FALSE
-#define FALSE     (0)
+#define FALSE (0)
 #endif
 #ifndef NULL
-#define NULL      (0)
+#define NULL (0)
 #endif // NULL
 #define DONT_CARE (0)
 
@@ -94,10 +94,9 @@ typedef char bool;
 #define UINT32_MIN 0x00000000U
 #endif
 
-typedef struct _EXAMPLE_STRUCT_T
-{
-    int x;
-    int y;
+typedef struct _EXAMPLE_STRUCT_T {
+  int x;
+  int y;
 } EXAMPLE_STRUCT_T;
 
 #endif // _MYTYPES_H_

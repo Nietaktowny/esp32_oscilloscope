@@ -1,2 +1,2 @@
 
-char* ThisFunctionHasNotBeenTested(int Poor, char* LittleFunction);
+char *ThisFunctionHasNotBeenTested(int Poor, char *LittleFunction);

@@ -1,18 +1,13 @@
-#include "unity.h"
-#include "Types.h"
 #include "TemperatureCalculator.h"
+#include "Types.h"
+#include "unity.h"
 #include <math.h>
 
-void setUp(void)
-{
-}
+void setUp(void) {}
 
-void tearDown(void)
-{
-}
+void tearDown(void) {}
 
-void testTemperatureCalculatorShouldCalculateTemperatureFromMillivolts(void)
-{
+void testTemperatureCalculatorShouldCalculateTemperatureFromMillivolts(void) {
   float result;
 
   // Series resistor is 5k Ohms; Reference voltage is 3.0V
@@ -27,7 +22,7 @@ void testTemperatureCalculatorShouldCalculateTemperatureFromMillivolts(void)
   TEST_ASSERT_FLOAT_WITHIN(0.01f, -19.96f, result);
 }
 
-void testShouldReturnNegativeInfinityWhen_0_millivoltsInput(void)
-{
-  TEST_ASSERT_FLOAT_WITHIN(0.0000001f, -INFINITY, TemperatureCalculator_Calculate(0));
+void testShouldReturnNegativeInfinityWhen_0_millivoltsInput(void) {
+  TEST_ASSERT_FLOAT_WITHIN(0.0000001f, -INFINITY,
+                           TemperatureCalculator_Calculate(0));
 }

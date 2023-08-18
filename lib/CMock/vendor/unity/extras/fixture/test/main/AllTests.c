@@ -7,14 +7,11 @@
 
 #include "unity_fixture.h"
 
-static void runAllTests(void)
-{
-    RUN_TEST_GROUP(UnityFixture);
-    RUN_TEST_GROUP(UnityCommandOptions);
+static void runAllTests(void) {
+  RUN_TEST_GROUP(UnityFixture);
+  RUN_TEST_GROUP(UnityCommandOptions);
 }
 
-int main(int argc, const char* argv[])
-{
-    return UnityMain(argc, argv, runAllTests);
+int main(int argc, const char *argv[]) {
+  return UnityMain(argc, argv, runAllTests);
 }
-

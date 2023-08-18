@@ -7,8 +7,8 @@ int mockMock_Verify_Counter = 0;
 int mockMock_Destroy_Counter = 0;
 
 void CMock_Guts_MemFreeFinal(void) { CMockMemFreeFinalCounter++; }
-void mockMock_Init(void)           { mockMock_Init_Counter++;    }
-void mockMock_Verify(void)         { mockMock_Verify_Counter++;  }
-void mockMock_Destroy(void)        { mockMock_Destroy_Counter++; }
+void mockMock_Init(void) { mockMock_Init_Counter++; }
+void mockMock_Verify(void) { mockMock_Verify_Counter++; }
+void mockMock_Destroy(void) { mockMock_Destroy_Counter++; }
 
 #endif

@@ -4,8 +4,6 @@
 #define LV_CONF_H
 #endif
 
-
-
 #define CONFIG_LV_CONF_SKIP 1
 #define CONFIG_LV_CONF_MINIMAL 1
 #define CONFIG_LV_COLOR_DEPTH_16 1

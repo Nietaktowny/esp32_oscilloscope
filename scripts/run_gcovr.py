@@ -3,8 +3,12 @@ import subprocess
 import os
 
 # Path to where desktop tests jsons are placed.
-path = ".pio/tests/desktop"
-os.mkdir(path)
+json_path = ".pio/tests/desktop"
+reports_path = ".reports"
+if not os.path.exists(json_path):
+    os.mkdir(json_path)
+if not os.path.exists(reports_path):
+    os.mkdir(reports_path)
 
 def gcovr_callback(*arg, **kwargs):
     print("Executing gcovr")

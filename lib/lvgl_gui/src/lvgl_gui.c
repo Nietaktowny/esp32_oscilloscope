@@ -34,7 +34,13 @@ static lv_obj_t * active_screen;  ///< Object used to reference currently active
 
 
 void gui_set_number_of_division_lines (uint8_t h_div, uint8_t v_div) {
-  lv_chart_set_div_line_count(chart, h_div, v_div); 
+  if (h_div > 0 && v_div > 0)
+  {
+    lv_chart_set_div_line_count(chart, h_div, v_div);
+  } else {
+    printf("Wrong number for division lines.");
+    //TODO Macro for logging based on framework (native/esp-idf)
+  }
 }
 
 void gui_set_chart_point_count(uint16_t count) {

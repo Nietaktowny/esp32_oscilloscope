@@ -1,0 +1,5 @@
+dependencies:
+  idf: '>=5.0'
+description: Library used to read ADC values using continous mode.
+url: 
+version: 1.0.0

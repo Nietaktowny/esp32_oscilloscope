@@ -1,0 +1,1 @@
+idf_component_register(SRCS "esp_adc_reader.c" INCLUDE_DIRS "include" REQUIRES "esp_adc")

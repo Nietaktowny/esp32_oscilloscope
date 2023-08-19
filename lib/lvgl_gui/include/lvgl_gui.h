@@ -36,6 +36,12 @@ void gui_init (void);
 void generate_example_values(void);
 
 /**
+ * @brief Generates example sin wave.
+ * 
+ */
+void generate_example_sin_wave(void);
+
+/**
  * @brief Getter function used to get chat object.
  * 
  * @return lv_obj_t* Chart object.
@@ -71,3 +77,10 @@ void gui_set_chart_point_count(uint16_t count);
  * @param y_max Max range of y axis.
  */
 void gui_set_chart_y_axis_range (int16_t y_min, int16_t y_max);
+
+/**
+ * @brief Set next point on chart.
+ * 
+ * @param value Value of point on y axis.
+ */
+void gui_set_point (int16_t value);

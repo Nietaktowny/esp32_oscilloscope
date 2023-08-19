@@ -32,17 +32,6 @@ static lv_obj_t * chart;          ///< Object used to reference chart.
 static lv_chart_series_t * ser1;  ///< Object used to reference first series.
 static lv_obj_t * active_screen;  ///< Object used to reference currently active screen.
 
-void generate_example_values(void) {
-  
-  float phaseIncrement = TWO_PI/TABLE_SIZE;
-  float currentPhase = 0.0;
-  int i;
-
-  for (i = 0; i < TABLE_SIZE; i ++) {
-    samples[i] = sin(currentPhase);
-    currentPhase += phaseIncrement;
-  }
-}
 
 void gui_set_number_of_division_lines (uint8_t h_div, uint8_t v_div) {
   lv_chart_set_div_line_count(chart, h_div, v_div); 
@@ -54,6 +43,10 @@ void gui_set_chart_point_count(uint16_t count) {
 
 void gui_set_chart_y_axis_range (int16_t y_min, int16_t y_max) {
   lv_chart_set_range(chart, LV_CHART_AXIS_PRIMARY_Y,(lv_coord_t) y_min,(lv_coord_t) y_max);
+}
+
+void gui_set_point (int16_t value) {
+  lv_chart_set_next_value(chart, ser1, value);
 }
 
 lv_obj_t* gui_get_chart (void) {
@@ -82,18 +75,6 @@ static void gui_create_chart (void) {
     lv_chart_set_update_mode(chart, LV_CHART_UPDATE_MODE_CIRCULAR);       /*Circularly add the new data*/
     gui_set_number_of_division_lines(H_DIVISION_LINES, V_DIVISION_LINES);  /*Change number of division lines*/
     gui_set_chart_y_axis_range(Y_MIN_VALUE, Y_MAX_VALUE);                  /*Change number of points on y axis*/
-
-    /*Add one data serie*/
-    ser1 = lv_chart_add_series(chart, lv_color_hex(HEX_SERIES_ONE_COLOR), LV_CHART_AXIS_PRIMARY_Y);
-
-    for (int i = 0; i < CYCLES; i++)
-    {
-      for (int i = 0; i < TABLE_SIZE; i++)
-      {
-        lv_chart_set_next_value(chart, ser1, (samples[i]*Y_MAX_VALUE));
-      }
-    }
-    
 }
 
 /**
@@ -104,6 +85,28 @@ static void gui_create_chart (void) {
 static void gui_create_series (void) {
     /*Add one data serie*/
     ser1 = lv_chart_add_series(chart, lv_color_hex(HEX_SERIES_ONE_COLOR), LV_CHART_AXIS_PRIMARY_Y);
+}
+
+void generate_example_values(void) {
+  
+  float phaseIncrement = TWO_PI/TABLE_SIZE;
+  float currentPhase = 0.0;
+  int i;
+
+  for (i = 0; i < TABLE_SIZE; i ++) {
+    samples[i] = sin(currentPhase);
+    currentPhase += phaseIncrement;
+  }
+}
+
+void generate_example_sin_wave(void) {
+      for (int i = 0; i < CYCLES; i++)
+    {
+      for (int i = 0; i < TABLE_SIZE; i++)
+      {
+        gui_set_point(samples[i]*Y_MAX_VALUE);
+      }
+    }
 }
 
 void gui_init (void) {

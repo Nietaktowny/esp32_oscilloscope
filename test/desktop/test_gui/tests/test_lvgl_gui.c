@@ -22,7 +22,7 @@ static time_t t;
 /*END OF DEFINES*/
 
 /*HELPER FUNCTIONS*/
-void generate_example_sin_wave_values(void) {
+/*static void generate_example_sin_wave_values(void) {
   
     float phaseIncrement = TWO_PI/TABLE_SIZE;
     float currentPhase = 0.0;
@@ -34,7 +34,7 @@ void generate_example_sin_wave_values(void) {
     }
 }
 
-void generate_example_sin_wave(void) {
+static void generate_example_sin_wave(void) {
   
     for (int i = 0; i < CYCLES; i++)
     {
@@ -44,7 +44,7 @@ void generate_example_sin_wave(void) {
       }
     }
 }
-
+*/
 int get_random_value (int range) {
     srand((unsigned) time(&t));
     return (rand() % range);
@@ -60,6 +60,26 @@ void test_lvgl_gui_setup(void) {
 }
 
 /******************************************TESTS************************************************/
+
+void test_add_new_point (void) {
+    //given
+    int16_t value = get_random_value(99);
+    lv_chart_set_point_count(chart, 1);
+    lv_point_t point = {
+        .x = 0,
+        .y = 0,
+    };
+
+    //when
+    gui_set_point(value);
+
+    //then
+    lv_chart_get_point_pos_by_id(chart, ser1, 0, &point);
+    TEST_ASSERT_EQUAL_MESSAGE(value, point.y, "Value different from expected.");
+
+    //after
+    lv_chart_set_point_count(chart, POINTS_NUMBER);
+}
 
 void test_series_one_color(void) {
     //given
@@ -243,5 +263,6 @@ int run_lvgl_gui_tests(void) {
   RUN_TEST(test_chart_update_mode_is_circular);
   RUN_TEST(test_check_chart_background_color);
   RUN_TEST(test_series_one_color);
+  RUN_TEST(test_add_new_point);
   return UNITY_END();
 }

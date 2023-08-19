@@ -5,8 +5,16 @@
 extern "C" {
 #endif
 
-
+/**
+ * @brief Setup and initializing of SDL.
+ * 
+ */
 void hal_setup(void);
+
+/**
+ * @brief Loop running lv_task_handler for SDL.
+ * 
+ */
 void hal_loop(void);
 
 

@@ -26,7 +26,7 @@
 #include "esp_log.h"
 #include "esp_task_wdt.h"
 
-/// This is logging tag.
+/// This is logging tag used for logs related to lvgl_gui library.
 static const char *GUI = "gui task";
 
 /**
@@ -47,7 +47,7 @@ void gui_task (void* args) {
 }
 
 /**
- * @brief Esp-idf main function.
+ * @brief Entry point of application for ESP-IDF framework.
  * 
  */
 void app_main(void)
@@ -58,6 +58,11 @@ void app_main(void)
 
 
 #elif (USE_SDL)
+/**
+ * @brief Entry point of application for native framework.
+ * 
+ * @return int 0 on success
+ */
 int main(void)
 {
 	lv_init();

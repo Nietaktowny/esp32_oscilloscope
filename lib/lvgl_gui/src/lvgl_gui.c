@@ -1,11 +1,13 @@
 /**
  * @file lvgl_gui.c
  * @author Wojciech Mytych
- * @brief Main file of lvgl_gui library.
+ * @brief Main source file of lvgl_gui library.
  * @version 0.1
  * @date 2023-08-18
  * 
  * @copyright Copyright (c) 2023
+ * 
+ * @todo Add error checking to library.
  * 
  */
 #include "lvgl.h"
@@ -16,7 +18,7 @@
 
 /**********************************************************STATIC FUNCTIONS PROTOTYPES***********************************************************************************/
 static void gui_create_chart (void);
-
+static void gui_create_series (void);
 
 /**************************************************************************************************************************************************************************/
 
@@ -25,14 +27,11 @@ static float samples [TABLE_SIZE];
 #define CYCLES 6
 #define TWO_PI (3.141592653589793238 * 2)
 
-static lv_obj_t * chart;
-static lv_chart_series_t * ser1;
-static lv_obj_t * active_screen;
 
-/**
- * @brief Generates values to generate example sin wave.
- * 
- */
+static lv_obj_t * chart;          ///< Object used to reference chart.
+static lv_chart_series_t * ser1;  ///< Object used to reference first series.
+static lv_obj_t * active_screen;  ///< Object used to reference currently active screen.
+
 void generate_example_values(void) {
   
   float phaseIncrement = TWO_PI/TABLE_SIZE;
@@ -65,6 +64,11 @@ lv_chart_series_t* gui_get_ser1 (void) {
   return ser1;
 }
 
+/**
+ * @brief Function used to create and initialize chart.
+ * Here are set base properties of chart and chart object is created.
+ * @note This function should be called first before any other functions modifying the chart object. 
+ */
 static void gui_create_chart (void) {
 
     /*Create a chart*/
@@ -92,9 +96,23 @@ static void gui_create_chart (void) {
     
 }
 
+/**
+ * @brief Function used to create and initialize data series on chart.
+ * Here are set base properties of series such as color, and axis.
+ * @note This function should be called first before any other functions modifying the series objects.
+ */
+static void gui_create_series (void) {
+    /*Add one data serie*/
+    ser1 = lv_chart_add_series(chart, lv_color_hex(HEX_SERIES_ONE_COLOR), LV_CHART_AXIS_PRIMARY_Y);
+}
 
 void gui_init (void) {
     active_screen = lv_scr_act();
     LV_ASSERT_NULL(active_screen);
+
     gui_create_chart();
+    LV_ASSERT_NULL(chart);
+
+    gui_create_series();
+    LV_ASSERT_NULL(ser1);
 }

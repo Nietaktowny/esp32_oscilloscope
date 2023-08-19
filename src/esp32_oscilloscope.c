@@ -43,6 +43,8 @@ void gui_task (void* args) {
 
     gui_init();
 
+    generate_example_sin_wave();
+
 	hal_loop();
 }
 
@@ -72,6 +74,8 @@ int main(void)
     generate_example_values();
 
     gui_init();
+
+    generate_example_sin_wave();
 
 	hal_loop();
 }

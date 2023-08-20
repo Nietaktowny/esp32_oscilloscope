@@ -22,7 +22,7 @@ static time_t t;
 /*END OF DEFINES*/
 
 /*HELPER FUNCTIONS*/
-void generate_example_sin_wave_values(void) {
+/*static void generate_example_sin_wave_values(void) {
   
     float phaseIncrement = TWO_PI/TABLE_SIZE;
     float currentPhase = 0.0;
@@ -34,7 +34,7 @@ void generate_example_sin_wave_values(void) {
     }
 }
 
-void generate_example_sin_wave(void) {
+static void generate_example_sin_wave(void) {
   
     for (int i = 0; i < CYCLES; i++)
     {
@@ -44,7 +44,7 @@ void generate_example_sin_wave(void) {
       }
     }
 }
-
+*/
 int get_random_value (int range) {
     srand((unsigned) time(&t));
     return (rand() % range);
@@ -60,6 +60,43 @@ void test_lvgl_gui_setup(void) {
 }
 
 /******************************************TESTS************************************************/
+
+void test_if_div_numbers_cannot_be_both_0 (void) {
+    //given
+    uint8_t zero_h_div = 0;
+    uint8_t rand_v_div = 0;
+
+    //when
+    gui_set_number_of_division_lines(zero_h_div, rand_v_div);
+
+    //then
+    TEST_ASSERT_NOT_EQUAL_MESSAGE(0, ((lv_chart_t *)chart)->vdiv_cnt, "Number of horizontal division lines was set to 0");
+    TEST_ASSERT_NOT_EQUAL_MESSAGE(0, ((lv_chart_t *)chart)->vdiv_cnt, "Number of horizontal division lines was set to 0");
+}
+
+void test_if_vertical_div_number_cannot_be_0 (void) {
+    //given
+    uint8_t zero_h_div = get_random_value(255);
+    uint8_t rand_v_div = 0;
+
+    //when
+    gui_set_number_of_division_lines(zero_h_div, rand_v_div);
+
+    //then
+    TEST_ASSERT_NOT_EQUAL_MESSAGE(0, ((lv_chart_t *)chart)->vdiv_cnt, "Number of horizontal division lines was set to 0");
+}
+
+void test_if_horizontal_div_number_cannot_be_0 (void) {
+    //given
+    uint8_t zero_h_div = 0;
+    uint8_t rand_v_div = get_random_value(255);
+
+    //when
+    gui_set_number_of_division_lines(zero_h_div, rand_v_div);
+
+    //then
+    TEST_ASSERT_NOT_EQUAL_MESSAGE(0, ((lv_chart_t *)chart)->hdiv_cnt, "Number of horizontal division lines was set to 0");
+}
 
 void test_series_one_color(void) {
     //given
@@ -243,5 +280,8 @@ int run_lvgl_gui_tests(void) {
   RUN_TEST(test_chart_update_mode_is_circular);
   RUN_TEST(test_check_chart_background_color);
   RUN_TEST(test_series_one_color);
+  RUN_TEST(test_if_horizontal_div_number_cannot_be_0);
+  RUN_TEST(test_if_vertical_div_number_cannot_be_0);
+  RUN_TEST(test_if_div_numbers_cannot_be_both_0);
   return UNITY_END();
 }

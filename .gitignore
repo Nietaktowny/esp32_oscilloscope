@@ -69,3 +69,7 @@ build
 
 #logs
 logs
+.reports
+
+#docs
+docs

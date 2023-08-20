@@ -5,8 +5,16 @@
 extern "C" {
 #endif
 
-
+/**
+ * @brief Setup and initializing LCD for ILI9341
+ * 
+ */
 void hal_setup(void);
+
+/**
+ * @brief Loop running lv_timer_handler.
+ * 
+ */
 void hal_loop(void);
 
 

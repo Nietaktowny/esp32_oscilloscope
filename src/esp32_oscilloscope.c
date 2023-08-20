@@ -26,6 +26,8 @@
 #include "esp_log.h"
 #include "esp_task_wdt.h"
 
+#include "esp_adc_reader.h"
+
 /// This is logging tag used for logs related to lvgl_gui library.
 static const char *GUI = "gui task";
 
@@ -56,6 +58,8 @@ void app_main(void)
 {
     ESP_LOGI(GUI, "Starting gui task...");
     xTaskCreatePinnedToCore(gui_task, "gui_task", 4096, NULL, 1, NULL, 1);
+
+    adc_reader_init();
 }
 
 

@@ -67,6 +67,7 @@ static void continuous_adc_init(adc_channel_t *channel, uint8_t channel_num, adc
  * prepared.
  */
 void adc_reader_init(void) {
+    ESP_LOGI(TAG, "Start of ADC Reader.");
     adc_continuous_handle_t handle = NULL;
     continuous_adc_init(channel, sizeof(channel) / sizeof(adc_channel_t), &handle);
 } 

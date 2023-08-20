@@ -61,6 +61,31 @@ void test_lvgl_gui_setup(void) {
 
 /******************************************TESTS************************************************/
 
+void test_if_div_numbers_cannot_be_both_0 (void) {
+    //given
+    uint8_t zero_h_div = 0;
+    uint8_t rand_v_div = 0;
+
+    //when
+    gui_set_number_of_division_lines(zero_h_div, rand_v_div);
+
+    //then
+    TEST_ASSERT_NOT_EQUAL_MESSAGE(0, ((lv_chart_t *)chart)->vdiv_cnt, "Number of horizontal division lines was set to 0");
+    TEST_ASSERT_NOT_EQUAL_MESSAGE(0, ((lv_chart_t *)chart)->vdiv_cnt, "Number of horizontal division lines was set to 0");
+}
+
+void test_if_vertical_div_number_cannot_be_0 (void) {
+    //given
+    uint8_t zero_h_div = get_random_value(255);
+    uint8_t rand_v_div = 0;
+
+    //when
+    gui_set_number_of_division_lines(zero_h_div, rand_v_div);
+
+    //then
+    TEST_ASSERT_NOT_EQUAL_MESSAGE(0, ((lv_chart_t *)chart)->vdiv_cnt, "Number of horizontal division lines was set to 0");
+}
+
 void test_if_horizontal_div_number_cannot_be_0 (void) {
     //given
     uint8_t zero_h_div = 0;
@@ -71,30 +96,6 @@ void test_if_horizontal_div_number_cannot_be_0 (void) {
 
     //then
     TEST_ASSERT_NOT_EQUAL_MESSAGE(0, ((lv_chart_t *)chart)->hdiv_cnt, "Number of horizontal division lines was set to 0");
-}
-
-void test_add_new_point (void) {
-    //given
-    int16_t value = get_random_value(99);
-    lv_chart_set_point_count(chart, 1);
-    lv_point_t point = {
-        .x = 0,
-        .y = 0,
-    };
-    TEST_ASSERT_MESSAGE(lv_chart_get_point_count(chart) == 1, "Wrong number of chart point count");
-
-    //when
-    gui_set_point(value);
-    gui_set_point(value);
-    gui_set_point(value);
-    gui_set_point(value);
-
-    //then
-    lv_chart_get_point_pos_by_id(chart, ser1, 1, &point);
-    TEST_ASSERT_EQUAL_MESSAGE(value, (int16_t)point.y, "Value different from expected.");
-
-    //after
-    //lv_chart_set_point_count(chart, POINTS_NUMBER);
 }
 
 void test_series_one_color(void) {
@@ -279,7 +280,8 @@ int run_lvgl_gui_tests(void) {
   RUN_TEST(test_chart_update_mode_is_circular);
   RUN_TEST(test_check_chart_background_color);
   RUN_TEST(test_series_one_color);
-  //RUN_TEST(test_add_new_point);
   RUN_TEST(test_if_horizontal_div_number_cannot_be_0);
+  RUN_TEST(test_if_vertical_div_number_cannot_be_0);
+  RUN_TEST(test_if_div_numbers_cannot_be_both_0);
   return UNITY_END();
 }

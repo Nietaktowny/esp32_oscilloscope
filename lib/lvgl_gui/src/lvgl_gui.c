@@ -2,7 +2,7 @@
  * @file lvgl_gui.c
  * @author Wojciech Mytych
  * @brief Main source file of lvgl_gui library.
- * @version 0.1
+ * @version 0.4
  * @date 2023-08-18
  * 
  * @copyright Copyright (c) 2023
@@ -39,7 +39,7 @@ void gui_set_number_of_division_lines (uint8_t h_div, uint8_t v_div) {
     lv_chart_set_div_line_count(chart, h_div, v_div);
   } else {
     printf("Wrong number for division lines.");
-    //TODO Macro for logging based on framework (native/esp-idf)
+    ///TODO Macro for logging based on framework (native/esp-idf)
   }
 }
 

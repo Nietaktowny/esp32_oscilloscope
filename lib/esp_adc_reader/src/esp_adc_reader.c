@@ -22,7 +22,7 @@ static void continuous_adc_init(adc_channel_t *channel, uint8_t channel_num, adc
 /**************************************************************************************************************************************************************************/
 
 
-static const char *TAG = "EXAMPLE";
+static const char *TAG = "ADC_READER";
 static adc_channel_t channel[2] = {ADC_CHANNEL_6, ADC_CHANNEL_7};
 
 

@@ -27,9 +27,14 @@
 #include "esp_task_wdt.h"
 
 #include "esp_adc_reader.h"
+#include "freertos/queue.h"
 
 /// This is logging tag used for logs related to lvgl_gui library.
 static const char *GUI = "gui task";
+
+QueueHandle_t read_values;
+TaskHandle_t adc_task_handle;
+TaskHandle_t gui_task_handle;
 
 /**
  * @brief Task running GUI.
@@ -37,17 +42,25 @@ static const char *GUI = "gui task";
  * @param args Additional arguments passed to task.
  */
 void gui_task (void* args) {
-    lv_init();
+    uint32_t buf = 0;
+    BaseType_t xStatus;
+    while (1)
+    {
 
-	hal_setup();
+        xStatus = xQueueReceive(read_values, &buf, pdMS_TO_TICKS(0));
+        
+        if(xStatus == pdTRUE) {
+            gui_set_point((int16_t)buf);
+        }
+        hal_loop();
+    }
+    
+}
 
-    generate_example_values();
 
-    gui_init();
-
-    generate_example_sin_wave();
-
-	hal_loop();
+void adc_task (void* args) {
+    adc_reader_init(read_values);
+    adc_reader_loop();
 }
 
 /**
@@ -56,10 +69,18 @@ void gui_task (void* args) {
  */
 void app_main(void)
 {
-    ESP_LOGI(GUI, "Starting gui task...");
-    xTaskCreatePinnedToCore(gui_task, "gui_task", 4096, NULL, 1, NULL, 1);
+    lv_init();
 
-    adc_reader_init();
+	hal_setup();
+
+    read_values = xQueueCreate(10, sizeof(uint32_t));
+
+    gui_init();
+
+    ESP_LOGI(GUI, "Starting gui task...");
+    xTaskCreatePinnedToCore(gui_task, "gui_task", 4096, NULL, 1, &gui_task_handle, 1);
+    ESP_LOGI(GUI, "Starting adc task...");
+    xTaskCreate(adc_task, "adc_task", 4096, NULL, 1, &adc_task_handle);
 }
 
 
@@ -84,6 +105,5 @@ int main(void)
 	hal_loop();
 }
 #endif
-
 
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#define POINTS_NUMBER                   3001
-#define Y_MIN_VALUE                     -100
-#define Y_MAX_VALUE                     100
+#define POINTS_NUMBER                   500
+#define Y_MIN_VALUE                     -5000
+#define Y_MAX_VALUE                     5000
 /**
  * @file lvgl_gui.h
  * @author Wojciech Mytych

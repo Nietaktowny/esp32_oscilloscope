@@ -9,11 +9,11 @@
 
 /*DEFINES*/
 
-#define TABLE_SIZE 500
+#define TABLE_SIZE 100
 static float samples [TABLE_SIZE];
-#define CYCLES 6
+#define CYCLES 5
 #define TWO_PI (3.141592653589793238 * 2)
-#define Y_MAX_VALUE 100
+#define Y_MAX_VALUE 5000
 
 static lv_obj_t * chart;
 static lv_chart_series_t * ser1;

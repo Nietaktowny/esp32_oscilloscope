@@ -50,7 +50,7 @@ void gui_task (void* args) {
         xStatus = xQueueReceive(read_values, &buf, pdMS_TO_TICKS(0));
         
         if(xStatus == pdTRUE) {
-            gui_set_point((int16_t)buf);
+            gui_set_point((int16_t)(buf));
         }
         hal_loop();
     }
@@ -73,7 +73,7 @@ void app_main(void)
 
 	hal_setup();
 
-    read_values = xQueueCreate(10, sizeof(uint32_t));
+    read_values = xQueueCreate(10, sizeof(int));
 
     gui_init();
 

@@ -253,7 +253,7 @@ void test_chart_height (void) {
 
 void test_chart_width (void) {
     //given
-    lv_coord_t w = 303;
+    lv_coord_t w = 290;
     //then
     TEST_ASSERT_EQUAL_MESSAGE(w, CHART_WIDTH, "Wrong chart width");
 }

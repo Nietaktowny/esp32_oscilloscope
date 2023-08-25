@@ -12,12 +12,12 @@
 
 #include "lvgl.h"
 
-#define POINTS_NUMBER                   5001
-#define Y_MIN_VALUE                     -4
-#define Y_MAX_VALUE                     4
+#define POINTS_NUMBER                   501
+#define Y_MIN_VALUE                     -4000
+#define Y_MAX_VALUE                     4000
 #define V_DIVISION_LINES                8           ///< Basic number of vertical division lines when first initialing chart.
 #define H_DIVISION_LINES                8           ///< Basic number of horizontal division lines when first initialing chart.
-#define CHART_WIDTH                     303
+#define CHART_WIDTH                     290
 #define CHART_HEIGHT                    240
 #define HEX_CHART_BACKGROUND_COLOR      0x1d1f1d    ///< Chart background color - basic setup is black.
 #define HEX_SERIES_ONE_COLOR            0xf5e042    ///< First series color - basic setup is yellow.

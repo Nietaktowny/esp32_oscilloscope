@@ -15,6 +15,7 @@
 #include "esp_adc_reader.h"
 #include "esp_log.h"
 #include "esp_adc/adc_cali.h"
+#include "esp_adc/adc_cali_scheme.h"
 #include <string.h>
 #include <stdio.h>
 #include "lvgl.h"
@@ -34,6 +35,8 @@ QueueHandle_t queue_handle;
 
 
 adc_continuous_handle_t handle = NULL;
+
+adc_cali_handle_t cali_handle = NULL;
 
 static bool IRAM_ATTR s_conv_done_cb(adc_continuous_handle_t handle, const adc_continuous_evt_data_t *edata, void *user_data)
 {
@@ -78,6 +81,29 @@ static void continuous_adc_init(adc_channel_t *channel, uint8_t channel_num, adc
     *out_handle = handle;
 }
 
+static esp_err_t adc_cali_init (void) {
+    esp_err_t ret = 0;
+    adc_cali_scheme_ver_t scheme = ADC_CALI_SCHEME_VER_LINE_FITTING;
+
+    ret = adc_cali_check_scheme(&scheme);
+    ESP_ERROR_CHECK(ret);
+
+    ESP_LOGI(TAG, "calibration scheme version is %s", "Line Fitting");
+    adc_cali_line_fitting_config_t cali_config = {
+        .unit_id = ADC_UNIT_1,
+        .atten = ADC_ATTEN_DB_0,
+        .bitwidth = ADC_BITWIDTH_DEFAULT,
+    };
+    ret = adc_cali_create_scheme_line_fitting(&cali_config, &cali_handle);
+
+    return ret;
+}
+
+
+int adc_calc_volt(int16_t data) {
+    return (data*ADC_READER_RES_VALUE);
+}
+
 /**
  * @brief Starting point of esp_adc_reader library.
  * @note This function should be called before any other
@@ -99,6 +125,7 @@ void adc_reader_init(QueueHandle_t queue) {
     };
     ESP_ERROR_CHECK(adc_continuous_register_event_callbacks(handle, &cbs, NULL));
     ESP_ERROR_CHECK(adc_continuous_start(handle));
+    ESP_ERROR_CHECK(adc_cali_init());
 }
 
 void adc_reader_loop (void) {
@@ -128,14 +155,18 @@ void adc_reader_loop (void) {
                 for (int i = 0; i < ret_num; i += SOC_ADC_DIGI_RESULT_BYTES) {
                     adc_digi_output_data_t *p = (adc_digi_output_data_t*)&result[i];
                     uint32_t chan_num = ADC_READER_GET_CHANNEL(p);
-                    uint32_t data = ADC_READER_GET_DATA(p);
+                    int16_t data = ADC_READER_GET_DATA(p);
+                    int voltage;
                     /* Check the channel number validation, the data is invalid if the channel num exceed the maximum channel */
                     if (chan_num < SOC_ADC_CHANNEL_NUM(ADC_READER_UNIT)) {
                         //ESP_LOGI(TAG, "Unit: %s, Channel: %"PRIu32", Value: %"PRIx32, unit, chan_num, data);
-                        xQueueSend(queue_handle, &data, pdMS_TO_TICKS(10));
-                        vTaskDelay(pdMS_TO_TICKS(10));
+                        ESP_LOGI(TAG, "Raw Data: %d", data);
+                        voltage = adc_calc_volt(data);
+                        ESP_LOGI(TAG, "Readed voltage: %d", voltage);
+                        xQueueSend(queue_handle, &voltage, pdMS_TO_TICKS(10));
+                        vTaskDelay(pdMS_TO_TICKS(5));
                     } else {
-                        ESP_LOGW(TAG, "Invalid data [%s_%"PRIu32"_%"PRIx32"]", unit, chan_num, data);
+                        ESP_LOGW(TAG, "Invalid data %d",  data);
                     }
                 }
                 /**

@@ -9,9 +9,9 @@
 
 /*DEFINES*/
 
-#define TABLE_SIZE 500
+#define TABLE_SIZE 100
 static float samples [TABLE_SIZE];
-#define CYCLES 6
+#define CYCLES 5
 #define TWO_PI (3.141592653589793238 * 2)
 
 static lv_obj_t * chart;

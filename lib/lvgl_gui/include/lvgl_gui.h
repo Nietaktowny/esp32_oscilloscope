@@ -1,26 +1,27 @@
-#pragma once
-
-#define POINTS_NUMBER                   500
-#define Y_MIN_VALUE                     -5000
-#define Y_MAX_VALUE                     5000
 /**
  * @file lvgl_gui.h
  * @author Wojciech Mytych
  * @brief Main header file of lvgl_gui library.
- * @version 0.1
+ * @version 0.2
  * @date 2023-08-18
  * 
  * @copyright Copyright (c) 2023
  * 
  */
+#pragma once
 
+#include "lvgl.h"
 
+#define POINTS_NUMBER                   5001
+#define Y_MIN_VALUE                     -4
+#define Y_MAX_VALUE                     4
 #define V_DIVISION_LINES                8           ///< Basic number of vertical division lines when first initialing chart.
 #define H_DIVISION_LINES                8           ///< Basic number of horizontal division lines when first initialing chart.
-#define CHART_WIDTH                     320
+#define CHART_WIDTH                     303
 #define CHART_HEIGHT                    240
 #define HEX_CHART_BACKGROUND_COLOR      0x1d1f1d    ///< Chart background color - basic setup is black.
 #define HEX_SERIES_ONE_COLOR            0xf5e042    ///< First series color - basic setup is yellow.
+#define HEX_TICKS_COLOR                 0xfffefc    ///< Ticks on Y axis color - basic setup is white.
 
 /**
  * @brief Entry point of lvgl_gui library.
@@ -84,3 +85,12 @@ void gui_set_chart_y_axis_range (int16_t y_min, int16_t y_max);
  * @param value Value of point on y axis.
  */
 void gui_set_point (int16_t value);
+
+
+/**
+ * @brief Set number of major and minor ticks on Y axis.
+ * 
+ * @param major_ticks Number of major ticks.
+ * @param minor_ticks Number of minor ticks.
+ */
+void gui_set_ticks(int16_t major_ticks, int16_t minor_ticks);

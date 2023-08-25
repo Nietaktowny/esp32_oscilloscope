@@ -13,7 +13,6 @@
 static float samples [TABLE_SIZE];
 #define CYCLES 5
 #define TWO_PI (3.141592653589793238 * 2)
-#define Y_MAX_VALUE 5000
 
 static lv_obj_t * chart;
 static lv_chart_series_t * ser1;
@@ -60,6 +59,32 @@ void test_lvgl_gui_setup(void) {
 }
 
 /******************************************TESTS************************************************/
+
+void test_number_of_minor_ticks_lines (void) {
+    //given
+    lv_chart_tick_dsc_t * t = &((lv_chart_t *)chart)->tick[0];
+    int16_t minor_ticks = get_random_value(10);
+
+
+    //when
+    gui_set_ticks(6, minor_ticks);
+
+    //then
+    TEST_ASSERT_EQUAL_MESSAGE((uint32_t)minor_ticks, t->minor_cnt, "Number of minor ticks different from expected");
+}
+
+void test_number_of_major_ticks_lines (void) {
+    //given
+    lv_chart_tick_dsc_t * t = &((lv_chart_t *)chart)->tick[0];
+    int16_t major_ticks = get_random_value(10);
+
+
+    //when
+    gui_set_ticks(major_ticks, 0);
+
+    //then
+    TEST_ASSERT_EQUAL_MESSAGE((uint32_t)major_ticks, t->major_cnt, "Number of major ticks different from expected");
+}
 
 void test_if_div_numbers_cannot_be_both_0 (void) {
     //given
@@ -137,7 +162,7 @@ void test_if_changed_y_max_axis_range (void) {
     //given
     int16_t exp_min, exp_max;
     exp_min = get_random_value(3200);
-    exp_max = get_random_value(5000);
+    exp_max = get_random_value(100);
 
     //when
     gui_set_chart_y_axis_range(exp_min, exp_max);
@@ -149,8 +174,8 @@ void test_if_changed_y_max_axis_range (void) {
 void test_if_changed_y_min_axis_range (void) {
     //given
     int16_t exp_min, exp_max;
-    exp_min = get_random_value(3200);
-    exp_max = get_random_value(100);
+    exp_min = get_random_value(100);
+    exp_max = get_random_value(3200);
 
     //when
     gui_set_chart_y_axis_range(exp_min, exp_max);
@@ -228,7 +253,7 @@ void test_chart_height (void) {
 
 void test_chart_width (void) {
     //given
-    lv_coord_t w = 320;
+    lv_coord_t w = 303;
     //then
     TEST_ASSERT_EQUAL_MESSAGE(w, CHART_WIDTH, "Wrong chart width");
 }
@@ -283,5 +308,7 @@ int run_lvgl_gui_tests(void) {
   RUN_TEST(test_if_horizontal_div_number_cannot_be_0);
   RUN_TEST(test_if_vertical_div_number_cannot_be_0);
   RUN_TEST(test_if_div_numbers_cannot_be_both_0);
+  RUN_TEST(test_number_of_major_ticks_lines);
+  RUN_TEST(test_number_of_minor_ticks_lines);
   return UNITY_END();
 }

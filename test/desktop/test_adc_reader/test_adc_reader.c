@@ -27,6 +27,54 @@ void tearDown(void) {
   // clean stuff up here
 }
 
+void test_should_check_random4_voltage_value(void) {
+  //given
+  int16_t raw = 3698;
+  int voltage;
+
+  //when
+  voltage = adc_calc_volt(raw);
+
+  //then
+  TEST_ASSERT_EQUAL_MESSAGE(2979, voltage, "Max voltage value should be 2979 mV");
+}
+
+void test_should_check_random3_voltage_value(void) {
+  //given
+  int16_t raw = 694;
+  int voltage;
+
+  //when
+  voltage = adc_calc_volt(raw);
+
+  //then
+  TEST_ASSERT_EQUAL_MESSAGE(559, voltage, "Max voltage value should be 559 mV");
+}
+
+void test_should_check_random2_voltage_value(void) {
+  //given
+  int16_t raw = 2588;
+  int voltage;
+
+  //when
+  voltage = adc_calc_volt(raw);
+
+  //then
+  TEST_ASSERT_EQUAL_MESSAGE(2085, voltage, "Max voltage value should be 2085 mV");
+}
+
+void test_should_check_random1_voltage_value(void) {
+  //given
+  int16_t raw = 324;
+  int voltage;
+
+  //when
+  voltage = adc_calc_volt(raw);
+
+  //then
+  TEST_ASSERT_EQUAL_MESSAGE(261, voltage, "Max voltage value should be 261 mV");
+}
+
 void test_should_check_mid_voltage_value(void) {
   //given
   int16_t raw = 2043;
@@ -71,6 +119,10 @@ int runUnityTests(void) {
   RUN_TEST(test_function_should_check_volt_is_not_zero);
   RUN_TEST(test_should_check_max_voltage_value);
   RUN_TEST(test_should_check_mid_voltage_value);
+  RUN_TEST(test_should_check_random1_voltage_value);
+  RUN_TEST(test_should_check_random2_voltage_value);
+  RUN_TEST(test_should_check_random3_voltage_value);
+  RUN_TEST(test_should_check_random4_voltage_value);
   return UNITY_END();
 }
 

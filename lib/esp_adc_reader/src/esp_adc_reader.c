@@ -2,7 +2,7 @@
  * @file esp_adc_reader.c
  * @author Wojciech Mytych
  * @brief Main source file of esp_adc_reader library.
- * @version 0.1
+ * @version 1.0
  * @date 2023-08-19
  * 
  * @copyright Copyright (c) 2023
@@ -10,7 +10,6 @@
  */
 
 #ifdef ESP_PLATFORM
-#include "esp_adc/adc_continuous.h"
 #include "esp_err.h"
 #include "esp_adc_reader.h"
 #include "esp_log.h"
@@ -18,8 +17,6 @@
 #include "esp_adc/adc_cali_scheme.h"
 #include <string.h>
 #include <stdio.h>
-#include "lvgl.h"
-#include "lvgl_gui.h"
 
 /**********************************************************STATIC FUNCTIONS PROTOTYPES***********************************************************************************/
 static void continuous_adc_init(adc_channel_t *channel, uint8_t channel_num, adc_continuous_handle_t *out_handle);
@@ -27,22 +24,40 @@ static void continuous_adc_init(adc_channel_t *channel, uint8_t channel_num, adc
 
 /**************************************************************************************************************************************************************************/
 
-static TaskHandle_t s_task_handle;
+static TaskHandle_t s_task_handle = NULL;
 static const char *TAG = "ADC_READER";
 static adc_channel_t channel[2] = {ADC_CHANNEL_6, ADC_CHANNEL_7};
 
-QueueHandle_t queue_handle;
+static QueueHandle_t queue_handle;
 
 
-adc_continuous_handle_t handle = NULL;
+static adc_continuous_handle_t handle = NULL;
 
-adc_cali_handle_t cali_handle = NULL;
+
+adc_channel_t adc_reader_get_channel(void) {
+    return channel[0];
+}
+
+QueueHandle_t adc_reader_get_queue_handle(void) {
+    return queue_handle;
+}
+
+adc_continuous_handle_t adc_reader_get_adc_handle(void) {
+    return handle;
+}
 
 static bool IRAM_ATTR s_conv_done_cb(adc_continuous_handle_t handle, const adc_continuous_evt_data_t *edata, void *user_data)
 {
     BaseType_t mustYield = pdFALSE;
     //Notify that ADC continuous driver has done enough number of conversions
-    vTaskNotifyGiveFromISR(s_task_handle, &mustYield);
+    if(s_task_handle != NULL) {
+        vTaskNotifyGiveFromISR(s_task_handle, &mustYield);
+    } else {
+        ESP_LOGW(TAG, "s_task_handle is NULL, obtaining current task handle...");
+        s_task_handle = xTaskGetCurrentTaskHandle();
+        vTaskNotifyGiveFromISR(s_task_handle, &mustYield);
+    }
+    
 
     return (mustYield == pdTRUE);
 }
@@ -81,24 +96,6 @@ static void continuous_adc_init(adc_channel_t *channel, uint8_t channel_num, adc
     *out_handle = handle;
 }
 
-static esp_err_t adc_cali_init (void) {
-    esp_err_t ret = 0;
-    adc_cali_scheme_ver_t scheme = ADC_CALI_SCHEME_VER_LINE_FITTING;
-
-    ret = adc_cali_check_scheme(&scheme);
-    ESP_ERROR_CHECK(ret);
-
-    ESP_LOGI(TAG, "calibration scheme version is %s", "Line Fitting");
-    adc_cali_line_fitting_config_t cali_config = {
-        .unit_id = ADC_UNIT_1,
-        .atten = ADC_ATTEN_DB_0,
-        .bitwidth = ADC_BITWIDTH_DEFAULT,
-    };
-    ret = adc_cali_create_scheme_line_fitting(&cali_config, &cali_handle);
-
-    return ret;
-}
-
 
 int adc_calc_volt(int16_t data) {
     return (data*ADC_READER_RES_VALUE);
@@ -113,6 +110,7 @@ int adc_calc_volt(int16_t data) {
 void adc_reader_init(QueueHandle_t queue) {
 
     s_task_handle = xTaskGetCurrentTaskHandle();
+    ESP_LOGI(TAG, "Current task name: %s", pcTaskGetName(s_task_handle));
     queue_handle = queue;
     int channel_io;
 
@@ -125,7 +123,17 @@ void adc_reader_init(QueueHandle_t queue) {
     };
     ESP_ERROR_CHECK(adc_continuous_register_event_callbacks(handle, &cbs, NULL));
     ESP_ERROR_CHECK(adc_continuous_start(handle));
-    ESP_ERROR_CHECK(adc_cali_init());
+}
+
+void adc_reader_deinit(void) {
+    if (handle != NULL)
+    {
+        ESP_ERROR_CHECK(adc_continuous_stop(handle));
+        ESP_ERROR_CHECK(adc_continuous_deinit(handle));
+    }
+    
+    vQueueDelete(queue_handle);
+    memset(channel, 0, sizeof channel);
 }
 
 void adc_reader_loop (void) {
@@ -160,21 +168,15 @@ void adc_reader_loop (void) {
                     /* Check the channel number validation, the data is invalid if the channel num exceed the maximum channel */
                     if (chan_num < SOC_ADC_CHANNEL_NUM(ADC_READER_UNIT)) {
                         //ESP_LOGI(TAG, "Unit: %s, Channel: %"PRIu32", Value: %"PRIx32, unit, chan_num, data);
-                        ESP_LOGI(TAG, "Raw Data: %d", data);
+                        ESP_LOGV(TAG, "Raw Data: %d", data);
                         voltage = adc_calc_volt(data);
-                        ESP_LOGI(TAG, "Readed voltage: %d", voltage);
+                        ESP_LOGD(TAG, "Readed voltage: %d", voltage);
                         xQueueSend(queue_handle, &voltage, pdMS_TO_TICKS(10));
                         vTaskDelay(pdMS_TO_TICKS(5));
                     } else {
                         ESP_LOGW(TAG, "Invalid data %d",  data);
                     }
                 }
-                /**
-                 * Because printing is slow, so every time you call `ulTaskNotifyTake`, it will immediately return.
-                 * To avoid a task watchdog timeout, add a delay here. When you replace the way you process the data,
-                 * usually you don't need this delay (as this task will block for a while).
-                 */
-                vTaskDelay(1);
             } else if (ret == ESP_ERR_TIMEOUT) {
                 //We try to read `EXAMPLE_READ_LEN` until API returns timeout, which means there's no available data
                 break;

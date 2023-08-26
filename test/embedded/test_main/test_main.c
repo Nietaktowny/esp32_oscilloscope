@@ -3,6 +3,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include <stdio.h>
+#include "esp32/app_hal.h"
 
 void setUp(void) {
   // set stuff up here
@@ -12,15 +13,13 @@ void tearDown(void) {
   // clean stuff up here
 }
 
-void test_test_function (void) {
-  int i = 0;
-
-  TEST_ASSERT_EQUAL_INT(0, i);
+void test_if_esp_hal_is_defined (void) {
+  
 }
 
 int runUnityTests(void) {
   UNITY_BEGIN();
-  RUN_TEST(test_test_function);
+  //RUN_TEST(test_if_esp_hal_is_defined);
   return UNITY_END();
 }
 

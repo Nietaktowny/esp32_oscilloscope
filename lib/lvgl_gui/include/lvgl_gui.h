@@ -2,7 +2,7 @@
  * @file lvgl_gui.h
  * @author Wojciech Mytych
  * @brief Main header file of lvgl_gui library.
- * @version 0.2
+ * @version 1.0
  * @date 2023-08-18
  * 
  * @copyright Copyright (c) 2023
@@ -12,9 +12,9 @@
 
 #include "lvgl.h"
 
-#define POINTS_NUMBER                   501
-#define Y_MIN_VALUE                     -4000
-#define Y_MAX_VALUE                     4000
+#define POINTS_NUMBER                   501         ///< Number of points on X axis.
+#define Y_MIN_VALUE                     -4000       ///< Min number of points on Y axis in mV.
+#define Y_MAX_VALUE                     4000        ///< Max number of points on Y axis in mV.
 #define V_DIVISION_LINES                8           ///< Basic number of vertical division lines when first initialing chart.
 #define H_DIVISION_LINES                8           ///< Basic number of horizontal division lines when first initialing chart.
 #define CHART_WIDTH                     290

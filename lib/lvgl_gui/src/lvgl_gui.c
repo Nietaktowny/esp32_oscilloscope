@@ -2,7 +2,7 @@
  * @file lvgl_gui.c
  * @author Wojciech Mytych
  * @brief Main source file of lvgl_gui library.
- * @version 0.4
+ * @version 1.0
  * @date 2023-08-18
  * 
  * @copyright Copyright (c) 2023
@@ -120,7 +120,7 @@ void generate_example_sin_wave(void) {
     {
       for (int i = 0; i < TABLE_SIZE; i++)
       {
-        gui_set_point(samples[i]*Y_MAX_VALUE);
+        gui_set_point(samples[i]*3300);
       }
     }
 }

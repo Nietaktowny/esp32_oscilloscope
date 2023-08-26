@@ -1,6 +1,6 @@
 {
     "name": "lvgl_gui",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "keywords": "LCD, driver, display, ",
     "description": "Graphical user interface made usind LVGL library.",
     "dependencies":

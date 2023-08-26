@@ -1,6 +1,6 @@
 {
     "name": "esp_adc_reader",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "keywords": "ESP-IDF, driver, ADC, ",
     "description": "Library used to read ADC values using continous mode.",
     "frameworks": ["espidf"],

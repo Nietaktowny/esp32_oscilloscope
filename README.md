@@ -4,9 +4,10 @@
 Simple oscilloscope built on ESP-IDF framework. The board it uses it's ESP-WROVER-KIT V4.1 because it's single dev board that has all needed features: 
 
  - LCD screen
- - microSD card slot for storing values
  - FT2232HL chip that can be used for debugging
  - 5V Power Input
+
+Of course this project is nowhere real oscilloscope, and ADC in ESP32 is not so good. This was made purely for educational purposes. 
 #### Example:
 ![example screen from native](scripts/example_chart.jpg)
 
@@ -64,4 +65,4 @@ Simple oscilloscope built on ESP-IDF framework. The board it uses it's ESP-WROVE
 	``pio run -t execute -e native_sdl``
 	`
 ## Problems
-
+-[] Reduce delay between reading and drawing values.
